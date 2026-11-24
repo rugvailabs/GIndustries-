@@ -36,7 +36,7 @@ const FAQS = [
 
 const GALLERY = [
   { src: '/images/IMG_20261021_103942.jpg', alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly' },
-  { src: '/images/file_00000000046c820aa9597951eafb2253.png', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor' },
+  { src: '/images/file_00000000046c820aa9597951eafb2253.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor' },
   { src: '/images/IMG_20261021_103124.jpg', alt: 'Tinex power presses and a Pipe Rolling Machine on the fabrication floor' },
 ];
 

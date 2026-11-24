@@ -145,7 +145,7 @@ export default function QualityCertificationsPage() {
             <figure>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/file_00000000a890820a9306d10de46aeddb.png"
+                src="/images/file_00000000a890820a9306d10de46aeddb.jpg"
                 alt="Quality Department entrance, alternate view with plant layout plaque visible"
               />
               <figcaption>Quality Department Entrance</figcaption>

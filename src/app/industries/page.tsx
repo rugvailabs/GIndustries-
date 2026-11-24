@@ -126,7 +126,7 @@ export default function IndustriesPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Industries we serve, answered" />
 
-      <ContactCta image="/images/file_00000000686081fa8ef0d50efda247d2.png" />
+      <ContactCta image="/images/file_00000000686081fa8ef0d50efda247d2.jpg" />
     </>
   );
 }

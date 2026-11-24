@@ -52,7 +52,7 @@ const MACHINES = [
     meta: '1.5 kW · 2023, 25 & 26',
   },
   {
-    src: '/images/file_00000000046c820aa9597951eafb2253.png',
+    src: '/images/file_00000000046c820aa9597951eafb2253.jpg',
     alt: 'Tinex power press machines and a pillar drilling machine on the shop floor',
     title: 'Power Press & Drilling',
     meta: '50T / 20T · Ø36mm · 2024–26',

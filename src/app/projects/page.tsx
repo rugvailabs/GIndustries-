@@ -31,7 +31,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Documented engineering and fabrication deliveries from G Industries — BESS containers for Medha Servo Drives, power containers for BHEL, and a precision CNC machine body for VEM Technologies.',
   path: '/projects',
-  image: '/images/file_00000000686081fa8ef0d50efda247d2.png',
+  image: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
   imageAlt: 'BESS container chassis fabrication on the G Industries shop floor',
 });
 
@@ -42,7 +42,7 @@ const PROJECTS = [
     title: 'BESS Container, Railways & EV',
     desc: 'Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.',
     note: "Spanning three of G Industries' core sectors — BESS energy storage, railways, and electric vehicles — in a single engagement.",
-    src: '/images/file_00000000686081fa8ef0d50efda247d2.png',
+    src: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
     alt: 'BESS container chassis fabrication on the shop floor',
     cap: 'Container chassis fabrication, Unit 3',
   },
@@ -72,7 +72,7 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHero
-        image="/images/file_00000000686081fa8ef0d50efda247d2.png"
+        image="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
         imageAlt="BESS container chassis fabrication on the G Industries shop floor, with G Industries signage visible"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
         eyebrow="Recent Track Record"

@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'G Industries — founded in 2021 in Hyderabad, Telangana, a single-source manufacturing partner built to redefine what a fabrication partner can deliver.',
   path: '/about',
-  image: '/images/9ab78c05-093b-405e-9850-54976077abdf.png',
+  image: '/images/9ab78c05-093b-405e-9850-54976077abdf.jpg',
   imageAlt: 'The G Industries team on the shop floor at the Hyderabad facility',
 });
 
@@ -58,7 +58,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        image="/images/9ab78c05-093b-405e-9850-54976077abdf.png"
+        image="/images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
         imageAlt="The G Industries team on the shop floor at the Hyderabad facility"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
         eyebrow="About Us"

@@ -36,7 +36,7 @@ const ORGANIZATION_JSON_LD = {
   name: SITE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/images/logo.png`,
-  image: `${SITE_URL}/images/9ab78c05-093b-405e-9850-54976077abdf.png`,
+  image: `${SITE_URL}/images/9ab78c05-093b-405e-9850-54976077abdf.jpg`,
   description: HOME_DESCRIPTION,
   foundingDate: '2021',
   address: {

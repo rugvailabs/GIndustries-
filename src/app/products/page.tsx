@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
   description:
     'G Industries is building a dedicated product catalog — BESS containers, precision-machined components, and custom enclosures. Coming soon; custom fabrication inquiries open now.',
   path: '/products',
-  image: '/images/file_00000000686081fa8ef0d50efda247d2.png',
+  image: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
   imageAlt: 'Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit',
 });
 
@@ -58,7 +58,7 @@ export default function ProductsPage() {
   return (
     <>
       <PageHero
-        image="/images/file_00000000686081fa8ef0d50efda247d2.png"
+        image="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
         imageAlt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
         eyebrow="Products"

@@ -62,7 +62,7 @@ const MACHINES = [
   { src: '/images/IMG_20261021_105113.jpg', alt: 'Senfeng fiber laser cutting machine on the G Industries shop floor', title: 'Sheet & Pipe Laser Cutting', meta: 'Senfeng, 3 kW · 2024' },
   { src: '/images/IMG_20261021_103106.jpg', alt: 'Hindustan Hydraulics Swift 100-31 CNC press brake machine', title: 'CNC Press Brake', meta: 'Hindustan, 100T · 2024' },
   { src: '/images/IMG_20261021_103828.jpg', alt: 'IPG Photonics LightWeld handheld laser welding system in use', title: 'Laser Welding', meta: '1.5 kW · 2023, 25 & 26' },
-  { src: '/images/file_00000000046c820aa9597951eafb2253.png', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor', title: 'Power Press & Drilling', meta: '50T / 20T · Ø36mm · 2024–26' },
+  { src: '/images/file_00000000046c820aa9597951eafb2253.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor', title: 'Power Press & Drilling', meta: '50T / 20T · Ø36mm · 2024–26' },
   { src: '/images/IMG_20261021_103749.jpg', alt: 'Row of laser welding stations in the LW/002 work area', title: 'Laser Welding Stations', meta: '5 Nos. installed' },
   { src: '/images/IMG_20261021_104031.jpg', alt: 'MIG and TIG welding bay with gas cylinders', title: 'TIG / MIG / ARC Welding', meta: '500A AC/DC · 400A · 200A' },
 ];
@@ -92,7 +92,7 @@ const PROJECTS = [
     client: 'Medha Servo Drives',
     title: 'BESS Container, Railways & EV',
     desc: 'Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.',
-    src: '/images/file_00000000686081fa8ef0d50efda247d2.png',
+    src: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
     alt: 'BESS container chassis fabrication on the shop floor',
     cap: 'Container chassis fabrication, Unit 3',
   },
@@ -132,7 +132,7 @@ export default function HomePage() {
         <div className="hero-media">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/9ab78c05-093b-405e-9850-54976077abdf.png"
+            src="/images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
             alt="The G Industries team on the shop floor at the Hyderabad facility, standing in front of a CNC press brake"
           />
         </div>
@@ -329,7 +329,7 @@ export default function HomePage() {
             <figure>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/file_00000000686081fa8ef0d50efda247d2.png"
+                src="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
                 alt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
               />
               <figcaption>Container structural base under fabrication — Unit 3, BESS Manufacturing</figcaption>
@@ -337,7 +337,7 @@ export default function HomePage() {
             <figure>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/file_000000005b9481fabfbaf36350a99db5.png"
+                src="/images/file_000000005b9481fabfbaf36350a99db5.jpg"
                 alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs"
               />
               <figcaption>I-beam chassis, engineered for heavy structural loads</figcaption>
@@ -420,7 +420,7 @@ export default function HomePage() {
               </figure>
               <figure>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/file_00000000a890820a9306d10de46aeddb.png" alt="Quality Department entrance with safety signage at the G Industries facility" />
+                <img src="/images/file_00000000a890820a9306d10de46aeddb.jpg" alt="Quality Department entrance with safety signage at the G Industries facility" />
               </figure>
             </div>
             <div className="stack">

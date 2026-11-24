@@ -51,7 +51,7 @@ const UTILITY_GALLERY = [
     cap: 'Material Handling Aisle, Unit 1',
   },
   {
-    src: '/images/file_00000000a890820a9306d10de46aeddb.png',
+    src: '/images/file_00000000a890820a9306d10de46aeddb.jpg',
     alt: 'Quality Department entrance, alternate view',
     cap: 'Quality Department, Unit 1',
   },
