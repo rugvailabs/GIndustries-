@@ -24,7 +24,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: 'BESS Solutions', href: '/bess-solutions' },
     ],
   },
-  { label: 'Products', href: '/products' },
+  { label: 'Shop', href: '/products' },
   { label: 'Facilities', href: '/facilities' },
   { label: 'Projects', href: '/projects' },
   { label: 'Quality', href: '/quality-certifications' },
