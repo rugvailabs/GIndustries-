@@ -23,7 +23,6 @@ export default function WhatsAppFloat() {
       <span className="whatsapp-float-icon">
         <IconWhatsApp />
       </span>
-      <span className="whatsapp-float-text">Chat with us</span>
     </a>
   );
 }
