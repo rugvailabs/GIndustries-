@@ -81,7 +81,7 @@ export default function Header() {
   const isParentActive = (children: NavLeaf[]) => children.some((c) => c.href === pathname);
 
   return (
-    <header ref={headerRef} className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
+    <header ref={headerRef} className={`site-header${scrolled ? ' is-scrolled' : ''}${mobileOpen ? ' nav-open' : ''}`}>
       <div className="container">
         <Link href="/" className="brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -137,7 +137,7 @@ export default function Header() {
             Talk to Us
           </Link>
           <button
-            className="nav-toggle"
+            className={`nav-toggle${mobileOpen ? ' is-open' : ''}`}
             id="navToggle"
             aria-label="Toggle navigation"
             aria-expanded={mobileOpen}

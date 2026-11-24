@@ -161,6 +161,10 @@ section { position: relative; }
   box-shadow: 0 1px 0 var(--line);
   padding-block: 0.7rem;
 }
+/* backdrop-filter creates a new containing block for position:fixed descendants,
+   which would trap the full-screen mobile nav overlay inside the header's own
+   (short) box instead of the viewport — suspend it while the menu is open. */
+.site-header.nav-open { backdrop-filter: none; }
 .brand { display: flex; align-items: center; gap: 0.6rem; border-radius: var(--radius-sm); overflow: hidden; transition: box-shadow 280ms var(--ease); box-shadow: 0 2px 14px rgba(0,0,0,0.28); }
 .brand img { height: 52px; width: auto; display: block; }
 .site-header.is-scrolled .brand { box-shadow: 0 1px 4px rgba(0,0,0,0.18); }
@@ -177,9 +181,13 @@ section { position: relative; }
 .nav-toggle { display: none; background: none; border: none; padding: 0.4rem; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: all 220ms var(--ease); }
 .site-header.is-scrolled .nav-toggle span { background: var(--navy-950); }
+.nav-toggle.is-open span { background: var(--white) !important; }
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 960px) {
-  .nav-links { position: fixed; inset: 0; top: 0; background: var(--navy-950); flex-direction: column; justify-content: center; gap: var(--space-4); font-size: 1.3rem; transform: translateY(-100%); transition: transform 360ms var(--ease); }
+  .nav-links { position: fixed; inset: 0; top: 0; background: var(--navy-950); flex-direction: column; justify-content: center; gap: var(--space-4); font-size: 1.3rem; transform: translateY(-100%); transition: transform 360ms var(--ease); overflow-y: auto; padding-block: 6rem 3rem; }
   .nav-links.is-open { transform: translateY(0); }
   .nav-links a { color: var(--white) !important; }
   .nav-toggle { display: block; z-index: 110; }
@@ -424,8 +432,8 @@ section { position: relative; }
 .contact-inner { position: relative; z-index: 1; text-align: center; }
 .contact-inner h2 { color: var(--white); font-size: clamp(2.2rem, 5vw, 4rem); max-width: 16ch; margin-inline: auto; margin-bottom: var(--space-4); }
 .contact-inner h2 em { font-style: normal; color: var(--gold); }
-.contact-inner > p { color: rgba(255,255,255,0.68); max-width: 56ch; margin: var(--space-3) auto var(--space-7); font-size: 1.05rem; }
-.contact-actions { display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-7); }
+.contact-inner > p { color: rgba(255,255,255,0.68); max-width: 56ch; margin: var(--space-3) auto var(--space-8); font-size: 1.05rem; }
+.contact-actions { display: flex; justify-content: center; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-8); }
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); border-top: 1px solid var(--line-on-dark); padding-top: var(--space-5); text-align: left; max-width: 980px; margin-inline: auto; }
 .contact-item .icon { width: 28px; height: 28px; color: var(--gold); margin-bottom: var(--space-2); }
 .contact-item .icon svg { width: 100%; height: 100%; }
