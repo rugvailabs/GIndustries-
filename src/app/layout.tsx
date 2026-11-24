@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import WhatsAppFloat from '@/components/WhatsAppFloat';
 import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
 
 const HOME_TITLE = 'G Industries — Precision Engineering & Turnkey Manufacturing';
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );
