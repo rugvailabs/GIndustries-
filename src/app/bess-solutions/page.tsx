@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -50,13 +51,11 @@ export default function BessSolutionsPage() {
         <div className="container bess-grid">
           <Reveal className="bess-media">
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/file_00000000686081fa8ef0d50efda247d2.jpg" alt="Large welded steel container chassis under fabrication, with G Industries signage visible" />
+              <Image src="/images/file_00000000686081fa8ef0d50efda247d2.jpg" alt="Large welded steel container chassis under fabrication, with G Industries signage visible" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Container structural base under fabrication — Unit 3, BESS Manufacturing</figcaption>
             </figure>
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/file_000000005b9481fabfbaf36350a99db5.jpg" alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs" />
+              <Image src="/images/file_000000005b9481fabfbaf36350a99db5.jpg" alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>I-beam chassis, engineered for heavy structural loads</figcaption>
             </figure>
           </Reveal>
@@ -131,8 +130,9 @@ export default function BessSolutionsPage() {
                 Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.
               </p>
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/file_000000005b9481fabfbaf36350a99db5.jpg" loading="lazy" alt="Steel I-beam chassis frame for a battery energy storage container" />
+                <div className="figure-media">
+                  <Image src="/images/file_000000005b9481fabfbaf36350a99db5.jpg" alt="Steel I-beam chassis frame for a battery energy storage container" fill sizes="(max-width: 900px) 100vw, 25vw" />
+                </div>
                 <figcaption>I-beam chassis, Unit 3</figcaption>
               </figure>
             </div>

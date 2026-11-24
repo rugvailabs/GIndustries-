@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -129,8 +130,7 @@ export default function MachineryPage() {
             {MACHINES.map((m, i) => (
               <Reveal key={m.title} className="machine-card" index={i}>
                 <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={m.src} loading="lazy" alt={m.alt} />
+                  <Image src={m.src} alt={m.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
                 </figure>
                 <div className="mc-body">
                   <h3>{m.title}</h3>

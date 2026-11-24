@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -72,8 +73,7 @@ export default function EngineeringDesignPage() {
               </p>
             </div>
             <div className="split-media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/IMG_20261021_104523.jpg" alt="Fabricated stainless steel cone enclosure with mounting flange, engineered to a precise bolt pattern" />
+              <Image src="/images/IMG_20261021_104523.jpg" alt="Fabricated stainless steel cone enclosure with mounting flange, engineered to a precise bolt pattern" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Enclosure housing — flange and bolt pattern engineered to spec</figcaption>
             </div>
           </Reveal>
@@ -97,8 +97,7 @@ export default function EngineeringDesignPage() {
               </p>
             </div>
             <div className="split-media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/IMG_20261021_104739.jpg" alt="Formed steel bowl-shaped bracket component engineered for load-bearing performance" />
+              <Image src="/images/IMG_20261021_104739.jpg" alt="Formed steel bowl-shaped bracket component engineered for load-bearing performance" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Formed bracket — geometry shaped for structural load paths</figcaption>
             </div>
           </Reveal>
@@ -140,8 +139,7 @@ export default function EngineeringDesignPage() {
           </Reveal>
           <Reveal className="gallery-grid">
             {GALLERY.map((g) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <figure key={g.src}><img src={g.src} loading="lazy" alt={g.alt} /></figure>
+              <figure key={g.src}><div className="gallery-media"><Image src={g.src} alt={g.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
             ))}
           </Reveal>
         </div>

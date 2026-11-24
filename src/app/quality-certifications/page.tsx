@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -138,16 +139,20 @@ export default function QualityCertificationsPage() {
           </Reveal>
           <Reveal className="gallery-grid">
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/IMG_20261021_091907.jpg" alt="Quality Department entrance with safety signage" />
+              <div className="gallery-media">
+                <Image src="/images/IMG_20261021_091907.jpg" alt="Quality Department entrance with safety signage" fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+              </div>
               <figcaption>Quality Department, Unit 1</figcaption>
             </figure>
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/file_00000000a890820a9306d10de46aeddb.jpg"
-                alt="Quality Department entrance, alternate view with plant layout plaque visible"
-              />
+              <div className="gallery-media">
+                <Image
+                  src="/images/file_00000000a890820a9306d10de46aeddb.jpg"
+                  alt="Quality Department entrance, alternate view with plant layout plaque visible"
+                  fill
+                  sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
+                />
+              </div>
               <figcaption>Quality Department Entrance</figcaption>
             </figure>
           </Reveal>

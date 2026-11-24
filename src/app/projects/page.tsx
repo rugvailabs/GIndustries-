@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
@@ -95,8 +96,9 @@ export default function ProjectsPage() {
                   <p className="desc" style={{ marginTop: '0.6rem' }}>{p.note}</p>
                 </div>
                 <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.src} loading="lazy" alt={p.alt} />
+                  <div className="figure-media">
+                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
+                  </div>
                   <figcaption>{p.cap}</figcaption>
                 </figure>
               </Reveal>

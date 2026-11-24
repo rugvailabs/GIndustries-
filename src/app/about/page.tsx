@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -70,10 +71,12 @@ export default function AboutPage() {
         <div className="container">
           <Reveal className="split-section">
             <div className="split-media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/IMG_20261021_103924.jpg"
                 alt="Batch of finished precision stainless steel components ready for dispatch on the G Industries shop floor"
+                width={2400}
+                height={1800}
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
               <figcaption>Finished components staged for dispatch, Hyderabad facility</figcaption>
             </div>

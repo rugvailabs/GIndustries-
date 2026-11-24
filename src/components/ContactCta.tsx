@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import { IconArrowRight, IconPin, IconMail, IconPhone } from '@/components/icons';
 
@@ -21,8 +22,7 @@ export default function ContactCta({
   return (
     <section className="section-pad contact-cta" id="contact">
       <div className="bg">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt="" />
+        <Image src={image} alt="" fill sizes="100vw" quality={70} />
       </div>
       <div className="container contact-inner">
         <Reveal className="eyebrow on-dark">Get In Touch</Reveal>

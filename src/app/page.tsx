@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import Counter from '@/components/Counter';
 import {
@@ -130,10 +131,13 @@ export default function HomePage() {
       {/* ============ HERO ============ */}
       <section className="hero" id="top">
         <div className="hero-media">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
             alt="The G Industries team on the shop floor at the Hyderabad facility, standing in front of a CNC press brake"
+            fill
+            sizes="100vw"
+            priority
+            quality={80}
           />
         </div>
         <div className="hero-content container">
@@ -213,10 +217,11 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal className="about-media">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/images/IMG_20261021_103203.jpg"
               alt="Raw material racks and laser-cut sheet metal stock on the G Industries fabrication shop floor"
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
             />
             <div className="about-media-tag">
               <strong>One Partner.</strong> Every capability — design, simulation, fabrication and finishing in a
@@ -287,8 +292,7 @@ export default function HomePage() {
           <Reveal className="precision-scroll">
             {PRECISION_ITEMS.map((item) => (
               <div className="precision-item" key={item.src}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.src} loading="lazy" alt={item.alt} />
+                <Image src={item.src} alt={item.alt} fill sizes="(max-width: 600px) 220px, 25vw" />
                 <span>{item.label}</span>
               </div>
             ))}
@@ -327,18 +331,22 @@ export default function HomePage() {
         <div className="container bess-grid">
           <Reveal className="bess-media">
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
                 alt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
+                width={1448}
+                height={1086}
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
               <figcaption>Container structural base under fabrication — Unit 3, BESS Manufacturing</figcaption>
             </figure>
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/file_000000005b9481fabfbaf36350a99db5.jpg"
                 alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs"
+                width={1448}
+                height={1086}
+                sizes="(max-width: 900px) 100vw, 50vw"
               />
               <figcaption>I-beam chassis, engineered for heavy structural loads</figcaption>
             </figure>
@@ -404,10 +412,12 @@ export default function HomePage() {
 
           <Reveal className="facility-gallery">
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/IMG_20261021_091914.jpg"
                 alt="Official G Industries plant layout plan displayed at the facility entrance, showing Shed 2 and Shed 2A"
+                width={2400}
+                height={1800}
+                sizes="(max-width: 900px) 100vw, 43vw"
               />
               <figcaption className="gallery-cap">
                 Registered plant layout — Shed 2 / Shed 2A, Sy. 710, Gandimaisamma Mandal, Dundigal
@@ -415,22 +425,18 @@ export default function HomePage() {
             </figure>
             <div className="stack">
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/IMG_20261021_103212.jpg" alt="Wide view of the fabrication shop floor aisle with material handling area" />
+                <Image src="/images/IMG_20261021_103212.jpg" alt="Wide view of the fabrication shop floor aisle with material handling area" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/file_00000000a890820a9306d10de46aeddb.jpg" alt="Quality Department entrance with safety signage at the G Industries facility" />
+                <Image src="/images/file_00000000a890820a9306d10de46aeddb.jpg" alt="Quality Department entrance with safety signage at the G Industries facility" width={1086} height={1448} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
             </div>
             <div className="stack">
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/IMG_20261021_103528.jpg" alt="Store Room and Managing Director office entrances on the production floor" />
+                <Image src="/images/IMG_20261021_103528.jpg" alt="Store Room and Managing Director office entrances on the production floor" width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/IMG_20261021_104031.jpg" alt="MIG welding station near the facility emergency exit with gas cylinders" />
+                <Image src="/images/IMG_20261021_104031.jpg" alt="MIG welding station near the facility emergency exit with gas cylinders" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
             </div>
           </Reveal>
@@ -453,8 +459,7 @@ export default function HomePage() {
             {MACHINES.map((m, i) => (
               <Reveal key={m.title} className="machine-card" index={i}>
                 <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={m.src} loading="lazy" alt={m.alt} />
+                  <Image src={m.src} alt={m.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
                 </figure>
                 <div className="mc-body">
                   <h3>{m.title}</h3>
@@ -529,8 +534,9 @@ export default function HomePage() {
                 </div>
                 <p className="desc">{p.desc}</p>
                 <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.src} loading="lazy" alt={p.alt} />
+                  <div className="figure-media">
+                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
+                  </div>
                   <figcaption>{p.cap}</figcaption>
                 </figure>
               </Reveal>
@@ -618,8 +624,7 @@ export default function HomePage() {
       {/* ============ CONTACT CTA ============ */}
       <section className="section-pad contact-cta" id="contact">
         <div className="bg">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/IMG_20261021_103212.jpg" alt="" />
+          <Image src="/images/IMG_20261021_103212.jpg" alt="" fill sizes="100vw" quality={70} />
         </div>
         <div className="container contact-inner">
           <Reveal className="eyebrow on-dark">Get In Touch</Reveal>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -134,10 +135,12 @@ export default function FacilitiesPage() {
           </Reveal>
           <Reveal className="facility-gallery">
             <figure>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/images/IMG_20261021_091932.jpg"
                 alt="Official G Industries registered plant layout plaque, showing Shed 2, Shed 2A, and a Finished Goods Storage Area sign"
+                width={2400}
+                height={1800}
+                sizes="(max-width: 900px) 100vw, 43vw"
               />
               <figcaption className="gallery-cap">
                 Registered plant layout — Shed-2 / Shed-2A, Sy. 710, Gandimaisamma Mandal, Dundigal
@@ -145,33 +148,41 @@ export default function FacilitiesPage() {
             </figure>
             <div className="stack">
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/IMG_20261021_091907.jpg"
                   alt="Quality Department entrance with safety signage at the G Industries facility"
+                  width={1800}
+                  height={2400}
+                  sizes="(max-width: 900px) 50vw, 28vw"
                 />
               </figure>
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/IMG_20261021_103528.jpg"
                   alt="Store Room and Managing Director office entrances on the production floor"
+                  width={2400}
+                  height={1800}
+                  sizes="(max-width: 900px) 50vw, 28vw"
                 />
               </figure>
             </div>
             <div className="stack">
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/IMG_20261021_103434.jpg"
                   alt="Fire extinguisher safety signage mounted on the facility wall"
+                  width={1800}
+                  height={2400}
+                  sizes="(max-width: 900px) 50vw, 28vw"
                 />
               </figure>
               <figure>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/IMG_20261021_103245.jpg"
                   alt="Industrial air compressor and dryer unit supporting the facility's pneumatic systems"
+                  width={2400}
+                  height={1800}
+                  sizes="(max-width: 900px) 50vw, 28vw"
                 />
               </figure>
             </div>
@@ -189,8 +200,9 @@ export default function FacilitiesPage() {
             {UTILITY_GALLERY.map((item, i) => (
               <Reveal key={item.src} index={i}>
                 <figure>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.src} alt={item.alt} loading="lazy" />
+                  <div className="gallery-media">
+                    <Image src={item.src} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                  </div>
                   <figcaption>{item.cap}</figcaption>
                 </figure>
               </Reveal>

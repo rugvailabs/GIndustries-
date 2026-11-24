@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -88,8 +89,7 @@ export default function ManufacturingFabricationPage() {
         <div className="container">
           <Reveal className="split-section">
             <div className="split-media">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/IMG_20261021_103942.jpg" alt="Stacked laser-cut and welded sheet metal enclosures ready for assembly" />
+              <Image src="/images/IMG_20261021_103942.jpg" alt="Stacked laser-cut and welded sheet metal enclosures ready for assembly" width={2400} height={1800} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Sheet-metal enclosures staged for assembly, Unit 1</figcaption>
             </div>
             <div className="split-copy">
@@ -117,8 +117,7 @@ export default function ManufacturingFabricationPage() {
           </Reveal>
           <Reveal className="gallery-grid">
             {GALLERY.map((g) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <figure key={g.src}><img src={g.src} loading="lazy" alt={g.alt} /></figure>
+              <figure key={g.src}><div className="gallery-media"><Image src={g.src} alt={g.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
             ))}
           </Reveal>
         </div>

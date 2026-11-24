@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 type Crumb = { label: string; href?: string };
@@ -15,8 +16,7 @@ export default function PageHero({ image, imageAlt, eyebrow, title, subtitle, cr
   return (
     <section className="page-hero">
       <div className="page-hero-media">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt={imageAlt} />
+        <Image src={image} alt={imageAlt} fill sizes="100vw" priority quality={80} />
       </div>
       <div className="page-hero-content container">
         <div className="breadcrumb">

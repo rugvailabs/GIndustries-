@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -8,8 +9,7 @@ export default function Footer() {
         <div className="footer-top">
           <div>
             <div className="footer-brand">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo.png" alt="G Industries logo" />
+              <Image src="/images/logo.png" alt="G Industries logo" width={450} height={300} />
             </div>
             <p>
               A single-source manufacturing partner for Railways, EV, Electronics, Agri-Tech and BESS energy
