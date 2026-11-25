@@ -22,9 +22,6 @@ export const metadata: Metadata = {
     template: '%s — G Industries',
   },
   description: HOME_DESCRIPTION,
-  icons: {
-    icon: '/images/logo.png',
-  },
   alternates,
   openGraph,
   twitter,

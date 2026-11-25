@@ -138,8 +138,8 @@ section { position: relative; }
 .btn:hover { transform: translateY(-2px); }
 .btn-gold { background: var(--gold); color: var(--navy-950); }
 .btn-gold:hover { background: #FFD60A; }
-.btn-outline-dark, .site-header.is-scrolled .nav-cta .btn-outline-light { border-color: var(--navy-950); color: var(--navy-950); }
-.btn-outline-dark:hover, .site-header.is-scrolled .nav-cta .btn-outline-light:hover { background: var(--navy-950); color: var(--white); }
+.btn-outline-dark { border-color: var(--navy-950); color: var(--navy-950); }
+.btn-outline-dark:hover { background: var(--navy-950); color: var(--white); }
 .btn-outline-light { border-color: rgba(255,255,255,0.4); color: var(--white); }
 .btn-outline-light:hover { background: var(--white); color: var(--navy-950); border-color: var(--white); }
 .btn svg { width: 16px; height: 16px; flex-shrink: 0; transition: transform 220ms var(--ease); }
@@ -156,31 +156,26 @@ section { position: relative; }
 }
 .site-header .container { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
 .site-header.is-scrolled {
-  background: rgba(255,255,255,0.92);
+  background: rgba(0,11,36,0.92);
   backdrop-filter: blur(10px);
-  box-shadow: 0 1px 0 var(--line);
+  box-shadow: 0 1px 0 var(--line-on-dark);
   padding-block: 0.7rem;
 }
 /* backdrop-filter creates a new containing block for position:fixed descendants,
    which would trap the full-screen mobile nav overlay inside the header's own
    (short) box instead of the viewport — suspend it while the menu is open. */
 .site-header.nav-open { backdrop-filter: none; }
-.brand { display: flex; align-items: center; gap: 0.6rem; border-radius: var(--radius-sm); overflow: hidden; transition: box-shadow 280ms var(--ease); box-shadow: 0 2px 14px rgba(0,0,0,0.28); }
+.brand { display: flex; align-items: center; gap: 0.6rem; }
 .brand img { height: 52px; width: auto; display: block; }
-.site-header.is-scrolled .brand { box-shadow: 0 1px 4px rgba(0,0,0,0.18); }
 .brand-word { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--white); transition: color 280ms var(--ease); }
-.site-header.is-scrolled .brand-word { color: var(--navy-950); }
 
 .nav-links { display: flex; align-items: center; gap: var(--space-5); font-family: var(--font-ui); font-weight: 600; font-size: 0.92rem; }
 .nav-links a { color: rgba(255,255,255,0.88); transition: color 220ms var(--ease); position: relative; }
-.site-header.is-scrolled .nav-links a { color: var(--near-black); }
 .nav-links a:hover { color: var(--gold); }
-.site-header.is-scrolled .nav-links a:hover { color: var(--gold-dim); }
 
 .nav-cta { display: flex; align-items: center; gap: var(--space-3); }
 .nav-toggle { display: none; background: none; border: none; padding: 0.4rem; }
 .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: all 220ms var(--ease); }
-.site-header.is-scrolled .nav-toggle span { background: var(--navy-950); }
 .nav-toggle.is-open span { background: var(--white) !important; }
 .nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
@@ -477,9 +472,7 @@ section { position: relative; }
   display: inline-flex; align-items: center; gap: 0.35em; padding: 0;
   color: rgba(255,255,255,0.88); transition: color 220ms var(--ease);
 }
-.site-header.is-scrolled .nav-dropdown-toggle { color: var(--near-black); }
 .nav-dropdown-toggle:hover { color: var(--gold); }
-.site-header.is-scrolled .nav-dropdown-toggle:hover { color: var(--gold-dim); }
 .nav-dropdown-toggle svg { width: 13px; height: 13px; transition: transform 220ms var(--ease); }
 .nav-dropdown.is-open .nav-dropdown-toggle svg,
 .nav-dropdown:hover .nav-dropdown-toggle svg,
@@ -510,9 +503,7 @@ section { position: relative; }
 .nav-dropdown-panel a:hover { background: var(--surface); color: var(--gold-dim) !important; }
 
 .nav-links a.is-active { color: var(--gold) !important; }
-.site-header.is-scrolled .nav-links a.is-active { color: var(--gold-dim) !important; }
 .nav-dropdown.has-active-child > .nav-dropdown-toggle { color: var(--gold); }
-.site-header.is-scrolled .nav-dropdown.has-active-child > .nav-dropdown-toggle { color: var(--gold-dim); }
 
 @media (max-width: 960px) {
   .nav-dropdown { flex-direction: column; align-items: center; width: 100%; }
