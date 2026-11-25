@@ -421,7 +421,7 @@ export default function HomePage() {
             </figure>
             <div className="stack">
               <figure>
-                <Image src="/images/IMG_20261021_103212.jpg" alt="Wide view of the fabrication shop floor aisle with material handling area" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
+                <Image src="/images/file_0000000057688208b580ae916985fe4b.jpg" alt="Wide view of the fabrication shop floor aisle with material handling area" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
               <figure>
                 <Image src="/images/file_00000000a890820a9306d10de46aeddb.jpg" alt="Quality Department entrance with safety signage at the G Industries facility" width={1086} height={1448} sizes="(max-width: 900px) 50vw, 28vw" />
@@ -429,7 +429,7 @@ export default function HomePage() {
             </div>
             <div className="stack">
               <figure>
-                <Image src="/images/IMG_20261021_103528.jpg" alt="Store Room and Managing Director office entrances on the production floor" width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
+                <Image src="/images/file_00000000185c8208babc4d67585c94e3.jpg" alt="Store Room and Managing Director office entrances on the production floor" width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
               <figure>
                 <Image src="/images/IMG_20261021_104031.jpg" alt="MIG welding station near the facility emergency exit with gas cylinders" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
