@@ -499,6 +499,9 @@ section { position: relative; }
 .nav-dropdown.is-open .nav-dropdown-panel {
   opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
 }
+.nav-dropdown.force-closed .nav-dropdown-panel {
+  opacity: 0 !important; visibility: hidden !important; pointer-events: none;
+}
 .nav-dropdown-panel a {
   display: block; padding: 0.65em 0.9em; font-family: var(--font-ui); font-weight: 600;
   font-size: 0.9rem; color: var(--near-black) !important; border-radius: var(--radius-sm);
