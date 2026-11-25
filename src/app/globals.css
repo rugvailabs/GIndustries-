@@ -475,7 +475,6 @@ section { position: relative; }
 .nav-dropdown-toggle:hover { color: var(--gold); }
 .nav-dropdown-toggle svg { width: 13px; height: 13px; transition: transform 220ms var(--ease); }
 .nav-dropdown.is-open .nav-dropdown-toggle svg,
-.nav-dropdown:hover .nav-dropdown-toggle svg,
 .nav-dropdown:focus-within .nav-dropdown-toggle svg { transform: rotate(180deg); }
 
 .nav-dropdown-panel {
@@ -487,13 +486,9 @@ section { position: relative; }
   opacity: 0; visibility: hidden;
   transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 200ms;
 }
-.nav-dropdown:hover .nav-dropdown-panel,
 .nav-dropdown:focus-within .nav-dropdown-panel,
 .nav-dropdown.is-open .nav-dropdown-panel {
   opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
-}
-.nav-dropdown.force-closed .nav-dropdown-panel {
-  opacity: 0 !important; visibility: hidden !important; pointer-events: none;
 }
 .nav-dropdown-panel a {
   display: block; padding: 0.65em 0.9em; font-family: var(--font-ui); font-weight: 600;

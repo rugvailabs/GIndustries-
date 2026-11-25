@@ -46,7 +46,6 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [suppressedDropdown, setSuppressedDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -60,7 +59,6 @@ export default function Header() {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- closing the nav on route change is a one-time reaction to navigation, not a render loop
     setMobileOpen(false);
     setOpenDropdown(null);
-    setSuppressedDropdown(null);
   }, [pathname]);
 
   useEffect(() => {
@@ -109,8 +107,9 @@ export default function Header() {
             return (
               <div
                 key={item.label}
-                className={`nav-dropdown${open ? ' is-open' : ''}${active ? ' has-active-child' : ''}${suppressedDropdown === item.label ? ' force-closed' : ''}`}
-                onMouseLeave={() => setSuppressedDropdown(null)}
+                className={`nav-dropdown${open ? ' is-open' : ''}${active ? ' has-active-child' : ''}`}
+                onMouseEnter={() => setOpenDropdown(item.label)}
+                onMouseLeave={() => setOpenDropdown((current) => (current === item.label ? null : current))}
               >
                 <button
                   type="button"
@@ -119,7 +118,6 @@ export default function Header() {
                   onClick={(e) => {
                     e.stopPropagation();
                     setOpenDropdown(open ? null : item.label);
-                    setSuppressedDropdown(null);
                   }}
                 >
                   {item.label} <ChevronIcon />
@@ -130,9 +128,12 @@ export default function Header() {
                       key={child.href}
                       href={child.href}
                       className={isLeafActive(child.href) ? 'is-active' : ''}
-                      onClick={() => {
+                      onClick={(e) => {
                         setOpenDropdown(null);
-                        setSuppressedDropdown(item.label);
+                        // A clicked link keeps DOM focus after client-side navigation
+                        // (the anchor isn't recreated), which would otherwise keep the
+                        // panel open via the :focus-within accessibility rule below.
+                        e.currentTarget.blur();
                       }}
                     >
                       {child.label}
