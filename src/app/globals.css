@@ -520,7 +520,7 @@ section { position: relative; }
     background: transparent; min-width: 0; width: 100%; text-align: center;
     transition: max-height 280ms var(--ease), padding 280ms var(--ease);
   }
-  .nav-dropdown.is-open .nav-dropdown-panel { max-height: 300px; padding: 0.6rem 0; }
+  .nav-dropdown.is-open .nav-dropdown-panel { max-height: 300px; padding: 0.6rem 0; transform: none; }
   .nav-dropdown-panel a { color: rgba(255,255,255,0.82) !important; font-size: 1rem; padding: 0.5em; }
   .nav-dropdown-panel a:hover { background: none; color: var(--gold) !important; }
 }

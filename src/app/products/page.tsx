@@ -60,8 +60,8 @@ export default function ProductsPage() {
       <PageHero
         image="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
         imageAlt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
-        crumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
-        eyebrow="Products"
+        crumbs={[{ label: 'Home', href: '/' }, { label: 'Shop' }]}
+        eyebrow="Shop"
         title="Our product catalog is taking shape."
         subtitle="A dedicated lineup of ready-to-order products is in development. In the meantime, every item below is already available as a custom fabrication engagement."
       />
