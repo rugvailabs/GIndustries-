@@ -386,8 +386,8 @@ export default function HomePage() {
             <div className="eyebrow">Facilities</div>
             <h2>Built for scale. Engineered for precision.</h2>
             <p>
-              A continuously modernized facility footprint across Hyderabad, purpose-built for heavy fabrication,
-              electronics assembly, and BESS container manufacturing.
+              A continuously modernized facility footprint across Hyderabad, purpose-built for heavy fabrication
+              and BESS container manufacturing.
             </p>
           </Reveal>
 
@@ -397,12 +397,8 @@ export default function HomePage() {
               <div className="stat-label">Unit 1 Covered Area</div>
             </div>
             <div className="facility-stat">
-              <div className="stat-num">10,000 sft</div>
-              <div className="stat-label">Unit 2 — Electronics</div>
-            </div>
-            <div className="facility-stat">
               <div className="stat-num">30,000 sft</div>
-              <div className="stat-label">Unit 3 — BESS Container Mfg.</div>
+              <div className="stat-label">Unit 2 — BESS Container Mfg.</div>
             </div>
             <div className="facility-stat">
               <div className="stat-num">40,000 sft</div>

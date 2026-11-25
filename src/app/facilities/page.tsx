@@ -8,15 +8,15 @@ import { pageMetadata } from '@/lib/seo';
 const FAQS = [
   {
     q: 'What is the total manufacturing area of the G Industries facility?',
-    a: 'The Hyderabad facility spans 13,000 sft (Unit 1, covered fabrication area) and 30,000 sft (Unit 3, BESS container manufacturing), with a further 40,000 sft available for expansion.',
+    a: 'The Hyderabad facility spans 13,000 sft (Unit 1, covered fabrication area) and 30,000 sft (Unit 2, BESS container manufacturing), with a further 40,000 sft available for expansion.',
   },
   {
     q: 'What is each unit of the G Industries facility used for?',
-    a: 'Unit 1 houses heavy structural fabrication and welding, and Unit 3 is purpose-built for BESS (Battery Energy Storage System) container manufacturing.',
+    a: 'Unit 1 houses heavy structural fabrication and welding, and Unit 2 is purpose-built for BESS (Battery Energy Storage System) container manufacturing.',
   },
   {
     q: 'Is G Industries currently expanding its manufacturing capacity?',
-    a: 'Yes. Unit 3 (BESS Container Manufacturing) is an active expansion project currently being built out alongside the established Unit 1 fabrication shop, with 40,000 sft of additional land available for further growth.',
+    a: 'Yes. Unit 2 (BESS Container Manufacturing) is an active expansion project currently being built out alongside the established Unit 1 fabrication shop, with 40,000 sft of additional land available for further growth.',
   },
   {
     q: 'Does the facility have a dedicated quality inspection area?',
@@ -27,7 +27,7 @@ const FAQS = [
 export const metadata = pageMetadata({
   title: 'Infrastructure & Facilities',
   description:
-    'G Industries operates a continuously modernized facility footprint in Hyderabad — Unit 1 fabrication and Unit 3 BESS container manufacturing, with 40,000 sft available for expansion.',
+    'G Industries operates a continuously modernized facility footprint in Hyderabad — Unit 1 fabrication and Unit 2 BESS container manufacturing, with 40,000 sft available for expansion.',
   path: '/facilities',
   image: '/images/IMG_20261021_103212.jpg',
   imageAlt: 'Wide view of the G Industries fabrication shop floor aisle with material handling area',
@@ -35,7 +35,7 @@ export const metadata = pageMetadata({
 
 const FACILITY_STATS = [
   { num: '13,000 sft', label: 'Unit 1 Covered Area' },
-  { num: '30,000 sft', label: 'Unit 3 — BESS Container Mfg.' },
+  { num: '30,000 sft', label: 'Unit 2 — BESS Container Mfg.' },
   { num: '40,000 sft', label: 'Available for Expansion' },
 ];
 
@@ -81,7 +81,7 @@ export default function FacilitiesPage() {
           </Reveal>
           <Reveal>
             <p style={{ color: 'var(--ink-soft)', maxWidth: '72ch' }}>
-              Unit 3 (BESS Container Manufacturing) is an active expansion project — currently being built out
+              Unit 2 (BESS Container Manufacturing) is an active expansion project — currently being built out
               to extend G Industries&apos; single-source capability, alongside the established Unit 1 fabrication shop.
             </p>
           </Reveal>
