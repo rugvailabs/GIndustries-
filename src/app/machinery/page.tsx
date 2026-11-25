@@ -72,9 +72,9 @@ const MACHINES = [
   },
   {
     src: '/images/IMG_20261021_104031.jpg',
-    alt: 'MIG and TIG welding bay with gas cylinders',
-    title: 'TIG / MIG / ARC Welding',
-    meta: '500A AC/DC · 400A · 200A',
+    alt: 'MIG welding station, MIG/002, with gas cylinders',
+    title: 'MIG Welding',
+    meta: '400A · 200A',
   },
   {
     src: '/images/IMG_20261021_103245.jpg',

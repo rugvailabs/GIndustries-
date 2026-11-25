@@ -65,7 +65,7 @@ const MACHINES = [
   { src: '/images/IMG_20261021_103828.jpg', alt: 'IPG Photonics LightWeld handheld laser welding system in use', title: 'Laser Welding', meta: '1.5 kW · 2023, 25 & 26' },
   { src: '/images/file_00000000046c820aa9597951eafb2253.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor', title: 'Power Press & Drilling', meta: '50T / 20T · Ø36mm · 2024–26' },
   { src: '/images/IMG_20261021_103749.jpg', alt: 'Row of laser welding stations in the LW/002 work area', title: 'Laser Welding Stations', meta: '5 Nos. installed' },
-  { src: '/images/IMG_20261021_104031.jpg', alt: 'MIG and TIG welding bay with gas cylinders', title: 'TIG / MIG / ARC Welding', meta: '500A AC/DC · 400A · 200A' },
+  { src: '/images/IMG_20261021_104031.jpg', alt: 'MIG welding station, MIG/002, with gas cylinders', title: 'MIG Welding', meta: '400A · 200A' },
 ];
 
 const SPEC_ROWS = [
