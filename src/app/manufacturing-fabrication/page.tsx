@@ -36,9 +36,8 @@ const FAQS = [
 ];
 
 const GALLERY = [
-  { src: '/images/IMG_20261021_103942.jpg', alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly' },
+  { src: '/images/file_000000001d6c82088552d2bbb4554572.jpg', alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly' },
   { src: '/images/file_00000000046c820aa9597951eafb2253.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor' },
-  { src: '/images/IMG_20261021_103124.jpg', alt: 'Tinex power presses and a Pipe Rolling Machine on the fabrication floor' },
 ];
 
 export default function ManufacturingFabricationPage() {
@@ -115,7 +114,7 @@ export default function ManufacturingFabricationPage() {
             <div className="eyebrow">On The Shop Floor</div>
             <h2>Fabrication, in production</h2>
           </Reveal>
-          <Reveal className="gallery-grid">
+          <Reveal className="gallery-grid gallery-pair">
             {GALLERY.map((g) => (
               <figure key={g.src}><div className="gallery-media"><Image src={g.src} alt={g.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
             ))}

@@ -30,7 +30,7 @@ export default function ContactCta({
           <h2>{heading}</h2>
         </Reveal>
         <Reveal>
-          <p>{subcopy}</p>
+          <p className="contact-lede">{subcopy}</p>
         </Reveal>
         <Reveal className="contact-actions">
           <a href="mailto:mvskiran@gindustries.co.in" className="btn btn-gold">
