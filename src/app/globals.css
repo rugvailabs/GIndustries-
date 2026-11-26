@@ -161,12 +161,13 @@ section { position: relative; }
   box-shadow: 0 1px 0 var(--line-on-dark);
   padding-block: 0.7rem;
 }
+.site-header.is-scrolled .brand img { height: 50px; }
 /* backdrop-filter creates a new containing block for position:fixed descendants,
    which would trap the full-screen mobile nav overlay inside the header's own
    (short) box instead of the viewport — suspend it while the menu is open. */
 .site-header.nav-open { backdrop-filter: none; }
-.brand { display: flex; align-items: center; gap: 0.6rem; }
-.brand img { height: 52px; width: auto; display: block; }
+.brand { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+.brand img { height: 64px; width: auto; display: block; flex-shrink: 0; transition: height 280ms var(--ease); }
 .brand-word { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--white); transition: color 280ms var(--ease); }
 
 .nav-links { display: flex; align-items: center; gap: var(--space-5); font-family: var(--font-ui); font-weight: 600; font-size: 0.92rem; }
@@ -442,7 +443,7 @@ section { position: relative; }
 .site-footer { background: var(--near-black); color: rgba(255,255,255,0.6); padding-block: var(--space-5) var(--space-3); }
 .footer-top { display: grid; grid-template-columns: 1.3fr repeat(3, 1fr); gap: var(--space-5); padding-bottom: var(--space-5); border-bottom: 1px solid rgba(255,255,255,0.1); }
 .footer-brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: var(--space-2); }
-.footer-brand img { height: 44px; width: auto; border-radius: var(--radius-sm); }
+.footer-brand img { height: 76px; width: auto; }
 .footer-brand span { font-family: var(--font-display); color: var(--white); font-size: 1rem; }
 .footer-top p { font-size: 0.88rem; max-width: 34ch; }
 .footer-col h5 { font-family: var(--font-ui); color: var(--white); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2); }
