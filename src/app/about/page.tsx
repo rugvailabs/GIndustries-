@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: 'How large is the G Industries team?',
-    a: 'G Industries employs a 110+ strong workforce across its two operating units — Unit 1 (heavy fabrication) and Unit 2 (BESS container manufacturing).',
+    a: 'G Industries employs a 50+ strong workforce across its two operating units — Unit 1 (heavy fabrication) and Unit 2 (BESS container manufacturing).',
   },
   {
     q: 'What makes G Industries different from other fabrication companies?',
@@ -98,7 +98,7 @@ export default function AboutPage() {
                   <div className="stat-label">Founded</div>
                 </div>
                 <div className="mini-stat">
-                  <div className="stat-num">110+</div>
+                  <div className="stat-num">50+</div>
                   <div className="stat-label">Workforce</div>
                 </div>
                 <div className="mini-stat">

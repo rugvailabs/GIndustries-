@@ -111,7 +111,7 @@ export default function ContactPage() {
             </div>
             <div className="sidebar-stat">
               <span className="label">Workforce</span>
-              <span className="value">110+</span>
+              <span className="value">50+</span>
             </div>
             <div className="sidebar-stat">
               <span className="label">Certification</span>

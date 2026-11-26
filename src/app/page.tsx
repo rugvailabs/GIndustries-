@@ -169,7 +169,7 @@ export default function HomePage() {
               <div className="stat-label">Expansion Land</div>
             </div>
             <div className="stat">
-              <div className="stat-num"><Counter to={110} suffix="+" /></div>
+              <div className="stat-num"><Counter to={50} suffix="+" /></div>
               <div className="stat-label">Workforce</div>
             </div>
             <div className="stat-loc">
@@ -211,7 +211,7 @@ export default function HomePage() {
                 <div className="stat-label">Expansion Land</div>
               </div>
               <div className="mini-stat">
-                <div className="stat-num">110+</div>
+                <div className="stat-num">50+</div>
                 <div className="stat-label">Workforce</div>
               </div>
             </div>
