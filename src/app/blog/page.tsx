@@ -20,7 +20,7 @@ export default function BlogIndexPage() {
   return (
     <>
       <PageHero
-        image="/images/team-shopfloor-hyderabad.jpg"
+        image="/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
         imageAlt="The G Industries team on the shop floor at the Hyderabad facility"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Blog' }]}
         eyebrow="Resources"

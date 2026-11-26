@@ -86,7 +86,7 @@ export default function Header() {
     <header ref={headerRef} className={`site-header${scrolled ? ' is-scrolled' : ''}${mobileOpen ? ' nav-open' : ''}`}>
       <div className="container">
         <Link href="/" className="brand">
-          <Image src="/images/logo.png" alt="G Industries logo" width={450} height={300} priority />
+          <Image src="/quality-images/logo.png" alt="G Industries logo" width={450} height={300} priority />
         </Link>
 
         <nav className={`nav-links${mobileOpen ? ' is-open' : ''}`} id="navLinks">

@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: 'How large is the G Industries team?',
-    a: 'G Industries employs a 50+ strong workforce across its two operating units — Unit 1 (heavy fabrication) and Unit 2 (BESS container manufacturing).',
+    a: 'G Industries employs a 50+ strong workforce at its Unit 1 facility in Hyderabad, covering heavy fabrication and BESS container manufacturing.',
   },
   {
     q: 'What makes G Industries different from other fabrication companies?',
@@ -59,7 +59,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        image="/images/team-shopfloor-hyderabad.jpg"
+        image="/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
         imageAlt="The G Industries team on the shop floor at the Hyderabad facility"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
         eyebrow="About Us"
@@ -72,13 +72,13 @@ export default function AboutPage() {
           <Reveal className="split-section">
             <div className="split-media">
               <Image
-                src="/images/finished-components-dispatch-hyderabad.jpg"
-                alt="Batch of finished precision stainless steel components ready for dispatch on the G Industries shop floor"
-                width={2400}
-                height={1800}
+                src="/quality-images/Factory front image.png"
+                alt="G Industries Fabrication Works facility front gate and warehouse, Hyderabad"
+                width={1744}
+                height={992}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-              <figcaption>Finished components staged for dispatch, Hyderabad facility</figcaption>
+              <figcaption>G Industries Fabrication Works, Hyderabad facility</figcaption>
             </div>
             <div className="split-copy">
               <div className="eyebrow">Our Foundation</div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
         surface
       />
 
-      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
+      <ContactCta image="/quality-images/Factory image.png" />
     </>
   );
 }

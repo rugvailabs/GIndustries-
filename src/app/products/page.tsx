@@ -80,7 +80,7 @@ export default function ProductsPage() {
       {/* eslint-disable-next-line @next/next/no-danger -- static, server-rendered JSON-LD from our own content */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSON_LD) }} />
       <PageHero
-        image="/images/bess-container-chassis-fabrication.jpg"
+        image="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png"
         imageAlt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Shop' }]}
         eyebrow="Shop"

@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Turnkey heavy fabrication and post-processing in Hyderabad — structural fabrication, surface treatments, and rigorous QC testing under one roof.',
   path: '/manufacturing-fabrication',
-  image: '/images/finished-components-dispatch-hyderabad.jpg',
+  image: '/quality-images/Products2.png',
   imageAlt: 'Batch of finished precision stainless steel components ready for dispatch on the G Industries shop floor',
 });
 
@@ -37,15 +37,15 @@ const FAQS = [
 ];
 
 const GALLERY = [
-  { src: '/images/file_000000001d6c82088552d2bbb4554572.jpg', alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly' },
-  { src: '/images/tinex-power-press-drilling-machine.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor' },
+  { src: '/quality-images/IMG_20261021_103942.jpg', alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly' },
+  { src: '/quality-images/file_00000000046c820aa9597951eafb2253 (1).png', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor' },
 ];
 
 export default function ManufacturingFabricationPage() {
   return (
     <>
       <PageHero
-        image="/images/finished-components-dispatch-hyderabad.jpg"
+        image="/quality-images/Products2.png"
         imageAlt="Batch of finished precision stainless steel components ready for dispatch on the G Industries shop floor"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Manufacturing & Fabrication' }]}
         eyebrow="Fabrication & Post-Processing"
@@ -89,7 +89,7 @@ export default function ManufacturingFabricationPage() {
         <div className="container">
           <Reveal className="split-section">
             <div className="split-media">
-              <Image src="/images/sheet-metal-enclosures-stacked-assembly.jpg" alt="Stacked laser-cut and welded sheet metal enclosures ready for assembly" width={2400} height={1800} sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/quality-images/IMG_20261021_103942.jpg" alt="Stacked laser-cut and welded sheet metal enclosures ready for assembly" width={2400} height={1800} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Sheet-metal enclosures staged for assembly, Unit 1</figcaption>
             </div>
             <div className="split-copy">
@@ -138,7 +138,7 @@ export default function ManufacturingFabricationPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Manufacturing & fabrication, answered" />
 
-      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
+      <ContactCta image="/quality-images/Factory image.png" />
     </>
   );
 }

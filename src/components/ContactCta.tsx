@@ -9,7 +9,7 @@ type ContactCtaProps = {
 };
 
 export default function ContactCta({
-  image = '/images/team-shopfloor-hyderabad.jpg',
+  image = '/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg',
   heading = (
     <>
       Challenge everything

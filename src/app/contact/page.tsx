@@ -42,7 +42,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        image="/images/fabrication-shop-floor-material-handling.jpg"
+        image="/quality-images/Factory image.png"
         imageAlt="Wide view of the G Industries fabrication shop floor"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
         eyebrow="Get In Touch"

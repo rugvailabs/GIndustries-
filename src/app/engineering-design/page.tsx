@@ -46,19 +46,19 @@ const FAQS = [
 ];
 
 const GALLERY = [
-  { src: '/images/precision-machined-bracket-cad-design.jpg', alt: 'Precision-machined stainless steel bracket with sleeve, alternate angle' },
-  { src: '/images/IMG_20261021_104353.jpg', alt: 'Precision-machined stainless steel T-bracket with sensor port cutout' },
-  { src: '/images/IMG_20261021_104535.jpg', alt: 'Flanged cone component, top-down view showing bolt pattern' },
-  { src: '/images/IMG_20261021_104554.jpg', alt: 'Flanged cone component with square mounting bracket and bolts' },
-  { src: '/images/IMG_20261021_104750.jpg', alt: 'Formed steel bowl-shaped bracket component, side angle' },
-  { src: '/images/IMG_20261021_104831.jpg', alt: 'Welded stainless steel mesh grille disc component, overhead view' },
+  { src: '/quality-images/Product 1.png', alt: 'Precision-machined stainless steel bracket with sleeve, alternate angle' },
+  { src: '/quality-images/IMG_20261021_104353.jpg', alt: 'Precision-machined stainless steel T-bracket with sensor port cutout' },
+  { src: '/quality-images/IMG_20261021_104535.jpg', alt: 'Flanged cone component, top-down view showing bolt pattern' },
+  { src: '/quality-images/IMG_20261021_104554.jpg', alt: 'Flanged cone component with square mounting bracket and bolts' },
+  { src: '/quality-images/IMG_20261021_104750.jpg', alt: 'Formed steel bowl-shaped bracket component, side angle' },
+  { src: '/quality-images/IMG_20261021_104831.jpg', alt: 'Welded stainless steel mesh grille disc component, overhead view' },
 ];
 
 export default function EngineeringDesignPage() {
   return (
     <>
       <PageHero
-        image="/images/precision-machined-bracket-cad-design.jpg"
+        image="/quality-images/Product 1.png"
         imageAlt="Precision-machined stainless steel bracket engineered at G Industries"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Engineering & Design' }]}
         eyebrow="Our Advantage"
@@ -83,7 +83,7 @@ export default function EngineeringDesignPage() {
               </p>
             </div>
             <div className="split-media">
-              <Image src="/images/IMG_20261021_104523.jpg" alt="Fabricated stainless steel cone enclosure with mounting flange, engineered to a precise bolt pattern" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/quality-images/IMG_20261021_104523.jpg" alt="Fabricated stainless steel cone enclosure with mounting flange, engineered to a precise bolt pattern" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Enclosure housing — flange and bolt pattern engineered to spec</figcaption>
             </div>
           </Reveal>
@@ -107,7 +107,7 @@ export default function EngineeringDesignPage() {
               </p>
             </div>
             <div className="split-media">
-              <Image src="/images/IMG_20261021_104739.jpg" alt="Formed steel bowl-shaped bracket component engineered for load-bearing performance" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/quality-images/IMG_20261021_104739.jpg" alt="Formed steel bowl-shaped bracket component engineered for load-bearing performance" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Formed bracket — geometry shaped for structural load paths</figcaption>
             </div>
           </Reveal>
@@ -157,7 +157,7 @@ export default function EngineeringDesignPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Engineering & design, answered" />
 
-      <ContactCta image="/images/IMG_20261021_104523.jpg" />
+      <ContactCta image="/quality-images/IMG_20261021_104523.jpg" />
     </>
   );
 }

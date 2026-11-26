@@ -30,55 +30,55 @@ export const metadata = pageMetadata({
   description:
     'A continuously modernized machine shop — Senfeng laser cutting, CNC press braking, laser welding and power presses, anchored by recent 2022–2026 additions.',
   path: '/machinery',
-  image: '/images/senfeng-fiber-laser-cutting-hyderabad.jpg',
+  image: '/quality-images/file_000000009e1c8208ac1fd4174e502cda.png',
   imageAlt: 'Senfeng fiber laser cutting machine on the G Industries shop floor',
 });
 
 const MACHINES = [
   {
-    src: '/images/senfeng-fiber-laser-cutting-hyderabad.jpg',
+    src: '/quality-images/file_000000009e1c8208ac1fd4174e502cda.png',
     alt: 'Senfeng fiber laser cutting machine on the shop floor',
     title: 'Sheet & Pipe Laser Cutting',
     meta: 'Senfeng, 3 kW · 2024',
   },
   {
-    src: '/images/cnc-press-brake-sheet-metal-hyderabad.jpg',
+    src: '/quality-images/file_000000001778820882caf42727747702.png',
     alt: 'Hindustan Hydraulics Swift 100-31 CNC press brake machine',
     title: 'CNC Press Brake',
     meta: 'Hindustan, 100T · 2024',
   },
   {
-    src: '/images/IMG_20261021_103828.jpg',
+    src: '/quality-images/file_00000000c5f08208ace959c6353cb2c1.png',
     alt: 'IPG Photonics LightWeld handheld laser welding system in use',
     title: 'Laser Welding',
     meta: '1.5 kW · 2023, 25 & 26',
   },
   {
-    src: '/images/tinex-power-press-drilling-machine.jpg',
+    src: '/quality-images/file_00000000046c820aa9597951eafb2253 (1).png',
     alt: 'Tinex power press machines and a pillar drilling machine on the shop floor',
     title: 'Power Press & Drilling',
     meta: '50T / 20T · Ø36mm · 2024–26',
   },
   {
-    src: '/images/IMG_20261021_103124.jpg',
+    src: '/quality-images/file_00000000046c820aa9597951eafb2253 (1).png',
     alt: 'Tinex power press machines beside a Pipe Rolling Machine (PR/001) station',
     title: 'Power Press & Pipe Rolling',
     meta: 'Pipe Rolling, PR/001',
   },
   {
-    src: '/images/laser-welding-stations-fabrication-shop.jpg',
+    src: '/quality-images/file_0000000093908208b1a29b8a59852f9e.png',
     alt: 'Row of laser welding stations in the LW/002 work area',
     title: 'Laser Welding Stations',
     meta: '5 Nos. installed',
   },
   {
-    src: '/images/mig-welding-station-fabrication-shop.jpg',
+    src: '/quality-images/file_000000001664820883b0e955ea3d75a6.png',
     alt: 'MIG welding station, MIG/002, with gas cylinders',
     title: 'MIG Welding',
     meta: '400A · 200A',
   },
   {
-    src: '/images/air-compressor-dryer-fabrication-shop.jpg',
+    src: '/quality-images/file_00000000bf3c82088057776799a11bec.png',
     alt: 'Industrial air compressor and dryer unit supporting the fabrication shop',
     title: 'Compressed Air System',
     meta: 'Utility infrastructure',
@@ -108,7 +108,7 @@ export default function MachineryPage() {
   return (
     <>
       <PageHero
-        image="/images/senfeng-fiber-laser-cutting-hyderabad.jpg"
+        image="/quality-images/file_000000009e1c8208ac1fd4174e502cda.png"
         imageAlt="Senfeng fiber laser cutting machine on the G Industries shop floor, with nesting layout visible on the control screen"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Machinery & Equipment' }]}
         eyebrow="Manufacturing Equipment"
@@ -174,7 +174,7 @@ export default function MachineryPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Machinery & equipment, answered" surface />
 
-      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
+      <ContactCta image="/quality-images/Factory image.png" />
     </>
   );
 }

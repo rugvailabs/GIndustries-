@@ -36,11 +36,11 @@ const CAPABILITIES = [
 ];
 
 const PRECISION_ITEMS = [
-  { src: '/images/IMG_20261021_104334.jpg', alt: 'Precision-machined stainless steel bracket with sleeve, fabricated at G Industries', label: 'Precision Bracket Assembly' },
-  { src: '/images/IMG_20261021_104523.jpg', alt: 'Fabricated stainless steel cone enclosure with mounting flange', label: 'Enclosure Housing' },
-  { src: '/images/IMG_20261021_104739.jpg', alt: 'Formed steel bowl-shaped bracket component with bolted mount', label: 'Formed Mount Bracket' },
-  { src: '/images/IMG_20261021_104821.jpg', alt: 'Welded stainless steel mesh grille disc component', label: 'Mesh Grille Component' },
-  { src: '/images/IMG_20261021_104507.jpg', alt: 'Precision-turned cylindrical pin housing with cross-bolt mounting', label: 'Pin Housing Sleeve' },
+  { src: '/quality-images/IMG_20261021_104334.jpg', alt: 'Precision-machined stainless steel bracket with sleeve, fabricated at G Industries', label: 'Precision Bracket Assembly' },
+  { src: '/quality-images/Products2.png', alt: 'Large batch of finished stainless steel fabricated components — tubular assemblies and conical housings — staged for dispatch', label: 'Batch Production Run' },
+  { src: '/quality-images/Products3.png', alt: 'Stacked welded stainless steel enclosure housings ready for shipment', label: 'Enclosure Housing Stack' },
+  { src: '/quality-images/Products4.png', alt: 'Stainless steel conical mesh filter assembly bolted to a mounting bracket', label: 'Mesh Filter Cone Assembly' },
+  { src: '/quality-images/Product5.png', alt: 'Tall laser-cut steel decorative panel with a circular lattice pattern', label: 'Laser-Cut Decorative Panel' },
 ];
 
 const INDUSTRIES = [
@@ -60,12 +60,12 @@ const WHY_ITEMS = [
 ];
 
 const MACHINES = [
-  { src: '/images/senfeng-fiber-laser-cutting-hyderabad.jpg', alt: 'Senfeng fiber laser cutting machine on the G Industries shop floor', title: 'Sheet & Pipe Laser Cutting', meta: 'Senfeng, 3 kW · 2024' },
-  { src: '/images/cnc-press-brake-sheet-metal-hyderabad.jpg', alt: 'Hindustan Hydraulics Swift 100-31 CNC press brake machine', title: 'CNC Press Brake', meta: 'Hindustan, 100T · 2024' },
-  { src: '/images/IMG_20261021_103828.jpg', alt: 'IPG Photonics LightWeld handheld laser welding system in use', title: 'Laser Welding', meta: '1.5 kW · 2023, 25 & 26' },
-  { src: '/images/tinex-power-press-drilling-machine.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor', title: 'Power Press & Drilling', meta: '50T / 20T · Ø36mm · 2024–26' },
-  { src: '/images/laser-welding-stations-fabrication-shop.jpg', alt: 'Row of laser welding stations in the LW/002 work area', title: 'Laser Welding Stations', meta: '5 Nos. installed' },
-  { src: '/images/mig-welding-station-fabrication-shop.jpg', alt: 'MIG welding station, MIG/002, with gas cylinders', title: 'MIG Welding', meta: '400A · 200A' },
+  { src: '/quality-images/file_000000009e1c8208ac1fd4174e502cda.png', alt: 'Senfeng fiber laser cutting machine on the G Industries shop floor', title: 'Sheet & Pipe Laser Cutting', meta: 'Senfeng, 3 kW · 2024' },
+  { src: '/quality-images/file_000000001778820882caf42727747702.png', alt: 'Hindustan Hydraulics Swift 100-31 CNC press brake machine', title: 'CNC Press Brake', meta: 'Hindustan, 100T · 2024' },
+  { src: '/quality-images/file_00000000c5f08208ace959c6353cb2c1.png', alt: 'IPG Photonics LightWeld handheld laser welding system in use', title: 'Laser Welding', meta: '1.5 kW · 2023, 25 & 26' },
+  { src: '/quality-images/file_00000000046c820aa9597951eafb2253 (1).png', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor', title: 'Power Press & Drilling', meta: '50T / 20T · Ø36mm · 2024–26' },
+  { src: '/quality-images/file_0000000093908208b1a29b8a59852f9e.png', alt: 'Row of laser welding stations in the LW/002 work area', title: 'Laser Welding Stations', meta: '5 Nos. installed' },
+  { src: '/quality-images/Mig machine.png', alt: 'MIG-400 welding machine control panel on the shop floor', title: 'MIG Welding', meta: '400A · 200A' },
 ];
 
 const SPEC_ROWS = [
@@ -93,8 +93,8 @@ const PROJECTS = [
     client: 'Medha Servo Drives',
     title: 'BESS Container, Railways & EV',
     desc: 'Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.',
-    src: '/images/bess-container-chassis-fabrication.jpg',
-    alt: 'BESS container chassis fabrication on the shop floor',
+    src: '/quality-images/file_00000000d7bc81f49164140fc69f24c1.png',
+    alt: 'Welded steel BESS container structural base and chassis in the fabrication shop',
     cap: 'Container chassis fabrication, Unit 2',
   },
   {
@@ -102,17 +102,17 @@ const PROJECTS = [
     client: 'BHEL',
     title: 'Power Containers',
     desc: 'Successfully delivered two heavy industrial-grade specialized containers for Bharat Heavy Electricals Limited.',
-    src: '/images/sheet-metal-enclosures-stacked-assembly.jpg',
-    alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly',
-    cap: 'Sheet-metal enclosure fabrication, Unit 1',
+    src: '/quality-images/Bhel power containers.png',
+    alt: 'Heavy industrial-grade power container delivered for BHEL',
+    cap: 'Power container, ex-works',
   },
   {
     num: '03',
     client: 'VEM Technologies',
     title: 'CNC Machine Body',
     desc: 'Engineered and manufactured a high-precision CNC Machine Body to exacting tolerances.',
-    src: '/images/IMG_20261021_104523.jpg',
-    alt: 'Precision-machined flanged housing component',
+    src: '/quality-images/Vem cnc machine body.png',
+    alt: 'Precision-fabricated stainless steel CNC machine body for VEM Technologies',
     cap: 'Precision-machined component, ex-works',
   },
 ];
@@ -132,7 +132,7 @@ export default function HomePage() {
       <section className="hero" id="top">
         <div className="hero-media">
           <Image
-            src="/images/team-shopfloor-hyderabad.jpg"
+            src="/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
             alt="The G Industries team on the shop floor at the Hyderabad facility, standing in front of a CNC press brake"
             fill
             sizes="100vw"
@@ -218,7 +218,7 @@ export default function HomePage() {
           </Reveal>
           <Reveal className="about-media">
             <Image
-              src="/images/IMG_20261021_103203.jpg"
+              src="/quality-images/file_00000000c78c8208b0ae8e848644d348.png"
               alt="Raw material racks and laser-cut sheet metal stock on the G Industries fabrication shop floor"
               fill
               sizes="(max-width: 900px) 100vw, 50vw"
@@ -332,23 +332,23 @@ export default function HomePage() {
           <Reveal className="bess-media">
             <figure>
               <Image
-                src="/images/bess-container-chassis-fabrication.jpg"
-                alt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
-                width={1448}
-                height={1086}
+                src="/quality-images/_dFXkAtpfs-wbtLr6UnZSy2yDGpwqdZZ3mWpjjRP68h_idGY5ahw-.jpg"
+                alt="White BESS container enclosure installed at a solar power site"
+                width={2000}
+                height={1500}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-              <figcaption>Container structural base under fabrication — Unit 2, BESS Manufacturing</figcaption>
+              <figcaption>BESS container deployed at a solar energy storage site</figcaption>
             </figure>
             <figure>
               <Image
-                src="/images/bess-container-chassis-ibeam-frame.jpg"
-                alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs"
-                width={1448}
-                height={1086}
+                src="/quality-images/f31fc7ce-e1bc-4df0-8d2f-bfa8ce511d00.png"
+                alt="G Industries-branded BESS container at a battery energy storage site"
+                width={1536}
+                height={1024}
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
-              <figcaption>I-beam chassis, engineered for heavy structural loads</figcaption>
+              <figcaption>G Industries BESS container, ready for field deployment</figcaption>
             </figure>
           </Reveal>
           <Reveal className="bess-copy">
@@ -407,32 +407,20 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal className="facility-gallery">
-            <figure>
-              <Image
-                src="/images/IMG_20261021_091914.jpg"
-                alt="Official G Industries plant layout plan displayed at the facility entrance, showing Shed 2 and Shed 2A"
-                width={2400}
-                height={1800}
-                sizes="(max-width: 900px) 100vw, 43vw"
-              />
-              <figcaption className="gallery-cap">
-                Registered plant layout — Shed 2 / Shed 2A, Sy. 710, Gandimaisamma Mandal, Dundigal
-              </figcaption>
-            </figure>
             <div className="stack">
               <figure>
-                <Image src="/images/file_0000000057688208b580ae916985fe4b.jpg" alt="Wide view of the fabrication shop floor aisle with material handling area" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
+                <Image src="/quality-images/Factory image.png" alt="Wide view of the fabrication shop floor aisle with material handling area" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
               <figure>
-                <Image src="/images/file_00000000a890820a9306d10de46aeddb.jpg" alt="Quality Department entrance with safety signage at the G Industries facility" width={1086} height={1448} sizes="(max-width: 900px) 50vw, 28vw" />
+                <Image src="/quality-images/Inspection room.png" alt="Quality Department entrance with safety signage at the G Industries facility" width={1086} height={1448} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
             </div>
             <div className="stack">
               <figure>
-                <Image src="/images/file_00000000185c8208babc4d67585c94e3.jpg" alt="Store Room and Managing Director office entrances on the production floor" width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
+                <Image src="/quality-images/file_00000000185c8208babc4d67585c94e3 (1).png" alt="Store Room and Managing Director office entrances on the production floor" width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
               <figure>
-                <Image src="/images/mig-welding-station-fabrication-shop.jpg" alt="MIG welding station near the facility emergency exit with gas cylinders" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
+                <Image src="/quality-images/file_000000001664820883b0e955ea3d75a6.png" alt="MIG welding station near the facility emergency exit with gas cylinders" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
               </figure>
             </div>
           </Reveal>
@@ -620,7 +608,7 @@ export default function HomePage() {
       {/* ============ CONTACT CTA ============ */}
       <section className="section-pad contact-cta" id="contact">
         <div className="bg">
-          <Image src="/images/fabrication-shop-floor-material-handling.jpg" alt="" fill sizes="100vw" quality={70} />
+          <Image src="/quality-images/Factory image.png" alt="" fill sizes="100vw" quality={70} />
         </div>
         <div className="container contact-inner">
           <Reveal className="eyebrow on-dark">Get In Touch</Reveal>

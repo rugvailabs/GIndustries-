@@ -77,7 +77,7 @@ export default function BessSolutionsPage() {
       {/* eslint-disable-next-line @next/next/no-danger -- static, server-rendered JSON-LD from our own content */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BESS_JSON_LD) }} />
       <PageHero
-        image="/images/bess-container-chassis-fabrication.jpg"
+        image="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png"
         imageAlt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Industries' }, { label: 'BESS Solutions' }]}
         eyebrow="Key Specialization"
@@ -89,11 +89,11 @@ export default function BessSolutionsPage() {
         <div className="container bess-grid">
           <Reveal className="bess-media">
             <figure>
-              <Image src="/images/bess-container-chassis-fabrication.jpg" alt="Large welded steel container chassis under fabrication, with G Industries signage visible" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png" alt="Large welded steel container chassis under fabrication, with G Industries signage visible" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Container structural base under fabrication — Unit 2, BESS Manufacturing</figcaption>
             </figure>
             <figure>
-              <Image src="/images/bess-container-chassis-ibeam-frame.jpg" alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/quality-images/f31fc7ce-e1bc-4df0-8d2f-bfa8ce511d00.png" alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>I-beam chassis, engineered for heavy structural loads</figcaption>
             </figure>
           </Reveal>
@@ -170,7 +170,7 @@ export default function BessSolutionsPage() {
               </p>
               <figure>
                 <div className="figure-media">
-                  <Image src="/images/bess-container-chassis-ibeam-frame.jpg" alt="Steel I-beam chassis frame for a battery energy storage container" fill sizes="(max-width: 900px) 100vw, 25vw" />
+                  <Image src="/quality-images/file_00000000d7bc81f49164140fc69f24c1.png" alt="Steel I-beam chassis frame for a battery energy storage container" fill sizes="(max-width: 900px) 100vw, 25vw" />
                 </div>
                 <figcaption>I-beam chassis, Unit 2</figcaption>
               </figure>
@@ -194,7 +194,7 @@ export default function BessSolutionsPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="BESS containers, answered" />
 
-      <ContactCta image="/images/bess-container-chassis-fabrication.jpg" />
+      <ContactCta image="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png" />
     </>
   );
 }

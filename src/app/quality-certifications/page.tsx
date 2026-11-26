@@ -55,7 +55,7 @@ export default function QualityCertificationsPage() {
   return (
     <>
       <PageHero
-        image="/images/quality-department-entrance-iso9001.jpg"
+        image="/quality-images/Inspection room.png"
         imageAlt="Quality Department entrance with safety signage at the G Industries facility"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Quality & Certifications' }]}
         eyebrow="Accreditations"
@@ -140,14 +140,14 @@ export default function QualityCertificationsPage() {
           <Reveal className="gallery-grid">
             <figure>
               <div className="gallery-media">
-                <Image src="/images/quality-department-entrance-iso9001.jpg" alt="Quality Department entrance with safety signage" fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                <Image src="/quality-images/Inspection room.png" alt="Quality Department entrance with safety signage" fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
               </div>
               <figcaption>Quality Department, Unit 1</figcaption>
             </figure>
             <figure>
               <div className="gallery-media">
                 <Image
-                  src="/images/file_00000000a890820a9306d10de46aeddb.jpg"
+                  src="/quality-images/Inspection room.png"
                   alt="Quality Department entrance, alternate view with plant layout plaque visible"
                   fill
                   sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
@@ -161,7 +161,7 @@ export default function QualityCertificationsPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Certifications, answered" />
 
-      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
+      <ContactCta image="/quality-images/Factory image.png" />
     </>
   );
 }

@@ -42,17 +42,17 @@ const FACILITY_STATS = [
 
 const UTILITY_GALLERY = [
   {
-    src: '/images/IMG_20261021_103554.jpg',
+    src: '/quality-images/file_00000000e1d88208bd9b5a11439c3e7b.png',
     alt: "Compressed air treatment skid with storage tanks supporting the fabrication shop",
     cap: 'Compressed Air Treatment Skid',
   },
   {
-    src: '/images/fabrication-shop-floor-material-handling.jpg',
+    src: '/quality-images/Factory image.png',
     alt: 'Fabrication shop floor aisle with raw material staging',
     cap: 'Material Handling Aisle, Unit 1',
   },
   {
-    src: '/images/file_00000000a890820a9306d10de46aeddb.jpg',
+    src: '/quality-images/Inspection room.png',
     alt: 'Quality Department entrance, alternate view',
     cap: 'Quality Department, Unit 1',
   },
@@ -62,7 +62,7 @@ export default function FacilitiesPage() {
   return (
     <>
       <PageHero
-        image="/images/fabrication-shop-floor-material-handling.jpg"
+        image="/quality-images/Factory image.png"
         imageAlt="Wide view of the G Industries fabrication shop floor aisle with material handling area"
         eyebrow="Facilities"
         title="Built for scale. Engineered for precision."
@@ -135,7 +135,7 @@ export default function FacilitiesPage() {
           <Reveal className="facility-gallery">
             <figure>
               <Image
-                src="/images/IMG_20261021_091932.jpg"
+                src="/quality-images/file_0000000053588208905e9a3ed5bd2593.png"
                 alt="Official G Industries registered plant layout plaque, showing Shed 2, Shed 2A, and a Finished Goods Storage Area sign"
                 width={2400}
                 height={1800}
@@ -148,7 +148,7 @@ export default function FacilitiesPage() {
             <div className="stack">
               <figure>
                 <Image
-                  src="/images/quality-department-entrance-iso9001.jpg"
+                  src="/quality-images/Inspection room.png"
                   alt="Quality Department entrance with safety signage at the G Industries facility"
                   width={1800}
                   height={2400}
@@ -157,7 +157,7 @@ export default function FacilitiesPage() {
               </figure>
               <figure>
                 <Image
-                  src="/images/IMG_20261021_103528.jpg"
+                  src="/quality-images/file_00000000c78c8208b0ae8e848644d348.png"
                   alt="Store Room and Managing Director office entrances on the production floor"
                   width={2400}
                   height={1800}
@@ -168,7 +168,7 @@ export default function FacilitiesPage() {
             <div className="stack">
               <figure>
                 <Image
-                  src="/images/IMG_20261021_103434.jpg"
+                  src="/quality-images/file_0000000009f08208b341c7d33a036206.png"
                   alt="Fire extinguisher safety signage mounted on the facility wall"
                   width={1800}
                   height={2400}
@@ -177,7 +177,7 @@ export default function FacilitiesPage() {
               </figure>
               <figure>
                 <Image
-                  src="/images/air-compressor-dryer-fabrication-shop.jpg"
+                  src="/quality-images/file_00000000bf3c82088057776799a11bec.png"
                   alt="Industrial air compressor and dryer unit supporting the facility's pneumatic systems"
                   width={2400}
                   height={1800}

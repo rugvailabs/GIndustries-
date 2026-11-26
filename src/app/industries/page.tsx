@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'G Industries manufactures precision components for Railways, EV, Electronics, Agri-Tech, Laboratory Equipment and Switchgear Systems across India.',
   path: '/industries',
-  image: '/images/sheet-metal-enclosures-stacked-assembly.jpg',
+  image: '/quality-images/IMG_20261021_103942.jpg',
   imageAlt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly',
 });
 
@@ -77,7 +77,7 @@ export default function IndustriesPage() {
   return (
     <>
       <PageHero
-        image="/images/sheet-metal-enclosures-stacked-assembly.jpg"
+        image="/quality-images/IMG_20261021_103942.jpg"
         imageAlt="Stacked laser-cut and welded sheet metal enclosures ready for assembly"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Industries We Serve' }]}
         eyebrow="Industries We Serve"
@@ -126,7 +126,7 @@ export default function IndustriesPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Industries we serve, answered" />
 
-      <ContactCta image="/images/bess-container-chassis-fabrication.jpg" />
+      <ContactCta image="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png" />
     </>
   );
 }

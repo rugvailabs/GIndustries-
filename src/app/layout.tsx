@@ -43,8 +43,8 @@ const ORGANIZATION_JSON_LD = {
   '@type': 'ManufacturingBusiness',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/logo.png`,
-  image: `${SITE_URL}/images/team-shopfloor-hyderabad.jpg`,
+  logo: `${SITE_URL}/quality-images/logo.png`,
+  image: `${SITE_URL}/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg`,
   description: HOME_DESCRIPTION,
   foundingDate: '2021',
   address: {

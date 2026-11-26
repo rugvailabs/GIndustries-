@@ -46,7 +46,7 @@ export default function ClientsPage() {
   return (
     <>
       <PageHero
-        image="/images/fabrication-shop-floor-material-handling.jpg"
+        image="/quality-images/Factory image.png"
         imageAlt="Wide view of the G Industries fabrication shop floor, where client deliveries are manufactured"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Clients' }]}
         eyebrow="Our Valued Customers"
@@ -115,7 +115,7 @@ export default function ClientsPage() {
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Clients & partnerships, answered" />
 
       <ContactCta
-        image="/images/fabrication-shop-floor-material-handling.jpg"
+        image="/quality-images/Factory image.png"
         heading={
           <>
             Become our next

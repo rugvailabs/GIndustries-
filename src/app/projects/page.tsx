@@ -43,8 +43,8 @@ const PROJECTS = [
     title: 'BESS Container, Railways & EV',
     desc: 'Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.',
     note: "Spanning three of G Industries' core sectors — BESS energy storage, railways, and electric vehicles — in a single engagement.",
-    src: '/images/bess-container-chassis-fabrication.jpg',
-    alt: 'BESS container chassis fabrication on the shop floor',
+    src: '/quality-images/file_00000000d7bc81f49164140fc69f24c1.png',
+    alt: 'Welded steel BESS container structural base and chassis in the fabrication shop',
     cap: 'Container chassis fabrication, Unit 2',
   },
   {
@@ -53,8 +53,8 @@ const PROJECTS = [
     title: 'Power Containers',
     desc: 'Successfully delivered two heavy industrial-grade specialized containers for Bharat Heavy Electricals Limited.',
     note: 'BHEL is one of India’s largest power-sector public sector enterprises, engaged in heavy electrical equipment manufacturing.',
-    src: '/images/sheet-metal-enclosures-stacked-assembly.jpg',
-    alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly',
+    src: '/quality-images/Bhel power containers.png',
+    alt: 'Heavy industrial-grade power container delivered for BHEL',
     cap: 'Sheet-metal enclosure fabrication, Unit 1',
   },
   {
@@ -63,8 +63,8 @@ const PROJECTS = [
     title: 'CNC Machine Body',
     desc: 'Engineered and manufactured a high-precision CNC Machine Body to exacting tolerances.',
     note: 'A deliverable that called on the full design-to-finish chain, from structural simulation through to final dimensional inspection.',
-    src: '/images/IMG_20261021_104523.jpg',
-    alt: 'Precision-machined flanged housing component',
+    src: '/quality-images/Vem cnc machine body.png',
+    alt: 'Precision-fabricated stainless steel CNC machine body for VEM Technologies',
     cap: 'Precision-machined component, ex-works',
   },
 ];
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHero
-        image="/images/bess-container-chassis-fabrication.jpg"
+        image="/quality-images/file_00000000d7bc81f49164140fc69f24c1.png"
         imageAlt="BESS container chassis fabrication on the G Industries shop floor, with G Industries signage visible"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
         eyebrow="Recent Track Record"
