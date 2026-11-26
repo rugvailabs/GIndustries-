@@ -9,7 +9,8 @@ export default function Footer() {
         <div className="footer-top">
           <div>
             <div className="footer-brand">
-              <Image src="/quality-images/logo.png" alt="G Industries logo" width={450} height={300} />
+              <Image src="/quality-images/logo-icon.png" alt="G Industries logo" width={219} height={183} />
+              <span>G Industries</span>
             </div>
             <p>
               A single-source manufacturing partner for Railways, EV, Electronics, Agri-Tech and BESS energy
