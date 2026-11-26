@@ -33,6 +33,10 @@ const CAPABILITY_ICONS = [IconCube, IconWave, IconStructural, IconSpark, IconDro
 const INDUSTRY_ICONS = [IconRail, IconBolt, IconChip, IconLeaf, IconFlask, IconShieldBolt];
 const WHY_ICONS = [IconChain, IconShieldCheck, IconLayers, IconTruckCheck];
 
+// Facility gallery photos are portrait/landscape shots force-cropped into squares —
+// shift the crop toward each photo's actual subject instead of the default center.
+const GALLERY_OBJECT_POSITIONS = ['center 20%', 'center 25%', 'center 35%', 'center 15%'];
+
 export default async function HomePage() {
   const content = await getPageContent('home', HOME_DEFAULTS);
   const { stats, hero, about, capabilities, precision, industries, bess, facilities, machinery, why, projects, certifications, clients, contactCta } = content;
@@ -279,22 +283,17 @@ export default async function HomePage() {
           </Reveal>
 
           <Reveal className="home-facility-gallery">
-            <figure className="featured-figure">
-              <Image
-                src={facilities.galleryImages[0].image.src}
-                alt={facilities.galleryImages[0].image.alt}
-                width={1800}
-                height={1200}
-                sizes="(max-width: 900px) 100vw, 55vw"
-              />
-            </figure>
-            <div className="stack">
-              {facilities.galleryImages.slice(1, 4).map((g, i) => (
-                <figure key={i}>
-                  <Image src={g.image.src} alt={g.image.alt} width={1200} height={800} sizes="(max-width: 900px) 33vw, 24vw" />
-                </figure>
-              ))}
-            </div>
+            {facilities.galleryImages.map((g, i) => (
+              <figure key={i}>
+                <Image
+                  src={g.image.src}
+                  alt={g.image.alt}
+                  fill
+                  sizes="(max-width: 900px) 50vw, 25vw"
+                  style={{ objectPosition: GALLERY_OBJECT_POSITIONS[i] ?? 'center' }}
+                />
+              </figure>
+            ))}
           </Reveal>
         </div>
       </section>

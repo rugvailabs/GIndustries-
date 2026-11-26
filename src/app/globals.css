@@ -365,17 +365,10 @@ section { position: relative; }
   .facility-gallery .stack img { height: 180px; }
 }
 
-/* ---------- Home page facilities gallery (1 big photo + 3 stacked beside it) ---------- */
-.home-facility-gallery { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-3); }
-.home-facility-gallery .featured-figure img { width: 100%; height: 640px; object-fit: cover; }
-.home-facility-gallery .stack { display: grid; grid-template-rows: repeat(3, 1fr); gap: var(--space-3); }
-.home-facility-gallery .stack img { width: 100%; height: 202px; object-fit: cover; }
-@media (max-width: 900px) {
-  .home-facility-gallery { grid-template-columns: 1fr; }
-  .home-facility-gallery .featured-figure img { height: 320px; }
-  .home-facility-gallery .stack { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto; }
-  .home-facility-gallery .stack img { height: 160px; }
-}
+/* ---------- Home page facilities gallery (4 equal squares) ---------- */
+.home-facility-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+.home-facility-gallery figure { position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-radius: var(--radius-md); margin: 0; }
+.home-facility-gallery img { object-fit: cover; }
 
 /* ---------- Machinery ---------- */
 .machine-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
