@@ -10,9 +10,9 @@ import { pageMetadata } from '@/lib/seo';
 export const metadata: Metadata = pageMetadata({
   title: 'Industries We Serve',
   description:
-    'From railway infrastructure to next-generation EVs and energy systems, G Industries manufactures high-precision components across Railways, EV, Electronics, Agri-Tech, Laboratory Equipment and Switchgear Systems.',
+    'G Industries manufactures precision components for Railways, EV, Electronics, Agri-Tech, Laboratory Equipment and Switchgear Systems across India.',
   path: '/industries',
-  image: '/images/IMG_20261021_103942.jpg',
+  image: '/images/sheet-metal-enclosures-stacked-assembly.jpg',
   imageAlt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly',
 });
 
@@ -27,11 +27,11 @@ const FAQS = [
   },
   {
     q: 'Does G Industries build electronics enclosures and control consoles?',
-    a: 'Yes. Modular enclosures and engineering consoles are fabricated and finished at Unit 2, G Industries’ dedicated 10,000 sft electronics facility.',
+    a: 'Yes. Modular enclosures and engineering consoles are fabricated and finished at G Industries’ Hyderabad facility, to the same dimensional and quality standards applied across all industrial work.',
   },
   {
     q: 'What switchgear and electrical panel fabrication services are available?',
-    a: 'G Industries fabricates switchgear and electrical panels as a core part of its Unit 1 and Unit 2 production lines, built to the same dimensional and quality standards applied across all industrial work.',
+    a: 'G Industries fabricates switchgear and electrical panels as a core part of its Unit 1 production lines, built to the same dimensional and quality standards applied across all industrial work.',
   },
   {
     q: 'Does G Industries manufacture for agri-tech or laboratory equipment applications?',
@@ -54,7 +54,7 @@ const INDUSTRIES = [
   {
     Icon: IconChip,
     title: 'Electronics',
-    copy: 'Modular enclosures & engineering consoles — fabricated and finished at Unit 2, our dedicated electronics facility.',
+    copy: 'Modular enclosures & engineering consoles — fabricated and finished at our Hyderabad facility, to the same quality standards as all industrial work.',
   },
   {
     Icon: IconLeaf,
@@ -69,7 +69,7 @@ const INDUSTRIES = [
   {
     Icon: IconShieldBolt,
     title: 'Switchgear Systems',
-    copy: 'Electrical & switchgear panel fabrication — a core part of our Unit 1 and Unit 2 production lines.',
+    copy: 'Electrical & switchgear panel fabrication — a core part of our Unit 1 production lines.',
   },
 ];
 
@@ -77,7 +77,7 @@ export default function IndustriesPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_103942.jpg"
+        image="/images/sheet-metal-enclosures-stacked-assembly.jpg"
         imageAlt="Stacked laser-cut and welded sheet metal enclosures ready for assembly"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Industries We Serve' }]}
         eyebrow="Industries We Serve"
@@ -126,7 +126,7 @@ export default function IndustriesPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Industries we serve, answered" />
 
-      <ContactCta image="/images/file_00000000686081fa8ef0d50efda247d2.jpg" />
+      <ContactCta image="/images/bess-container-chassis-fabrication.jpg" />
     </>
   );
 }

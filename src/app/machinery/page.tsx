@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -27,21 +28,21 @@ const FAQS = [
 export const metadata = pageMetadata({
   title: 'Machinery & Equipment',
   description:
-    'A continuously modernized machine shop at G Industries — Senfeng laser cutting, CNC press braking, laser welding, power presses and more, anchored by recent 2022–2026 additions.',
+    'A continuously modernized machine shop — Senfeng laser cutting, CNC press braking, laser welding and power presses, anchored by recent 2022–2026 additions.',
   path: '/machinery',
-  image: '/images/IMG_20261021_105113.jpg',
+  image: '/images/senfeng-fiber-laser-cutting-hyderabad.jpg',
   imageAlt: 'Senfeng fiber laser cutting machine on the G Industries shop floor',
 });
 
 const MACHINES = [
   {
-    src: '/images/IMG_20261021_105113.jpg',
+    src: '/images/senfeng-fiber-laser-cutting-hyderabad.jpg',
     alt: 'Senfeng fiber laser cutting machine on the shop floor',
     title: 'Sheet & Pipe Laser Cutting',
     meta: 'Senfeng, 3 kW · 2024',
   },
   {
-    src: '/images/IMG_20261021_103106.jpg',
+    src: '/images/cnc-press-brake-sheet-metal-hyderabad.jpg',
     alt: 'Hindustan Hydraulics Swift 100-31 CNC press brake machine',
     title: 'CNC Press Brake',
     meta: 'Hindustan, 100T · 2024',
@@ -53,7 +54,7 @@ const MACHINES = [
     meta: '1.5 kW · 2023, 25 & 26',
   },
   {
-    src: '/images/file_00000000046c820aa9597951eafb2253.jpg',
+    src: '/images/tinex-power-press-drilling-machine.jpg',
     alt: 'Tinex power press machines and a pillar drilling machine on the shop floor',
     title: 'Power Press & Drilling',
     meta: '50T / 20T · Ø36mm · 2024–26',
@@ -65,19 +66,19 @@ const MACHINES = [
     meta: 'Pipe Rolling, PR/001',
   },
   {
-    src: '/images/IMG_20261021_103749.jpg',
+    src: '/images/laser-welding-stations-fabrication-shop.jpg',
     alt: 'Row of laser welding stations in the LW/002 work area',
     title: 'Laser Welding Stations',
     meta: '5 Nos. installed',
   },
   {
-    src: '/images/IMG_20261021_104031.jpg',
+    src: '/images/mig-welding-station-fabrication-shop.jpg',
     alt: 'MIG welding station, MIG/002, with gas cylinders',
     title: 'MIG Welding',
     meta: '400A · 200A',
   },
   {
-    src: '/images/IMG_20261021_103245.jpg',
+    src: '/images/air-compressor-dryer-fabrication-shop.jpg',
     alt: 'Industrial air compressor and dryer unit supporting the fabrication shop',
     title: 'Compressed Air System',
     meta: 'Utility infrastructure',
@@ -107,11 +108,11 @@ export default function MachineryPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_105113.jpg"
+        image="/images/senfeng-fiber-laser-cutting-hyderabad.jpg"
         imageAlt="Senfeng fiber laser cutting machine on the G Industries shop floor, with nesting layout visible on the control screen"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Machinery & Equipment' }]}
         eyebrow="Manufacturing Equipment"
-        title="Modern machinery. Precision-grade output."
+        title="Precision machinery, continuously modernized."
         subtitle="A continuously modernized machine shop — anchored by recent (2022–2026) additions — gives G Industries the range to cut, weld, form, and finish to exacting tolerances."
       />
 
@@ -122,7 +123,10 @@ export default function MachineryPage() {
             <h2>A continuously modernized machine shop</h2>
             <p>
               Anchored by recent (2022–2026) additions, this equipment base gives G&nbsp;Industries the range to
-              cut, weld, form, and finish to exacting tolerances across every unit.
+              cut, weld, form, and finish to exacting tolerances across every unit — powering the{' '}
+              <Link href="/manufacturing-fabrication">structural fabrication</Link> and{' '}
+              <Link href="/engineering-design">engineering &amp; design</Link> work carried out at the{' '}
+              <Link href="/facilities">Hyderabad facility</Link>.
             </p>
           </Reveal>
 
@@ -170,7 +174,7 @@ export default function MachineryPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Machinery & equipment, answered" surface />
 
-      <ContactCta image="/images/IMG_20261021_103212.jpg" />
+      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
     </>
   );
 }

@@ -7,11 +7,11 @@ import { IconPin, IconMail, IconPhone, IconArrowRight } from '@/components/icons
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
-  title: 'Contact Us',
+  title: 'Contact Us — Hyderabad Manufacturing Facility',
   description:
     'Reach G Industries at its Hyderabad facility — Gandi Maisamma, Dundigal, Telangana 500043 — by phone or email.',
   path: '/contact',
-  image: '/images/IMG_20261021_103212.jpg',
+  image: '/images/og/contact.jpg',
   imageAlt: 'Wide view of the G Industries fabrication shop floor',
 });
 
@@ -42,7 +42,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_103212.jpg"
+        image="/images/fabrication-shop-floor-material-handling.jpg"
         imageAlt="Wide view of the G Industries fabrication shop floor"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
         eyebrow="Get In Touch"

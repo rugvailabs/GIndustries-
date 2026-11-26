@@ -18,7 +18,7 @@ export const metadata = pageMetadata({
   description:
     'G Industries is ISO 9001:2015 certified, GST registered, and Udyam/MSME registered — a formally registered manufacturing enterprise in Hyderabad, Telangana.',
   path: '/quality-certifications',
-  image: '/images/IMG_20261021_091907.jpg',
+  image: '/images/og/quality-certifications.jpg',
   imageAlt: 'Quality Department entrance with safety signage at the G Industries facility',
 });
 
@@ -55,7 +55,7 @@ export default function QualityCertificationsPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_091907.jpg"
+        image="/images/quality-department-entrance-iso9001.jpg"
         imageAlt="Quality Department entrance with safety signage at the G Industries facility"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Quality & Certifications' }]}
         eyebrow="Accreditations"
@@ -140,7 +140,7 @@ export default function QualityCertificationsPage() {
           <Reveal className="gallery-grid">
             <figure>
               <div className="gallery-media">
-                <Image src="/images/IMG_20261021_091907.jpg" alt="Quality Department entrance with safety signage" fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                <Image src="/images/quality-department-entrance-iso9001.jpg" alt="Quality Department entrance with safety signage" fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
               </div>
               <figcaption>Quality Department, Unit 1</figcaption>
             </figure>
@@ -161,7 +161,7 @@ export default function QualityCertificationsPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Certifications, answered" />
 
-      <ContactCta image="/images/IMG_20261021_103212.jpg" />
+      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
     </>
   );
 }

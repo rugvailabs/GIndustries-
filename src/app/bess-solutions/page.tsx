@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { IconStructural, IconShieldCheck, IconDroplet } from '@/components/icons';
-import { pageMetadata } from '@/lib/seo';
+import { pageMetadata, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 const FAQS = [
   {
@@ -27,19 +28,56 @@ const FAQS = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: 'BESS Solutions',
+  title: 'BESS Container Manufacturer — Battery Storage Solutions',
   description:
-    'G Industries specializes in heavily optimized enclosure systems for Battery Energy Storage Systems (BESS) — 10-ft and 20-ft containers engineered for thermal management, structural integrity, and operational safety.',
+    'BESS container manufacturer in Hyderabad — 10-ft and 20-ft enclosures engineered for thermal management, structural integrity and operational safety.',
   path: '/bess-solutions',
-  image: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
+  image: '/images/og/bess-solutions.jpg',
   imageAlt: 'Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit',
 });
+
+const BESS_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'BESS Container Manufacturing',
+  name: 'BESS Container Manufacturing',
+  provider: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+  areaServed: 'IN',
+  description:
+    'Custom-engineered BESS (Battery Energy Storage System) containers — 10-ft and 20-ft enclosures engineered for thermal management, structural integrity, and operational safety.',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'BESS Container Configurations',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        position: 1,
+        itemOffered: {
+          '@type': 'Product',
+          name: 'Compact BESS Container (10 ft)',
+          description: 'Compact, high-performance energy storage enclosure for smaller deployments.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        position: 2,
+        itemOffered: {
+          '@type': 'Product',
+          name: 'Full-Scale BESS Container (20 ft)',
+          description: 'Full-scale industrial BESS infrastructure enclosure for large energy-storage deployments.',
+        },
+      },
+    ],
+  },
+};
 
 export default function BessSolutionsPage() {
   return (
     <>
+      {/* eslint-disable-next-line @next/next/no-danger -- static, server-rendered JSON-LD from our own content */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BESS_JSON_LD) }} />
       <PageHero
-        image="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
+        image="/images/bess-container-chassis-fabrication.jpg"
         imageAlt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Industries' }, { label: 'BESS Solutions' }]}
         eyebrow="Key Specialization"
@@ -51,11 +89,11 @@ export default function BessSolutionsPage() {
         <div className="container bess-grid">
           <Reveal className="bess-media">
             <figure>
-              <Image src="/images/file_00000000686081fa8ef0d50efda247d2.jpg" alt="Large welded steel container chassis under fabrication, with G Industries signage visible" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>Container structural base under fabrication — Unit 3, BESS Manufacturing</figcaption>
+              <Image src="/images/bess-container-chassis-fabrication.jpg" alt="Large welded steel container chassis under fabrication, with G Industries signage visible" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption>Container structural base under fabrication — Unit 2, BESS Manufacturing</figcaption>
             </figure>
             <figure>
-              <Image src="/images/file_000000005b9481fabfbaf36350a99db5.jpg" alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/images/bess-container-chassis-ibeam-frame.jpg" alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>I-beam chassis, engineered for heavy structural loads</figcaption>
             </figure>
           </Reveal>
@@ -65,7 +103,8 @@ export default function BessSolutionsPage() {
             <p>
               G&nbsp;Industries specializes in heavily optimized enclosure systems for Battery Energy Storage
               Systems (BESS) and severe-duty industrial applications — engineered for thermal management,
-              structural integrity, and operational safety.
+              structural integrity, and operational safety. BESS is one of the <Link href="/industries">industries
+              we serve</Link>, alongside Railways, EV, and Electronics.
             </p>
             <div className="bess-specs">
               <div className="bess-spec">
@@ -131,9 +170,9 @@ export default function BessSolutionsPage() {
               </p>
               <figure>
                 <div className="figure-media">
-                  <Image src="/images/file_000000005b9481fabfbaf36350a99db5.jpg" alt="Steel I-beam chassis frame for a battery energy storage container" fill sizes="(max-width: 900px) 100vw, 25vw" />
+                  <Image src="/images/bess-container-chassis-ibeam-frame.jpg" alt="Steel I-beam chassis frame for a battery energy storage container" fill sizes="(max-width: 900px) 100vw, 25vw" />
                 </div>
-                <figcaption>I-beam chassis, Unit 3</figcaption>
+                <figcaption>I-beam chassis, Unit 2</figcaption>
               </figure>
             </div>
           </Reveal>
@@ -144,14 +183,18 @@ export default function BessSolutionsPage() {
         <div className="container">
           <Reveal className="facility-stat" style={{ border: '1px solid var(--line)', maxWidth: 420, textAlign: 'left', padding: 'var(--space-4)' }}>
             <div className="stat-num">30,000 sft</div>
-            <div className="stat-label">Unit 3 — BESS Container Manufacturing (active expansion)</div>
+            <div className="stat-label">Unit 2 — BESS Container Manufacturing (active expansion)</div>
           </Reveal>
+          <p style={{ color: 'var(--ink-soft)', marginTop: 'var(--space-3)' }}>
+            Standard BESS container configurations are on track to join the <Link href="/products">product
+            catalog</Link> — until then, every size is available as a custom fabrication engagement.
+          </p>
         </div>
       </section>
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="BESS containers, answered" />
 
-      <ContactCta image="/images/file_00000000686081fa8ef0d50efda247d2.jpg" />
+      <ContactCta image="/images/bess-container-chassis-fabrication.jpg" />
     </>
   );
 }

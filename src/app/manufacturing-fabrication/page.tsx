@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -10,9 +11,9 @@ import { pageMetadata } from '@/lib/seo';
 export const metadata: Metadata = pageMetadata({
   title: 'Manufacturing & Fabrication',
   description:
-    'Turnkey heavy fabrication and advanced post-processing at G Industries — structural fabrication, surface treatments, and rigorous QC testing under one roof in Hyderabad.',
+    'Turnkey heavy fabrication and post-processing in Hyderabad — structural fabrication, surface treatments, and rigorous QC testing under one roof.',
   path: '/manufacturing-fabrication',
-  image: '/images/IMG_20261021_103924.jpg',
+  image: '/images/finished-components-dispatch-hyderabad.jpg',
   imageAlt: 'Batch of finished precision stainless steel components ready for dispatch on the G Industries shop floor',
 });
 
@@ -37,14 +38,14 @@ const FAQS = [
 
 const GALLERY = [
   { src: '/images/file_000000001d6c82088552d2bbb4554572.jpg', alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly' },
-  { src: '/images/file_00000000046c820aa9597951eafb2253.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor' },
+  { src: '/images/tinex-power-press-drilling-machine.jpg', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor' },
 ];
 
 export default function ManufacturingFabricationPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_103924.jpg"
+        image="/images/finished-components-dispatch-hyderabad.jpg"
         imageAlt="Batch of finished precision stainless steel components ready for dispatch on the G Industries shop floor"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Manufacturing & Fabrication' }]}
         eyebrow="Fabrication & Post-Processing"
@@ -88,7 +89,7 @@ export default function ManufacturingFabricationPage() {
         <div className="container">
           <Reveal className="split-section">
             <div className="split-media">
-              <Image src="/images/IMG_20261021_103942.jpg" alt="Stacked laser-cut and welded sheet metal enclosures ready for assembly" width={2400} height={1800} sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/images/sheet-metal-enclosures-stacked-assembly.jpg" alt="Stacked laser-cut and welded sheet metal enclosures ready for assembly" width={2400} height={1800} sizes="(max-width: 900px) 100vw, 50vw" />
               <figcaption>Sheet-metal enclosures staged for assembly, Unit 1</figcaption>
             </div>
             <div className="split-copy">
@@ -101,7 +102,8 @@ export default function ManufacturingFabricationPage() {
               </p>
               <p>
                 Batch runs — from switchgear enclosures to BESS container components — move through cutting,
-                forming, and welding stations in Unit 1 before final QC sign-off.
+                forming, and welding stations in Unit 1 before final QC sign-off, run on the <Link href="/machinery">machinery
+                and equipment</Link> continuously reinvested in since 2022.
               </p>
             </div>
           </Reveal>
@@ -136,7 +138,7 @@ export default function ManufacturingFabricationPage() {
 
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Manufacturing & fabrication, answered" />
 
-      <ContactCta image="/images/IMG_20261021_103212.jpg" />
+      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
     </>
   );
 }

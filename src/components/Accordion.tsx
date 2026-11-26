@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 
-type AccordionEntry = { q: string; a: string };
+type AccordionEntry = { q: string; a: ReactNode };
 
 export default function Accordion({ items }: { items: AccordionEntry[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

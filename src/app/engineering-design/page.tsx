@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -12,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Advanced CAD modeling, finite element analysis and structural simulation — how G Industries validates every design before a single piece of metal is cut.',
   path: '/engineering-design',
-  image: '/images/IMG_20261021_104343.jpg',
+  image: '/images/og/engineering-design.jpg',
   imageAlt: 'Precision-machined stainless steel bracket engineered at G Industries',
 });
 
@@ -31,12 +32,21 @@ const FAQS = [
   },
   {
     q: 'Is engineering and design handled in-house at G Industries?',
-    a: 'Yes. Design and simulation are carried out internally, under the same roof as fabrication and finishing — so a validated CAD model moves directly into production without being handed off to a separate vendor. See Manufacturing & Fabrication for what happens after a design is approved.',
+    a: (
+      <>
+        Yes. Design and simulation are carried out internally, under the same roof as fabrication and finishing —
+        so a validated CAD model moves directly into production without being handed off to a separate vendor.
+        See <Link href="/manufacturing-fabrication">Manufacturing &amp; Fabrication</Link> for what happens after a
+        design is approved.
+      </>
+    ),
+    aText:
+      'Yes. Design and simulation are carried out internally, under the same roof as fabrication and finishing — so a validated CAD model moves directly into production without being handed off to a separate vendor. See Manufacturing & Fabrication for what happens after a design is approved.',
   },
 ];
 
 const GALLERY = [
-  { src: '/images/IMG_20261021_104343.jpg', alt: 'Precision-machined stainless steel bracket with sleeve, alternate angle' },
+  { src: '/images/precision-machined-bracket-cad-design.jpg', alt: 'Precision-machined stainless steel bracket with sleeve, alternate angle' },
   { src: '/images/IMG_20261021_104353.jpg', alt: 'Precision-machined stainless steel T-bracket with sensor port cutout' },
   { src: '/images/IMG_20261021_104535.jpg', alt: 'Flanged cone component, top-down view showing bolt pattern' },
   { src: '/images/IMG_20261021_104554.jpg', alt: 'Flanged cone component with square mounting bracket and bolts' },
@@ -48,11 +58,11 @@ export default function EngineeringDesignPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_104343.jpg"
+        image="/images/precision-machined-bracket-cad-design.jpg"
         imageAlt="Precision-machined stainless steel bracket engineered at G Industries"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Engineering & Design' }]}
         eyebrow="Our Advantage"
-        title="From complex concepts to rugged realities."
+        title="CAD to finite element analysis, under one roof."
         subtitle="Every G Industries project begins at the design desk — full 3D modeling and simulation validate performance long before fabrication starts."
       />
 

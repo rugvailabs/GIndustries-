@@ -26,6 +26,7 @@ export default function Footer() {
               <li><Link href="/facilities">Facilities</Link></li>
               <li><Link href="/projects">Projects</Link></li>
               <li><Link href="/quality-certifications">Quality &amp; Certifications</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
             </ul>
           </div>
           <div className="footer-col">

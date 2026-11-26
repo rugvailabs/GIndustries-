@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
     "lint": "eslint",
     "test:e2e": "playwright test",
     "test:e2e:report": "playwright show-report"
@@ -17,11 +18,13 @@
     "resend": "^6.39.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.4.6",
     "@playwright/test": "^1.65.1",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "tailwindcss": "4.3.3",

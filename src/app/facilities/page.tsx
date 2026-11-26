@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
@@ -27,9 +28,9 @@ const FAQS = [
 export const metadata = pageMetadata({
   title: 'Infrastructure & Facilities',
   description:
-    'G Industries operates a continuously modernized facility footprint in Hyderabad — Unit 1 fabrication and Unit 2 BESS container manufacturing, with 40,000 sft available for expansion.',
+    'A continuously modernized facility in Hyderabad — Unit 1 fabrication and Unit 2 BESS container manufacturing, with 40,000 sft available for expansion.',
   path: '/facilities',
-  image: '/images/IMG_20261021_103212.jpg',
+  image: '/images/og/facilities.jpg',
   imageAlt: 'Wide view of the G Industries fabrication shop floor aisle with material handling area',
 });
 
@@ -46,7 +47,7 @@ const UTILITY_GALLERY = [
     cap: 'Compressed Air Treatment Skid',
   },
   {
-    src: '/images/IMG_20261021_103212.jpg',
+    src: '/images/fabrication-shop-floor-material-handling.jpg',
     alt: 'Fabrication shop floor aisle with raw material staging',
     cap: 'Material Handling Aisle, Unit 1',
   },
@@ -61,7 +62,7 @@ export default function FacilitiesPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_103212.jpg"
+        image="/images/fabrication-shop-floor-material-handling.jpg"
         imageAlt="Wide view of the G Industries fabrication shop floor aisle with material handling area"
         eyebrow="Facilities"
         title="Built for scale. Engineered for precision."
@@ -147,7 +148,7 @@ export default function FacilitiesPage() {
             <div className="stack">
               <figure>
                 <Image
-                  src="/images/IMG_20261021_091907.jpg"
+                  src="/images/quality-department-entrance-iso9001.jpg"
                   alt="Quality Department entrance with safety signage at the G Industries facility"
                   width={1800}
                   height={2400}
@@ -176,7 +177,7 @@ export default function FacilitiesPage() {
               </figure>
               <figure>
                 <Image
-                  src="/images/IMG_20261021_103245.jpg"
+                  src="/images/air-compressor-dryer-fabrication-shop.jpg"
                   alt="Industrial air compressor and dryer unit supporting the facility's pneumatic systems"
                   width={2400}
                   height={1800}
@@ -193,6 +194,7 @@ export default function FacilitiesPage() {
           <Reveal className="section-head">
             <div className="eyebrow">Utilities &amp; Shop Infrastructure</div>
             <h2>Supporting systems behind every delivery</h2>
+            <p>Compressed air, material handling, and laser cutting run alongside the full <Link href="/machinery">machinery and equipment list</Link> on the shop floor.</p>
           </Reveal>
           <div className="gallery-grid reveal-group">
             {UTILITY_GALLERY.map((item, i) => (

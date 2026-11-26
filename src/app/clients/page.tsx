@@ -26,11 +26,11 @@ const FAQS = [
 ];
 
 export const metadata = pageMetadata({
-  title: 'Clients',
+  title: 'Our Clients — Railways, EV & BESS Energy Partners',
   description:
     'G Industries serves 25+ organizations across India’s most demanding sectors — railway PSUs, defence-linked enterprises, EV innovators, and energy pioneers.',
   path: '/clients',
-  image: '/images/IMG_20261021_103212.jpg',
+  image: '/images/og/clients.jpg',
   imageAlt: 'Wide view of the G Industries fabrication shop floor, where client deliveries are manufactured',
 });
 
@@ -46,7 +46,7 @@ export default function ClientsPage() {
   return (
     <>
       <PageHero
-        image="/images/IMG_20261021_103212.jpg"
+        image="/images/fabrication-shop-floor-material-handling.jpg"
         imageAlt="Wide view of the G Industries fabrication shop floor, where client deliveries are manufactured"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Clients' }]}
         eyebrow="Our Valued Customers"
@@ -115,7 +115,7 @@ export default function ClientsPage() {
       <FAQSection items={FAQS} eyebrow="Common Questions" title="Clients & partnerships, answered" />
 
       <ContactCta
-        image="/images/IMG_20261021_103212.jpg"
+        image="/images/fabrication-shop-floor-material-handling.jpg"
         heading={
           <>
             Become our next

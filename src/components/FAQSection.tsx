@@ -1,7 +1,13 @@
+import type { ReactNode } from 'react';
 import Reveal from '@/components/Reveal';
 import Accordion from '@/components/Accordion';
 
-export type FAQItem = { q: string; a: string };
+export type FAQItem = {
+  q: string;
+  a: ReactNode;
+  /** Plain-text answer for FAQPage JSON-LD — required only when `a` isn't a plain string (e.g. contains a link). */
+  aText?: string;
+};
 
 type FAQSectionProps = {
   items: FAQItem[];
@@ -32,7 +38,7 @@ export default function FAQSection({
       name: item.q,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.a,
+        text: item.aText ?? (typeof item.a === 'string' ? item.a : ''),
       },
     })),
   };

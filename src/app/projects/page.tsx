@@ -30,9 +30,9 @@ const FAQS = [
 export const metadata: Metadata = pageMetadata({
   title: 'Projects & Case Studies',
   description:
-    'Documented engineering and fabrication deliveries from G Industries — BESS containers for Medha Servo Drives, power containers for BHEL, and a precision CNC machine body for VEM Technologies.',
+    'Deliveries from G Industries — BESS containers for Medha Servo Drives, power containers for BHEL, and a CNC machine body for VEM Technologies.',
   path: '/projects',
-  image: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
+  image: '/images/og/projects.jpg',
   imageAlt: 'BESS container chassis fabrication on the G Industries shop floor',
 });
 
@@ -43,9 +43,9 @@ const PROJECTS = [
     title: 'BESS Container, Railways & EV',
     desc: 'Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.',
     note: "Spanning three of G Industries' core sectors — BESS energy storage, railways, and electric vehicles — in a single engagement.",
-    src: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
+    src: '/images/bess-container-chassis-fabrication.jpg',
     alt: 'BESS container chassis fabrication on the shop floor',
-    cap: 'Container chassis fabrication, Unit 3',
+    cap: 'Container chassis fabrication, Unit 2',
   },
   {
     num: '02',
@@ -53,7 +53,7 @@ const PROJECTS = [
     title: 'Power Containers',
     desc: 'Successfully delivered two heavy industrial-grade specialized containers for Bharat Heavy Electricals Limited.',
     note: 'BHEL is one of India’s largest power-sector public sector enterprises, engaged in heavy electrical equipment manufacturing.',
-    src: '/images/IMG_20261021_103942.jpg',
+    src: '/images/sheet-metal-enclosures-stacked-assembly.jpg',
     alt: 'Stacked laser-cut and welded sheet metal enclosures ready for assembly',
     cap: 'Sheet-metal enclosure fabrication, Unit 1',
   },
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHero
-        image="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
+        image="/images/bess-container-chassis-fabrication.jpg"
         imageAlt="BESS container chassis fabrication on the G Industries shop floor, with G Industries signage visible"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
         eyebrow="Recent Track Record"

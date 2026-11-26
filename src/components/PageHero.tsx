@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { SITE_URL } from '@/lib/seo';
 
 type Crumb = { label: string; href?: string };
 
@@ -13,6 +14,17 @@ type PageHeroProps = {
 };
 
 export default function PageHero({ image, imageAlt, eyebrow, title, subtitle, crumbs }: PageHeroProps) {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.label,
+      ...(c.href ? { item: `${SITE_URL}${c.href}` } : {}),
+    })),
+  };
+
   return (
     <section className="page-hero">
       <div className="page-hero-media">
@@ -31,6 +43,8 @@ export default function PageHero({ image, imageAlt, eyebrow, title, subtitle, cr
         <h1>{title}</h1>
         {subtitle && <p className="page-hero-sub">{subtitle}</p>}
       </div>
+      {/* eslint-disable-next-line @next/next/no-danger -- static, server-rendered JSON-LD from our own content */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
     </section>
   );
 }

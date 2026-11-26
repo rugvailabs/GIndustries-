@@ -8,11 +8,11 @@ import { IconChain, IconShieldCheck, IconLayers, IconCube } from '@/components/i
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'About Us',
+  title: 'About Us — ISO 9001 Manufacturer, Hyderabad',
   description:
     'G Industries — founded in 2021 in Hyderabad, Telangana, a single-source manufacturing partner built to redefine what a fabrication partner can deliver.',
   path: '/about',
-  image: '/images/9ab78c05-093b-405e-9850-54976077abdf.jpg',
+  image: '/images/og/about.jpg',
   imageAlt: 'The G Industries team on the shop floor at the Hyderabad facility',
 });
 
@@ -22,7 +22,7 @@ const JOURNEY = [
   { year: '2023', title: 'Welding Capability Added', copy: 'Laser welding and TIG/MIG/ARC welding capability commissioned across the shop floor.' },
   { year: '2024', title: 'Major Equipment Investment', copy: 'CNC press brake (Hindustan, 100T), Senfeng sheet & pipe laser cutting, and pipe bending equipment added.' },
   { year: '2025', title: 'Continued Expansion', copy: 'Additional MIG welding (200A), a 20-ton power press, and a drilling machine commissioned.' },
-  { year: '2026', title: 'Unit 3 Commissioned', copy: 'Deburring machine and a 50-ton power press added; Unit 3 — a 30,000 sft BESS Container Manufacturing facility — under active expansion.' },
+  { year: '2026', title: 'Unit 2 Commissioned', copy: 'Deburring machine and a 50-ton power press added; Unit 2 — a 30,000 sft BESS Container Manufacturing facility — under active expansion.' },
 ];
 
 const FAQS = [
@@ -36,7 +36,7 @@ const FAQS = [
   },
   {
     q: 'How large is the G Industries team?',
-    a: 'G Industries employs a 110+ strong workforce across its three operating units — Unit 1 (heavy fabrication), Unit 2 (electronics), and Unit 3 (BESS container manufacturing).',
+    a: 'G Industries employs a 110+ strong workforce across its two operating units — Unit 1 (heavy fabrication) and Unit 2 (BESS container manufacturing).',
   },
   {
     q: 'What makes G Industries different from other fabrication companies?',
@@ -59,11 +59,11 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        image="/images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
+        image="/images/team-shopfloor-hyderabad.jpg"
         imageAlt="The G Industries team on the shop floor at the Hyderabad facility"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
         eyebrow="About Us"
-        title="Engineering the future, since 2021."
+        title="A single-source manufacturer, built since 2021."
         subtitle="A single-source manufacturing partner built in Hyderabad to redefine what a fabrication partner can deliver — from concept to completion, under one roof."
       />
 
@@ -72,7 +72,7 @@ export default function AboutPage() {
           <Reveal className="split-section">
             <div className="split-media">
               <Image
-                src="/images/IMG_20261021_103924.jpg"
+                src="/images/finished-components-dispatch-hyderabad.jpg"
                 alt="Batch of finished precision stainless steel components ready for dispatch on the G Industries shop floor"
                 width={2400}
                 height={1800}
@@ -157,7 +157,7 @@ export default function AboutPage() {
         surface
       />
 
-      <ContactCta image="/images/IMG_20261021_103212.jpg" />
+      <ContactCta image="/images/fabrication-shop-floor-material-handling.jpg" />
     </>
   );
 }

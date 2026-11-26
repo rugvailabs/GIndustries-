@@ -30,6 +30,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Projects', href: '/projects' },
   { label: 'Quality', href: '/quality-certifications' },
   { label: 'Clients', href: '/clients' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 

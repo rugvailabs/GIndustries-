@@ -4,14 +4,14 @@ import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { IconClock, IconStructural, IconCube, IconLayers } from '@/components/icons';
-import { pageMetadata } from '@/lib/seo';
+import { pageMetadata, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 export const metadata = pageMetadata({
-  title: 'Products',
+  title: 'Shop — BESS Containers & Precision Components',
   description:
-    'G Industries is building a dedicated product catalog — BESS containers, precision-machined components, and custom enclosures. Coming soon; custom fabrication inquiries open now.',
+    'G Industries is building a dedicated product catalog — BESS containers, precision components, and custom enclosures, available now as custom fabrication.',
   path: '/products',
-  image: '/images/file_00000000686081fa8ef0d50efda247d2.jpg',
+  image: '/images/og/products-shop.jpg',
   imageAlt: 'Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit',
 });
 
@@ -54,11 +54,33 @@ const FAQS = [
   },
 ];
 
+const SERVICE_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Custom Fabrication & Manufacturing',
+  name: 'G Industries Product Catalog',
+  provider: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+  areaServed: 'IN',
+  description:
+    'BESS containers, precision-machined components, and custom enclosures, available today as custom fabrication engagements ahead of a standard orderable catalog.',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Products in development',
+    itemListElement: UPCOMING.map((item, i) => ({
+      '@type': 'Offer',
+      position: i + 1,
+      itemOffered: { '@type': 'Service', name: item.title, description: item.copy, url: `${SITE_URL}${item.href}` },
+    })),
+  },
+};
+
 export default function ProductsPage() {
   return (
     <>
+      {/* eslint-disable-next-line @next/next/no-danger -- static, server-rendered JSON-LD from our own content */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSON_LD) }} />
       <PageHero
-        image="/images/file_00000000686081fa8ef0d50efda247d2.jpg"
+        image="/images/bess-container-chassis-fabrication.jpg"
         imageAlt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Shop' }]}
         eyebrow="Shop"

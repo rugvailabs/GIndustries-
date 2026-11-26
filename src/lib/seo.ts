@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const SITE_URL = 'https://gindustries.co.in';
 export const SITE_NAME = 'G Industries';
-export const DEFAULT_OG_IMAGE = '/images/9ab78c05-093b-405e-9850-54976077abdf.jpg';
+export const DEFAULT_OG_IMAGE = '/images/og/default-team-shopfloor.jpg';
 
 type PageMetadataInput = {
   /** Page-level title, e.g. "About Us" — the site suffix is added automatically. */
@@ -47,7 +47,7 @@ export function pageMetadata({
         {
           url: image,
           width: 1200,
-          height: 900,
+          height: 630,
           alt: imageAlt || fullTitle,
         },
       ],
