@@ -219,15 +219,14 @@ export default async function HomePage() {
       {/* ============ BESS ============ */}
       <section className="section-pad bess" id="bess">
         <div className="container bess-grid">
-          <Reveal className="bess-media">
+          <Reveal className="home-bess-media">
             <figure>
               <Image
                 src={bess.image1.src}
                 alt={bess.image1.alt}
                 width={1182}
                 height={1330}
-                sizes="(max-width: 900px) 100vw, 50vw"
-                style={{ objectFit: 'contain', backgroundColor: 'var(--surface-2)' }}
+                sizes="(max-width: 760px) 50vw, 25vw"
               />
               <figcaption>{bess.caption1}</figcaption>
             </figure>
@@ -237,8 +236,7 @@ export default async function HomePage() {
                 alt={bess.image2.alt}
                 width={1447}
                 height={1087}
-                sizes="(max-width: 900px) 100vw, 50vw"
-                style={{ objectFit: 'contain', backgroundColor: 'var(--surface-2)' }}
+                sizes="(max-width: 760px) 50vw, 25vw"
               />
               <figcaption>{bess.caption2}</figcaption>
             </figure>

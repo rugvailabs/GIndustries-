@@ -320,6 +320,18 @@ section { position: relative; }
 .bess-media figure:first-child img { height: 620px; grid-row: span 2; }
 .bess-media { grid-template-rows: auto auto; }
 .bess-media figcaption { font-family: var(--font-ui); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.4rem; letter-spacing: 0.02em; }
+
+/* ---------- Home page BESS photos (two differently-shaped product shots — size each
+   to its own natural aspect ratio instead of cropping/letterboxing into a fixed box) ---------- */
+.home-bess-media { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); align-items: start; }
+.home-bess-media img { width: 100%; height: auto; display: block; border-radius: var(--radius-md); }
+.home-bess-media figcaption { font-family: var(--font-ui); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.4rem; letter-spacing: 0.02em; }
+@media (max-width: 760px) {
+  .home-bess-media { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .home-bess-media { grid-template-columns: 1fr; }
+}
 .bess-copy p { color: var(--ink-soft); margin-bottom: var(--space-3); }
 .bess-specs { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
 .bess-spec { display: flex; gap: var(--space-3); padding: var(--space-3); background: var(--white); border: 1px solid var(--line); }
