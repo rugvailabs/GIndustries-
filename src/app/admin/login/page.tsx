@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@/auth';
 import { authenticate } from './actions';
+import PasswordInput from '@/components/admin/PasswordInput';
 
 export const metadata = { title: 'Admin Login — G Industries', robots: { index: false, follow: false } };
 
@@ -29,7 +30,7 @@ export default async function AdminLoginPage({
           </div>
           <div className="admin-field">
             <label htmlFor="password">Password</label>
-            <input id="password" name="password" type="password" required autoComplete="current-password" />
+            <PasswordInput id="password" name="password" required autoComplete="current-password" />
           </div>
           <button type="submit" className="admin-btn admin-btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
             Log in

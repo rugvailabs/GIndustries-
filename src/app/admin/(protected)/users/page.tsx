@@ -1,6 +1,7 @@
 import { auth } from '@/auth';
 import { listUsers } from '@/lib/users';
 import { addUser, toggleUserActive, adminResetPassword } from './actions';
+import PasswordInput from '@/components/admin/PasswordInput';
 
 export default async function AdminUsersPage() {
   const session = await auth();
@@ -20,7 +21,7 @@ export default async function AdminUsersPage() {
           </div>
           <div className="admin-field">
             <label htmlFor="password">Temporary password</label>
-            <input id="password" name="password" type="password" required minLength={8} />
+            <PasswordInput id="password" name="password" required minLength={8} />
             <span className="hint">At least 8 characters. They should change it after first login.</span>
           </div>
           <button type="submit" className="admin-btn admin-btn-primary">Add admin</button>
@@ -29,6 +30,7 @@ export default async function AdminUsersPage() {
 
       <div className="admin-card">
         <h2 style={{ marginBottom: '0.8rem' }}>All admins</h2>
+        <div className="admin-table-scroll">
         <table className="admin-table">
           <thead>
             <tr>
@@ -49,7 +51,7 @@ export default async function AdminUsersPage() {
                 <td>
                   <form action={adminResetPassword} style={{ display: 'flex', gap: '0.4rem' }}>
                     <input type="hidden" name="id" value={u.id} />
-                    <input type="password" name="password" placeholder="New password" minLength={8} required />
+                    <PasswordInput name="password" placeholder="New password" minLength={8} required />
                     <button type="submit" className="admin-btn admin-btn-sm">Reset</button>
                   </form>
                 </td>
@@ -66,6 +68,7 @@ export default async function AdminUsersPage() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
