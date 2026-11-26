@@ -1,7 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { FooterContent } from '@/content/pages/footer';
 
-export default function Footer() {
+function FooterLinkItem({ label, href }: { label: string; href: string }) {
+  if (!href) return <li>{label}</li>;
+  const isInternal = href.startsWith('/');
+  return <li>{isInternal ? <Link href={href}>{label}</Link> : <a href={href}>{label}</a>}</li>;
+}
+
+export default function Footer({ content }: { content: FooterContent }) {
   const year = new Date().getFullYear();
   return (
     <footer className="site-footer">
@@ -9,47 +16,24 @@ export default function Footer() {
         <div className="footer-top">
           <div>
             <div className="footer-brand">
-              <Image src="/quality-images/logo.png" alt="G Industries logo" width={450} height={300} />
+              <Image src={content.logo.src} alt={content.logo.alt} width={450} height={300} />
             </div>
-            <p>
-              A single-source manufacturing partner for Railways, EV, Electronics, Agri-Tech and BESS energy
-              storage — Hyderabad, Telangana, India.
-            </p>
+            <p>{content.tagline}</p>
           </div>
-          <div className="footer-col">
-            <h5>Company</h5>
-            <ul>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/engineering-design">Engineering &amp; Design</Link></li>
-              <li><Link href="/manufacturing-fabrication">Manufacturing &amp; Fabrication</Link></li>
-              <li><Link href="/machinery">Machinery &amp; Equipment</Link></li>
-              <li><Link href="/facilities">Facilities</Link></li>
-              <li><Link href="/projects">Projects</Link></li>
-              <li><Link href="/quality-certifications">Quality &amp; Certifications</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h5>Industries</h5>
-            <ul>
-              <li><Link href="/industries">Industries We Serve</Link></li>
-              <li><Link href="/bess-solutions">BESS Solutions</Link></li>
-              <li><Link href="/clients">Clients</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h5>Contact</h5>
-            <ul>
-              <li><a href="mailto:mvskiran@gindustries.co.in">mvskiran@gindustries.co.in</a></li>
-              <li><a href="tel:+918977650585">+91 89776 50585</a></li>
-              <li>Gandi Maisamma, Dundigal, Hyderabad</li>
-            </ul>
-          </div>
+          {content.columns.map((column) => (
+            <div className="footer-col" key={column.heading}>
+              <h5>{column.heading}</h5>
+              <ul>
+                {column.links.map((link) => (
+                  <FooterLinkItem key={link.label} label={link.label} href={link.href} />
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         <div className="footer-bottom">
-          <span>&copy; {year} G Industries. All rights reserved.</span>
-          <span className="certs">ISO 9001:2015 &nbsp;&middot;&nbsp; GST Registered &nbsp;&middot;&nbsp; Udyam/MSME Registered</span>
+          <span>&copy; {year} {content.copyrightText}</span>
+          <span className="certs">{content.certsText}</span>
         </div>
       </div>
     </footer>

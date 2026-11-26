@@ -25,157 +25,58 @@ import {
   IconPhone,
   IconArrowRight,
 } from '@/components/icons';
+import { getPageContent } from '@/lib/content';
+import { HOME_DEFAULTS } from '@/content/pages/home';
 
-const CAPABILITIES = [
-  { Icon: IconCube, title: 'Advanced CAD Modeling', copy: 'Full 3D parametric design for complex assemblies, custom enclosures, and structural systems — engineered to exact specifications.' },
-  { Icon: IconWave, title: 'Finite Element Analysis', copy: 'Stress, thermal, and structural simulation validates every design before a single piece of metal is cut — reducing risk and rework.' },
-  { Icon: IconStructural, title: 'Structural Simulation', copy: 'Real-world load-case modelling ensures performance under extreme operational and environmental conditions.' },
-  { Icon: IconSpark, title: 'Structural Fabrication', copy: 'Heavy-duty welding, cutting, and assembly for industrial-grade components and systems.' },
-  { Icon: IconDroplet, title: 'Surface Treatments', copy: 'Precision machining, coating, and finishing for corrosion resistance and longevity.' },
-  { Icon: IconMagnifierCheck, title: 'Rigorous QC Testing', copy: 'Dimensional inspection before every delivery, backed by a documented Quality Management System.' },
-];
+// Icons are fixed in code (not admin-editable) and paired with their card by position.
+const CAPABILITY_ICONS = [IconCube, IconWave, IconStructural, IconSpark, IconDroplet, IconMagnifierCheck];
+const INDUSTRY_ICONS = [IconRail, IconBolt, IconChip, IconLeaf, IconFlask, IconShieldBolt];
+const WHY_ICONS = [IconChain, IconShieldCheck, IconLayers, IconTruckCheck];
 
-const PRECISION_ITEMS = [
-  { src: '/quality-images/IMG_20261021_104334.jpg', alt: 'Precision-machined stainless steel bracket with sleeve, fabricated at G Industries', label: 'Precision Bracket Assembly' },
-  { src: '/quality-images/Products2.png', alt: 'Large batch of finished stainless steel fabricated components — tubular assemblies and conical housings — staged for dispatch', label: 'Batch Production Run' },
-  { src: '/quality-images/Products3.png', alt: 'Stacked welded stainless steel enclosure housings ready for shipment', label: 'Enclosure Housing Stack' },
-  { src: '/quality-images/Products4.png', alt: 'Stainless steel conical mesh filter assembly bolted to a mounting bracket', label: 'Mesh Filter Cone Assembly' },
-  { src: '/quality-images/Product5.png', alt: 'Tall laser-cut steel decorative panel with a circular lattice pattern', label: 'Laser-Cut Decorative Panel' },
-];
+export default async function HomePage() {
+  const content = await getPageContent('home', HOME_DEFAULTS);
+  const { stats, hero, about, capabilities, precision, industries, bess, facilities, machinery, why, projects, certifications, clients, contactCta } = content;
 
-const INDUSTRIES = [
-  { Icon: IconRail, title: 'Railways', copy: 'Registered vendor executing railway tender orders.' },
-  { Icon: IconBolt, title: 'Electric Vehicles', copy: 'Precision EV enclosures & structural components.', fillOnly: true },
-  { Icon: IconChip, title: 'Electronics', copy: 'Modular enclosures & engineering consoles.' },
-  { Icon: IconLeaf, title: 'Agri-Tech', copy: 'Fabrication for agricultural technology systems.' },
-  { Icon: IconFlask, title: 'Laboratory Equipment', copy: 'Custom lab enclosures & assemblies.' },
-  { Icon: IconShieldBolt, title: 'Switchgear Systems', copy: 'Electrical & switchgear panel fabrication.' },
-];
-
-const WHY_ITEMS = [
-  { Icon: IconChain, title: 'End-to-End Capability', copy: 'Design, simulation, fabrication, and finishing under one roof.' },
-  { Icon: IconShieldCheck, title: 'Certified Quality', copy: 'ISO 9001:2015, GST, and Udyam/MSME registered enterprise.' },
-  { Icon: IconLayers, title: 'Multi-Sector Expertise', copy: 'Railways, EV, Electronics, Agri-Tech, Switchgear & more.' },
-  { Icon: IconTruckCheck, title: 'Proven Delivery', copy: 'Trusted by BHEL, VEM Technologies, Medha, ECIL & more.' },
-];
-
-const MACHINES = [
-  { src: '/quality-images/file_000000009e1c8208ac1fd4174e502cda.png', alt: 'Senfeng fiber laser cutting machine on the G Industries shop floor', title: 'Sheet & Pipe Laser Cutting', meta: 'Senfeng, 3 kW · 2024' },
-  { src: '/quality-images/file_000000001778820882caf42727747702.png', alt: 'Hindustan Hydraulics Swift 100-31 CNC press brake machine', title: 'CNC Press Brake', meta: 'Hindustan, 100T · 2024' },
-  { src: '/quality-images/file_00000000c5f08208ace959c6353cb2c1.png', alt: 'IPG Photonics LightWeld handheld laser welding system in use', title: 'Laser Welding', meta: '1.5 kW · 2023, 25 & 26' },
-  { src: '/quality-images/file_00000000046c820aa9597951eafb2253 (1).png', alt: 'Tinex power press machines and a pillar drilling machine on the shop floor', title: 'Power Press & Drilling', meta: '50T / 20T · Ø36mm · 2024–26' },
-  { src: '/quality-images/file_0000000093908208b1a29b8a59852f9e.png', alt: 'Row of laser welding stations in the LW/002 work area', title: 'Laser Welding Stations', meta: '5 Nos. installed' },
-  { src: '/quality-images/Mig machine.png', alt: 'MIG-400 welding machine control panel on the shop floor', title: 'MIG Welding', meta: '400A · 200A' },
-];
-
-const SPEC_ROWS = [
-  ['Sheet Laser Cutting', 'Senfeng, 3 kW', '2024'],
-  ['Pipe Laser Cutting', 'Senfeng, 3 kW', '2024'],
-  ['Plasma Cutting', 'Power Plus, 100mm', '2020'],
-  ['CNC Press Brake', 'Hindustan, 100T', '2024'],
-  ['Sheet Rolling', 'Capacity 5mm', '2022'],
-  ['Pipe Bending', 'Gujarath, 40mm', '2024'],
-  ['Deburring Machine', '75mm Thickness', '2026'],
-  ['Laser Welding', "5 Nos., 1.5 kW", '2023, 25 & 26'],
-  ['TIG Welding Set', '500 Amp AC/DC', '2023'],
-  ['MIG Welding', '5 Nos., 400 A', '2023'],
-  ['MIG Welding', '2 Nos., 200 Amp', '2025'],
-  ['ARC Welding', '200 Amp', '2023'],
-  ['Power Press', '50 Ton', '2026'],
-  ['Power Press', '20 Ton', '2025'],
-  ['Fly Press', '10', '2024'],
-  ['Drilling Machine', 'Ø36 mm', '2025'],
-];
-
-const PROJECTS = [
-  {
-    num: '01',
-    client: 'Medha Servo Drives',
-    title: 'BESS Container, Railways & EV',
-    desc: 'Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.',
-    src: '/quality-images/file_00000000d7bc81f49164140fc69f24c1.png',
-    alt: 'Welded steel BESS container structural base and chassis in the fabrication shop',
-    cap: 'Container chassis fabrication, Unit 2',
-  },
-  {
-    num: '02',
-    client: 'BHEL',
-    title: 'Power Containers',
-    desc: 'Successfully delivered two heavy industrial-grade specialized containers for Bharat Heavy Electricals Limited.',
-    src: '/quality-images/Bhel power containers.png',
-    alt: 'Heavy industrial-grade power container delivered for BHEL',
-    cap: 'Power container, ex-works',
-  },
-  {
-    num: '03',
-    client: 'VEM Technologies',
-    title: 'CNC Machine Body',
-    desc: 'Engineered and manufactured a high-precision CNC Machine Body to exacting tolerances.',
-    src: '/quality-images/Vem cnc machine body.png',
-    alt: 'Precision-fabricated stainless steel CNC machine body for VEM Technologies',
-    cap: 'Precision-machined component, ex-works',
-  },
-];
-
-const CLIENTS_FEATURED = ['Medha Servo Drives', 'BHEL', 'HBL', 'VEM Technologies', 'ECIL'];
-const CLIENTS_OTHER = [
-  'RCF Kapurthala', 'Medha — Powering Mobility', 'Medha Electrical Contractors', 'Medha Marine',
-  'BHEL — R&D Balanagar', 'BHEL — RC Puram', 'Cygni Energy', 'Nexigo Energy', 'Axonify Tech Systems',
-  'Hemair Systems', 'Keto Motors', 'Neural Foundry', 'Quantum EV', 'Smart Lab', 'SLN Electricals',
-  'Polmon Instruments', 'Rotomag', 'SGD Pharma', 'Stability Automation', 'XMachines', 'Venjay Automation',
-];
-
-export default function HomePage() {
   return (
     <>
       {/* ============ HERO ============ */}
       <section className="hero" id="top">
         <div className="hero-media">
-          <Image
-            src="/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
-            alt="The G Industries team on the shop floor at the Hyderabad facility, standing in front of a CNC press brake"
-            fill
-            sizes="100vw"
-            priority
-            quality={80}
-          />
+          <Image src={hero.image.src} alt={hero.image.alt} fill sizes="100vw" priority quality={80} />
         </div>
         <div className="hero-content container">
-          <div className="hero-tag">Precision Engineering · Sheet Metal Fabrication · Turnkey Manufacturing</div>
+          <div className="hero-tag">{hero.tag}</div>
           <h1>
-            Engineering the future.
+            {hero.titleLine1}
             <br />
-            <em>Challenge everything.</em>
+            <em>{hero.titleEm}</em>
           </h1>
-          <p className="hero-sub">
-            A single-source manufacturing partner bridging conceptual design, structural simulation, heavy
-            fabrication and precise post-processing — under one roof in Hyderabad, Telangana.
-          </p>
+          <p className="hero-sub">{hero.subtitle}</p>
           <div className="hero-actions">
-            <a href="#capabilities" className="btn btn-gold">
-              Explore Capabilities <IconArrowRight />
+            <a href={hero.primaryCtaHref} className="btn btn-gold">
+              {hero.primaryCtaLabel} <IconArrowRight />
             </a>
-            <a href="#contact" className="btn btn-outline-light">
-              Start a Project
+            <a href={hero.secondaryCtaHref} className="btn btn-outline-light">
+              {hero.secondaryCtaLabel}
             </a>
           </div>
           <div className="stat-strip">
             <div className="stat">
-              <div className="stat-num"><Counter to={2021} noGroup /></div>
+              <div className="stat-num"><Counter to={stats.founded} noGroup /></div>
               <div className="stat-label">Founded</div>
             </div>
             <div className="stat">
-              <div className="stat-num"><Counter to={40000} /> sqm</div>
+              <div className="stat-num"><Counter to={stats.expansionLandSqm} /> sqm</div>
               <div className="stat-label">Expansion Land</div>
             </div>
             <div className="stat">
-              <div className="stat-num"><Counter to={50} suffix="+" /></div>
+              <div className="stat-num"><Counter to={stats.workforce} suffix={stats.workforceSuffix} /></div>
               <div className="stat-label">Workforce</div>
             </div>
             <div className="stat-loc">
-              Gandi Maisamma, Dundigal
+              {stats.locationLine1}
               <br />
-              Hyderabad, Telangana, India
+              {stats.locationLine2}
             </div>
           </div>
         </div>
@@ -189,43 +90,33 @@ export default function HomePage() {
       <section className="section-pad" id="about">
         <div className="container about-grid">
           <Reveal className="about-copy">
-            <div className="eyebrow">About Us</div>
-            <h2>Engineering the future, since 2021.</h2>
+            <div className="eyebrow">{about.eyebrow}</div>
+            <h2>{about.heading}</h2>
             <p>
-              <strong>Our Foundation —</strong> Founded in 2021 in Dundigal, Gandi Maisamma, Hyderabad, Telangana,
-              G&nbsp;Industries was built to redefine what a manufacturing partner can deliver — from concept to
-              completion, under one roof.
+              <strong>{about.foundationLabel}</strong> {about.foundationText}
             </p>
             <p>
-              <strong>Our Mission —</strong> To engineer, fabricate, and post-process industrial solutions that
-              challenge industry standards and empower critical infrastructure across sectors, as a registered,
-              ISO-certified manufacturing enterprise.
+              <strong>{about.missionLabel}</strong> {about.missionText}
             </p>
             <div className="mini-stats">
               <div className="mini-stat">
-                <div className="stat-num">2021</div>
+                <div className="stat-num">{stats.founded}</div>
                 <div className="stat-label">Founded</div>
               </div>
               <div className="mini-stat">
-                <div className="stat-num">40,000 sqm</div>
+                <div className="stat-num">{stats.expansionLandSqm.toLocaleString('en-IN')} sqm</div>
                 <div className="stat-label">Expansion Land</div>
               </div>
               <div className="mini-stat">
-                <div className="stat-num">50+</div>
+                <div className="stat-num">{stats.workforce}{stats.workforceSuffix}</div>
                 <div className="stat-label">Workforce</div>
               </div>
             </div>
           </Reveal>
           <Reveal className="about-media">
-            <Image
-              src="/quality-images/file_00000000c78c8208b0ae8e848644d348.png"
-              alt="Raw material racks and laser-cut sheet metal stock on the G Industries fabrication shop floor"
-              fill
-              sizes="(max-width: 900px) 100vw, 50vw"
-            />
+            <Image src={about.image.src} alt={about.image.alt} fill sizes="(max-width: 900px) 100vw, 50vw" />
             <div className="about-media-tag">
-              <strong>One Partner.</strong> Every capability — design, simulation, fabrication and finishing in a
-              single facility.
+              <strong>{about.mediaTagLabel}</strong> {about.mediaTagText}
             </div>
           </Reveal>
         </div>
@@ -235,12 +126,9 @@ export default function HomePage() {
       <section className="section-pad" id="capabilities" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Our Advantage</div>
-            <h2>From complex concepts to rugged realities</h2>
-            <p>
-              G&nbsp;Industries is a single-source, end-to-end manufacturing partner — bridging conceptual design,
-              structural simulation, heavy fabrication, and precise post-processing seamlessly.
-            </p>
+            <div className="eyebrow">{capabilities.eyebrow}</div>
+            <h2>{capabilities.heading}</h2>
+            <p>{capabilities.intro}</p>
           </Reveal>
 
           <Reveal className="process-strip">
@@ -267,15 +155,18 @@ export default function HomePage() {
           </Reveal>
 
           <div className="capability-grid reveal-group">
-            {CAPABILITIES.map(({ Icon, title, copy }, i) => (
-              <Reveal key={title} className="capability-card" index={i}>
-                <div className="icon">
-                  <Icon />
-                </div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </Reveal>
-            ))}
+            {capabilities.items.map((item, i) => {
+              const Icon = CAPABILITY_ICONS[i] ?? CAPABILITY_ICONS[CAPABILITY_ICONS.length - 1];
+              return (
+                <Reveal key={i} className="capability-card" index={i}>
+                  <div className="icon">
+                    <Icon />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -285,14 +176,14 @@ export default function HomePage() {
         <div className="container">
           <Reveal className="kicker-row">
             <div className="section-head" style={{ marginBottom: 'var(--space-4)' }}>
-              <div className="eyebrow on-dark">Precision, Component by Component</div>
-              <h2>Tolerances that hold under real-world load</h2>
+              <div className="eyebrow on-dark">{precision.eyebrow}</div>
+              <h2>{precision.heading}</h2>
             </div>
           </Reveal>
           <Reveal className="precision-scroll">
-            {PRECISION_ITEMS.map((item) => (
-              <div className="precision-item" key={item.src}>
-                <Image src={item.src} alt={item.alt} fill sizes="(max-width: 600px) 220px, 25vw" />
+            {precision.items.map((item, i) => (
+              <div className="precision-item" key={i}>
+                <Image src={item.image.src} alt={item.image.alt} fill sizes="(max-width: 600px) 220px, 25vw" />
                 <span>{item.label}</span>
               </div>
             ))}
@@ -304,24 +195,23 @@ export default function HomePage() {
       <section className="section-pad" id="industries">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Industries We Serve</div>
-            <h2>Precision components across critical sectors</h2>
-            <p>
-              From railway infrastructure to next-generation EVs and energy systems, G&nbsp;Industries manufactures
-              high-precision components for national and international industries under stringent quality and
-              compliance standards.
-            </p>
+            <div className="eyebrow">{industries.eyebrow}</div>
+            <h2>{industries.heading}</h2>
+            <p>{industries.intro}</p>
           </Reveal>
           <div className="industry-grid reveal-group">
-            {INDUSTRIES.map(({ Icon, title, copy }, i) => (
-              <Reveal key={title} className="industry-card" index={i}>
-                <div className="icon">
-                  <Icon />
-                </div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </Reveal>
-            ))}
+            {industries.items.map((item, i) => {
+              const Icon = INDUSTRY_ICONS[i] ?? INDUSTRY_ICONS[INDUSTRY_ICONS.length - 1];
+              return (
+                <Reveal key={i} className="industry-card" index={i}>
+                  <div className="icon">
+                    <Icon />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -332,48 +222,41 @@ export default function HomePage() {
           <Reveal className="bess-media">
             <figure>
               <Image
-                src="/quality-images/_dFXkAtpfs-wbtLr6UnZSy2yDGpwqdZZ3mWpjjRP68h_idGY5ahw-.jpg"
-                alt="White BESS container enclosure installed at a solar power site"
-                width={2000}
-                height={1500}
+                src={bess.image1.src}
+                alt={bess.image1.alt}
+                width={1182}
+                height={1330}
                 sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectFit: 'contain', backgroundColor: 'var(--surface-2)' }}
               />
-              <figcaption>BESS container deployed at a solar energy storage site</figcaption>
+              <figcaption>{bess.caption1}</figcaption>
             </figure>
             <figure>
               <Image
-                src="/quality-images/f31fc7ce-e1bc-4df0-8d2f-bfa8ce511d00.png"
-                alt="G Industries-branded BESS container at a battery energy storage site"
-                width={1536}
-                height={1024}
+                src={bess.image2.src}
+                alt={bess.image2.alt}
+                width={1447}
+                height={1087}
                 sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectFit: 'contain', backgroundColor: 'var(--surface-2)' }}
               />
-              <figcaption>G Industries BESS container, ready for field deployment</figcaption>
+              <figcaption>{bess.caption2}</figcaption>
             </figure>
           </Reveal>
           <Reveal className="bess-copy">
-            <div className="eyebrow">Key Specialization</div>
-            <h2>BESS container systems</h2>
-            <p>
-              G&nbsp;Industries specializes in heavily optimized enclosure systems for Battery Energy Storage
-              Systems (BESS) and severe-duty industrial applications — engineered for thermal management,
-              structural integrity, and operational safety.
-            </p>
+            <div className="eyebrow">{bess.eyebrow}</div>
+            <h2>{bess.heading}</h2>
+            <p>{bess.copy}</p>
             <div className="bess-specs">
-              <div className="bess-spec">
-                <div className="tag">10 ft</div>
-                <div>
-                  <h4>Compact BESS Containers</h4>
-                  <p>Compact, high-performance energy storage enclosures.</p>
+              {bess.specs.map((spec, i) => (
+                <div className="bess-spec" key={i}>
+                  <div className="tag">{spec.tag}</div>
+                  <div>
+                    <h4>{spec.title}</h4>
+                    <p>{spec.copy}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="bess-spec">
-                <div className="tag">20 ft</div>
-                <div>
-                  <h4>Full-Scale BESS Containers</h4>
-                  <p>Full-scale industrial BESS infrastructure solutions.</p>
-                </div>
-              </div>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -383,45 +266,34 @@ export default function HomePage() {
       <section className="section-pad" id="facilities" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Facilities</div>
-            <h2>Built for scale. Engineered for precision.</h2>
-            <p>
-              A continuously modernized facility footprint across Hyderabad, purpose-built for heavy fabrication
-              and BESS container manufacturing.
-            </p>
+            <div className="eyebrow">{facilities.eyebrow}</div>
+            <h2>{facilities.heading}</h2>
+            <p>{facilities.intro}</p>
           </Reveal>
 
           <Reveal className="facility-stats">
-            <div className="facility-stat">
-              <div className="stat-num">13,000 sft</div>
-              <div className="stat-label">Unit 1 Covered Area</div>
-            </div>
-            <div className="facility-stat">
-              <div className="stat-num">30,000 sft</div>
-              <div className="stat-label">Unit 2 — BESS Container Mfg.</div>
-            </div>
-            <div className="facility-stat">
-              <div className="stat-num">40,000 sft</div>
-              <div className="stat-label">Available for Expansion</div>
-            </div>
+            {facilities.stats.map((stat, i) => (
+              <div className="facility-stat" key={i}>
+                <div className="stat-num">{stat.num}</div>
+                <div className="stat-label">{stat.label}</div>
+              </div>
+            ))}
           </Reveal>
 
           <Reveal className="facility-gallery">
             <div className="stack">
-              <figure>
-                <Image src="/quality-images/Factory image.png" alt="Wide view of the fabrication shop floor aisle with material handling area" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
-              </figure>
-              <figure>
-                <Image src="/quality-images/Inspection room.png" alt="Quality Department entrance with safety signage at the G Industries facility" width={1086} height={1448} sizes="(max-width: 900px) 50vw, 28vw" />
-              </figure>
+              {facilities.galleryImages.slice(0, 2).map((g, i) => (
+                <figure key={i}>
+                  <Image src={g.image.src} alt={g.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
+                </figure>
+              ))}
             </div>
             <div className="stack">
-              <figure>
-                <Image src="/quality-images/file_00000000185c8208babc4d67585c94e3 (1).png" alt="Store Room and Managing Director office entrances on the production floor" width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
-              </figure>
-              <figure>
-                <Image src="/quality-images/file_000000001664820883b0e955ea3d75a6.png" alt="MIG welding station near the facility emergency exit with gas cylinders" width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
-              </figure>
+              {facilities.galleryImages.slice(2, 4).map((g, i) => (
+                <figure key={i}>
+                  <Image src={g.image.src} alt={g.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
+                </figure>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -431,19 +303,16 @@ export default function HomePage() {
       <section className="section-pad">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Manufacturing Equipment</div>
-            <h2>Modern machinery. Precision-grade output.</h2>
-            <p>
-              A continuously modernized machine shop — anchored by recent (2022–2026) additions — gives
-              G&nbsp;Industries the range to cut, weld, form, and finish to exacting tolerances.
-            </p>
+            <div className="eyebrow">{machinery.eyebrow}</div>
+            <h2>{machinery.heading}</h2>
+            <p>{machinery.intro}</p>
           </Reveal>
 
           <div className="machine-grid reveal-group">
-            {MACHINES.map((m, i) => (
-              <Reveal key={m.title} className="machine-card" index={i}>
+            {machinery.machines.map((m, i) => (
+              <Reveal key={i} className="machine-card" index={i}>
                 <figure>
-                  <Image src={m.src} alt={m.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
+                  <Image src={m.image.src} alt={m.image.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
                 </figure>
                 <div className="mc-body">
                   <h3>{m.title}</h3>
@@ -463,11 +332,11 @@ export default function HomePage() {
                 </tr>
               </thead>
               <tbody>
-                {SPEC_ROWS.map((row, i) => (
+                {machinery.specRows.map((row, i) => (
                   <tr key={i}>
-                    <td>{row[0]}</td>
-                    <td>{row[1]}</td>
-                    <td className="yr">{row[2]}</td>
+                    <td>{row.equipment}</td>
+                    <td>{row.spec}</td>
+                    <td className="yr">{row.year}</td>
                   </tr>
                 ))}
               </tbody>
@@ -480,19 +349,22 @@ export default function HomePage() {
       <section className="section-pad why-strip">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow on-dark">Why G Industries</div>
-            <h2 style={{ color: 'var(--white)' }}>Built to be your single-source partner</h2>
+            <div className="eyebrow on-dark">{why.eyebrow}</div>
+            <h2 style={{ color: 'var(--white)' }}>{why.heading}</h2>
           </Reveal>
           <div className="why-grid reveal-group">
-            {WHY_ITEMS.map(({ Icon, title, copy }, i) => (
-              <Reveal key={title} className="why-card" index={i}>
-                <div className="icon">
-                  <Icon />
-                </div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </Reveal>
-            ))}
+            {why.items.map((item, i) => {
+              const Icon = WHY_ICONS[i] ?? WHY_ICONS[WHY_ICONS.length - 1];
+              return (
+                <Reveal key={i} className="why-card" index={i}>
+                  <div className="icon">
+                    <Icon />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -501,16 +373,13 @@ export default function HomePage() {
       <section className="section-pad" id="projects">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Recent Track Record</div>
-            <h2>Proven capabilities. Delivered.</h2>
-            <p>
-              From energy storage to heavy industrial machinery, G&nbsp;Industries has a growing portfolio of
-              high-stakes, high-precision deliveries.
-            </p>
+            <div className="eyebrow">{projects.eyebrow}</div>
+            <h2>{projects.heading}</h2>
+            <p>{projects.intro}</p>
           </Reveal>
           <div className="project-list reveal-group">
-            {PROJECTS.map((p, i) => (
-              <Reveal key={p.num} className="project-row" index={i}>
+            {projects.items.map((p, i) => (
+              <Reveal key={i} className="project-row" index={i}>
                 <div className="pnum">{p.num}</div>
                 <div>
                   <div className="client">{p.client}</div>
@@ -519,7 +388,7 @@ export default function HomePage() {
                 <p className="desc">{p.desc}</p>
                 <figure>
                   <div className="figure-media">
-                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
+                    <Image src={p.image.src} alt={p.image.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
                   </div>
                   <figcaption>{p.cap}</figcaption>
                 </figure>
@@ -533,12 +402,9 @@ export default function HomePage() {
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Accreditations</div>
-            <h2>Registered, certified, compliant</h2>
-            <p>
-              G&nbsp;Industries operates as a formally registered manufacturing enterprise, holding current
-              certifications across quality, tax, and government enterprise classifications.
-            </p>
+            <div className="eyebrow">{certifications.eyebrow}</div>
+            <h2>{certifications.heading}</h2>
+            <p>{certifications.intro}</p>
           </Reveal>
           <div className="cert-grid reveal-group">
             <Reveal className="cert-card" index={0}>
@@ -568,11 +434,8 @@ export default function HomePage() {
           </div>
           <Reveal>
             <blockquote className="quality-quote">
-              &ldquo;At G&nbsp;Industries, we focus on customer satisfaction by manufacturing and supplying
-              high-quality engineering and fabrication products that consistently meet customer requirements —
-              fostering employee competency and continually improving the effectiveness of our Quality Management
-              System.&rdquo;
-              <cite>Quality Policy, G Industries</cite>
+              &ldquo;{certifications.quote}&rdquo;
+              <cite>{certifications.quoteCite}</cite>
             </blockquote>
           </Reveal>
         </div>
@@ -582,25 +445,20 @@ export default function HomePage() {
       <section className="section-pad clients" id="clients">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Our Valued Customers</div>
-            <h2>Trusted by industry leaders</h2>
-            <p>
-              From railway PSUs and defence-linked enterprises to EV innovators and energy pioneers,
-              G&nbsp;Industries is proud to serve 25+ organizations across India&apos;s most demanding sectors.
-            </p>
+            <div className="eyebrow">{clients.eyebrow}</div>
+            <h2>{clients.heading}</h2>
+            <p>{clients.intro}</p>
           </Reveal>
           <Reveal className="client-wall">
-            {CLIENTS_FEATURED.map((c) => (
-              <span className="client-pill featured" key={c}>{c}</span>
+            {clients.featured.map((c, i) => (
+              <span className="client-pill featured" key={`f${i}`}>{c.name}</span>
             ))}
-            {CLIENTS_OTHER.map((c) => (
-              <span className="client-pill" key={c}>{c}</span>
+            {clients.other.map((c, i) => (
+              <span className="client-pill" key={`o${i}`}>{c.name}</span>
             ))}
           </Reveal>
           <Reveal className="client-note">
-            <p style={{ margin: 0 }}>
-              <strong>Registered vendor</strong> — Railway Tenders &nbsp;|&nbsp; Engaging with Defence Sector Projects
-            </p>
+            <p style={{ margin: 0 }}>{clients.note}</p>
           </Reveal>
         </div>
       </section>
@@ -608,29 +466,22 @@ export default function HomePage() {
       {/* ============ CONTACT CTA ============ */}
       <section className="section-pad contact-cta" id="contact">
         <div className="bg">
-          <Image src="/quality-images/Factory image.png" alt="" fill sizes="100vw" quality={70} />
+          <Image src={contactCta.backgroundImage.src} alt={contactCta.backgroundImage.alt} fill sizes="100vw" quality={70} />
         </div>
         <div className="container contact-inner">
           <Reveal className="eyebrow on-dark">Get In Touch</Reveal>
           <Reveal>
-            <h2>
-              Challenge everything
-              <br />
-              with <em>G Industries.</em>
-            </h2>
+            <h2>{contactCta.heading}</h2>
           </Reveal>
           <Reveal>
-            <p>
-              Ready to elevate your next project? Partner with a manufacturer built to meet the most demanding
-              engineering challenges — end to end.
-            </p>
+            <p>{contactCta.subcopy}</p>
           </Reveal>
           <Reveal className="contact-actions">
-            <a href="mailto:mvskiran@gindustries.co.in" className="btn btn-gold">
+            <a href={`mailto:${contactCta.email}`} className="btn btn-gold">
               Email Us <IconArrowRight />
             </a>
-            <a href="tel:+918977650585" className="btn btn-outline-light">
-              Call +91 89776 50585
+            <a href={`tel:${contactCta.phone.replace(/\s+/g, '')}`} className="btn btn-outline-light">
+              Call {contactCta.phone}
             </a>
           </Reveal>
           <Reveal className="contact-grid">
@@ -640,9 +491,9 @@ export default function HomePage() {
               </div>
               <h4>Location</h4>
               <p>
-                Gandi Maisamma, Dundigal,
+                {contactCta.addressLine1}
                 <br />
-                Hyderabad, Telangana 500043
+                {contactCta.addressLine2}
               </p>
             </div>
             <div className="contact-item">
@@ -650,15 +501,15 @@ export default function HomePage() {
                 <IconMail />
               </div>
               <h4>Email</h4>
-              <a href="mailto:mvskiran@gindustries.co.in">mvskiran@gindustries.co.in</a>
-              <a href="mailto:gindustries.md@gmail.com">gindustries.md@gmail.com</a>
+              <a href={`mailto:${contactCta.email}`}>{contactCta.email}</a>
+              <a href={`mailto:${contactCta.email2}`}>{contactCta.email2}</a>
             </div>
             <div className="contact-item">
               <div className="icon">
                 <IconPhone />
               </div>
               <h4>Phone</h4>
-              <a href="tel:+918977650585">+91 89776 50585</a>
+              <a href={`tel:${contactCta.phone.replace(/\s+/g, '')}`}>{contactCta.phone}</a>
             </div>
           </Reveal>
         </div>

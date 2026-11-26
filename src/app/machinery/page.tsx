@@ -5,25 +5,8 @@ import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { pageMetadata } from '@/lib/seo';
-
-const FAQS = [
-  {
-    q: 'What laser cutting equipment does G Industries operate?',
-    a: 'G Industries runs Senfeng 3 kW fiber laser cutting machines for both sheet and pipe cutting, commissioned in 2024, giving tight-tolerance cutting across a wide range of sheet metal and tubular stock.',
-  },
-  {
-    q: 'What is the tonnage of the CNC press brake used for sheet metal bending?',
-    a: 'G Industries operates a Hindustan Hydraulics 100-ton CNC press brake, commissioned in 2024, for precision bending of sheet metal components and enclosures.',
-  },
-  {
-    q: 'What welding processes does G Industries support?',
-    a: 'TIG welding (500 Amp AC/DC), MIG welding (400A and 200A, multiple units), ARC welding (200 Amp), and laser welding (1.5 kW, five installed stations) — covering heavy structural welds through to fine, precision joins.',
-  },
-  {
-    q: 'How often does G Industries invest in new manufacturing equipment?',
-    a: 'The machine shop has been continuously modernized with new equipment added every year since 2022, including a 50-ton power press and deburring machine commissioned in 2026 — keeping tolerances tight and lead times short.',
-  },
-];
+import { getPageContent } from '@/lib/content';
+import { MACHINERY_DEFAULTS } from '@/content/pages/machinery';
 
 export const metadata = pageMetadata({
   title: 'Machinery & Equipment',
@@ -34,86 +17,19 @@ export const metadata = pageMetadata({
   imageAlt: 'Senfeng fiber laser cutting machine on the G Industries shop floor',
 });
 
-const MACHINES = [
-  {
-    src: '/quality-images/file_000000009e1c8208ac1fd4174e502cda.png',
-    alt: 'Senfeng fiber laser cutting machine on the shop floor',
-    title: 'Sheet & Pipe Laser Cutting',
-    meta: 'Senfeng, 3 kW · 2024',
-  },
-  {
-    src: '/quality-images/file_000000001778820882caf42727747702.png',
-    alt: 'Hindustan Hydraulics Swift 100-31 CNC press brake machine',
-    title: 'CNC Press Brake',
-    meta: 'Hindustan, 100T · 2024',
-  },
-  {
-    src: '/quality-images/file_00000000c5f08208ace959c6353cb2c1.png',
-    alt: 'IPG Photonics LightWeld handheld laser welding system in use',
-    title: 'Laser Welding',
-    meta: '1.5 kW · 2023, 25 & 26',
-  },
-  {
-    src: '/quality-images/file_00000000046c820aa9597951eafb2253 (1).png',
-    alt: 'Tinex power press machines and a pillar drilling machine on the shop floor',
-    title: 'Power Press & Drilling',
-    meta: '50T / 20T · Ø36mm · 2024–26',
-  },
-  {
-    src: '/quality-images/file_00000000046c820aa9597951eafb2253 (1).png',
-    alt: 'Tinex power press machines beside a Pipe Rolling Machine (PR/001) station',
-    title: 'Power Press & Pipe Rolling',
-    meta: 'Pipe Rolling, PR/001',
-  },
-  {
-    src: '/quality-images/file_0000000093908208b1a29b8a59852f9e.png',
-    alt: 'Row of laser welding stations in the LW/002 work area',
-    title: 'Laser Welding Stations',
-    meta: '5 Nos. installed',
-  },
-  {
-    src: '/quality-images/file_000000001664820883b0e955ea3d75a6.png',
-    alt: 'MIG welding station, MIG/002, with gas cylinders',
-    title: 'MIG Welding',
-    meta: '400A · 200A',
-  },
-  {
-    src: '/quality-images/file_00000000bf3c82088057776799a11bec.png',
-    alt: 'Industrial air compressor and dryer unit supporting the fabrication shop',
-    title: 'Compressed Air System',
-    meta: 'Utility infrastructure',
-  },
-];
+export default async function MachineryPage() {
+  const content = await getPageContent('machinery', MACHINERY_DEFAULTS);
+  const { hero, intro, machines, specRows, faqs, ctaImage } = content;
 
-const SPEC_ROWS: [string, string, string][] = [
-  ['Sheet Laser Cutting', 'Senfeng, 3 kW', '2024'],
-  ['Pipe Laser Cutting', 'Senfeng, 3 kW', '2024'],
-  ['Plasma Cutting', 'Power Plus, 100mm', '2020'],
-  ['CNC Press Brake', 'Hindustan, 100T', '2024'],
-  ['Sheet Rolling', 'Capacity 5mm', '2022'],
-  ['Pipe Bending', 'Gujarath, 40mm', '2024'],
-  ['Deburring Machine', '75mm Thickness', '2026'],
-  ['Laser Welding', '5 Nos., 1.5 kW', '2023, 25 & 26'],
-  ['TIG Welding Set', '500 Amp AC/DC', '2023'],
-  ['MIG Welding', '5 Nos., 400 A', '2023'],
-  ['MIG Welding', '2 Nos., 200 Amp', '2025'],
-  ['ARC Welding', '200 Amp', '2023'],
-  ['Power Press', '50 Ton', '2026'],
-  ['Power Press', '20 Ton', '2025'],
-  ['Fly Press', '10', '2024'],
-  ['Drilling Machine', 'Ø36 mm', '2025'],
-];
-
-export default function MachineryPage() {
   return (
     <>
       <PageHero
-        image="/quality-images/file_000000009e1c8208ac1fd4174e502cda.png"
-        imageAlt="Senfeng fiber laser cutting machine on the G Industries shop floor, with nesting layout visible on the control screen"
+        image={hero.image.src}
+        imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Machinery & Equipment' }]}
-        eyebrow="Manufacturing Equipment"
-        title="Precision machinery, continuously modernized."
-        subtitle="A continuously modernized machine shop — anchored by recent (2022–2026) additions — gives G Industries the range to cut, weld, form, and finish to exacting tolerances."
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        subtitle={hero.subtitle}
       />
 
       <section className="section-pad">
@@ -122,19 +38,17 @@ export default function MachineryPage() {
             <div className="eyebrow">On the Shop Floor</div>
             <h2>A continuously modernized machine shop</h2>
             <p>
-              Anchored by recent (2022–2026) additions, this equipment base gives G&nbsp;Industries the range to
-              cut, weld, form, and finish to exacting tolerances across every unit — powering the{' '}
-              <Link href="/manufacturing-fabrication">structural fabrication</Link> and{' '}
+              {intro} — powering the <Link href="/manufacturing-fabrication">structural fabrication</Link> and{' '}
               <Link href="/engineering-design">engineering &amp; design</Link> work carried out at the{' '}
               <Link href="/facilities">Hyderabad facility</Link>.
             </p>
           </Reveal>
 
           <div className="machine-grid reveal-group">
-            {MACHINES.map((m, i) => (
-              <Reveal key={m.title} className="machine-card" index={i}>
+            {machines.map((m, i) => (
+              <Reveal key={i} className="machine-card" index={i}>
                 <figure>
-                  <Image src={m.src} alt={m.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
+                  <Image src={m.image.src} alt={m.image.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
                 </figure>
                 <div className="mc-body">
                   <h3>{m.title}</h3>
@@ -159,11 +73,11 @@ export default function MachineryPage() {
                 </tr>
               </thead>
               <tbody>
-                {SPEC_ROWS.map((row, i) => (
+                {specRows.map((row, i) => (
                   <tr key={i}>
-                    <td>{row[0]}</td>
-                    <td>{row[1]}</td>
-                    <td className="yr">{row[2]}</td>
+                    <td>{row.equipment}</td>
+                    <td>{row.spec}</td>
+                    <td className="yr">{row.year}</td>
                   </tr>
                 ))}
               </tbody>
@@ -172,9 +86,9 @@ export default function MachineryPage() {
         </div>
       </section>
 
-      <FAQSection items={FAQS} eyebrow="Common Questions" title="Machinery & equipment, answered" surface />
+      <FAQSection items={faqs} eyebrow="Common Questions" title="Machinery & equipment, answered" surface />
 
-      <ContactCta image="/quality-images/Factory image.png" />
+      <ContactCta image={ctaImage.src} />
     </>
   );
 }

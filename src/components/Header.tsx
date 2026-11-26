@@ -4,35 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-
-type NavLeaf = { label: string; href: string };
-type NavItem = NavLeaf | { label: string; children: NavLeaf[] };
-
-const NAV_ITEMS: NavItem[] = [
-  { label: 'About', href: '/about' },
-  {
-    label: 'Capabilities',
-    children: [
-      { label: 'Engineering & Design', href: '/engineering-design' },
-      { label: 'Manufacturing & Fabrication', href: '/manufacturing-fabrication' },
-      { label: 'Machinery & Equipment', href: '/machinery' },
-    ],
-  },
-  {
-    label: 'Industries',
-    children: [
-      { label: 'Industries We Serve', href: '/industries' },
-      { label: 'BESS Solutions', href: '/bess-solutions' },
-    ],
-  },
-  { label: 'Shop', href: '/products' },
-  { label: 'Facilities', href: '/facilities' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Quality', href: '/quality-certifications' },
-  { label: 'Clients', href: '/clients' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-];
+import type { HeaderContent } from '@/content/pages/header';
 
 function ChevronIcon() {
   return (
@@ -42,7 +14,7 @@ function ChevronIcon() {
   );
 }
 
-export default function Header() {
+export default function Header({ content }: { content: HeaderContent }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -80,21 +52,21 @@ export default function Header() {
   }, []);
 
   const isLeafActive = (href: string) => pathname === href;
-  const isParentActive = (children: NavLeaf[]) => children.some((c) => c.href === pathname);
+  const isParentActive = (children: { href: string }[]) => children.some((c) => c.href === pathname);
 
   return (
     <header ref={headerRef} className={`site-header${scrolled ? ' is-scrolled' : ''}${mobileOpen ? ' nav-open' : ''}`}>
       <div className="container">
         <Link href="/" className="brand">
-          <Image src="/quality-images/logo.png" alt="G Industries logo" width={450} height={300} priority />
+          <Image src={content.logo.src} alt={content.logo.alt} width={450} height={300} priority />
         </Link>
 
         <nav className={`nav-links${mobileOpen ? ' is-open' : ''}`} id="navLinks">
-          {NAV_ITEMS.map((item) => {
-            if ('href' in item) {
+          {content.navItems.map((item) => {
+            if (item.children.length === 0) {
               return (
                 <Link
-                  key={item.href}
+                  key={item.label}
                   href={item.href}
                   className={isLeafActive(item.href) ? 'is-active' : ''}
                   aria-current={isLeafActive(item.href) ? 'page' : undefined}
@@ -147,8 +119,8 @@ export default function Header() {
         </nav>
 
         <div className="nav-cta">
-          <Link href="/contact" className="btn btn-outline-light desktop-only">
-            Talk to Us
+          <Link href={content.ctaHref} className="btn btn-outline-light desktop-only">
+            {content.ctaLabel}
           </Link>
           <button
             className={`nav-toggle${mobileOpen ? ' is-open' : ''}`}

@@ -1,31 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { IconStructural, IconShieldCheck, IconDroplet } from '@/components/icons';
 import { pageMetadata, SITE_NAME, SITE_URL } from '@/lib/seo';
-
-const FAQS = [
-  {
-    q: 'What is a BESS container, and why does it need specialized fabrication?',
-    a: 'A BESS (Battery Energy Storage System) container is a structural enclosure that houses battery modules for grid-scale or industrial energy storage. Because it must manage heat, protect sensitive electronics, and carry significant structural load over years of continuous duty, it requires purpose-engineered fabrication rather than a standard shipping container.',
-  },
-  {
-    q: 'What container sizes does G Industries manufacture for battery energy storage systems?',
-    a: 'G Industries manufactures both 10-ft compact BESS containers for smaller, high-performance deployments and 20-ft full-scale BESS containers for large industrial energy-storage infrastructure.',
-  },
-  {
-    q: 'What engineering factors go into a G Industries BESS container design?',
-    a: 'Every BESS container is engineered around three priorities: structural integrity (steel I-beam chassis construction built for heavy, continuous loads), thermal management (enclosure design suited to battery heat demands), and operational safety (fabricated and inspected under the same ISO 9001:2015 Quality Management System as all other work).',
-  },
-  {
-    q: 'Has G Industries delivered BESS containers for a real energy storage project?',
-    a: 'Yes — G Industries manufactured custom 10-foot and 20-foot BESS containers for Medha Servo Drives, a project spanning large-scale energy storage, railways, and EV applications.',
-  },
-];
+import { getPageContent } from '@/lib/content';
+import { BESS_SOLUTIONS_DEFAULTS } from '@/content/pages/bess-solutions';
 
 export const metadata: Metadata = pageMetadata({
   title: 'BESS Container Manufacturer — Battery Storage Solutions',
@@ -49,78 +31,57 @@ const BESS_JSON_LD = {
     '@type': 'OfferCatalog',
     name: 'BESS Container Configurations',
     itemListElement: [
-      {
-        '@type': 'Offer',
-        position: 1,
-        itemOffered: {
-          '@type': 'Product',
-          name: 'Compact BESS Container (10 ft)',
-          description: 'Compact, high-performance energy storage enclosure for smaller deployments.',
-        },
-      },
-      {
-        '@type': 'Offer',
-        position: 2,
-        itemOffered: {
-          '@type': 'Product',
-          name: 'Full-Scale BESS Container (20 ft)',
-          description: 'Full-scale industrial BESS infrastructure enclosure for large energy-storage deployments.',
-        },
-      },
+      { '@type': 'Offer', position: 1, itemOffered: { '@type': 'Product', name: 'Compact BESS Container (10 ft)', description: 'Compact, high-performance energy storage enclosure for smaller deployments.' } },
+      { '@type': 'Offer', position: 2, itemOffered: { '@type': 'Product', name: 'Full-Scale BESS Container (20 ft)', description: 'Full-scale industrial BESS infrastructure enclosure for large energy-storage deployments.' } },
     ],
   },
 };
 
-export default function BessSolutionsPage() {
+const FOCUS_ICONS = [IconStructural, IconDroplet, IconShieldCheck];
+
+export default async function BessSolutionsPage() {
+  const content = await getPageContent('bess-solutions', BESS_SOLUTIONS_DEFAULTS);
+  const { hero, image1, caption1, image2, caption2, eyebrow, heading, copy, specs, focus, trackRecord, expansion, faqs, ctaImage } = content;
+
   return (
     <>
       {/* eslint-disable-next-line @next/next/no-danger -- static, server-rendered JSON-LD from our own content */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BESS_JSON_LD) }} />
       <PageHero
-        image="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png"
-        imageAlt="Large welded steel container chassis under fabrication at the G Industries BESS manufacturing unit"
+        image={hero.image.src}
+        imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Industries' }, { label: 'BESS Solutions' }]}
-        eyebrow="Key Specialization"
-        title="BESS container systems, engineered for severe duty."
-        subtitle="Custom-engineered container ecosystems for Battery Energy Storage Systems (BESS) and severe-duty industrial applications — engineered for thermal management, structural integrity, and operational safety."
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        subtitle={hero.subtitle}
       />
 
       <section className="section-pad">
         <div className="container bess-grid">
           <Reveal className="bess-media">
             <figure>
-              <Image src="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png" alt="Large welded steel container chassis under fabrication, with G Industries signage visible" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>Container structural base under fabrication — Unit 2, BESS Manufacturing</figcaption>
+              <Image src={image1.src} alt={image1.alt} width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption>{caption1}</figcaption>
             </figure>
             <figure>
-              <Image src="/quality-images/f31fc7ce-e1bc-4df0-8d2f-bfa8ce511d00.png" alt="Steel I-beam chassis frame for a battery energy storage container, raised on support legs" width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>I-beam chassis, engineered for heavy structural loads</figcaption>
+              <Image src={image2.src} alt={image2.alt} width={1448} height={1086} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption>{caption2}</figcaption>
             </figure>
           </Reveal>
           <Reveal className="bess-copy">
-            <div className="eyebrow">Custom-Engineered Container Ecosystems</div>
-            <h2>Built for thermal management and structural integrity</h2>
-            <p>
-              G&nbsp;Industries specializes in heavily optimized enclosure systems for Battery Energy Storage
-              Systems (BESS) and severe-duty industrial applications — engineered for thermal management,
-              structural integrity, and operational safety. BESS is one of the <Link href="/industries">industries
-              we serve</Link>, alongside Railways, EV, and Electronics.
-            </p>
+            <div className="eyebrow">{eyebrow}</div>
+            <h2>{heading}</h2>
+            <p>{copy}</p>
             <div className="bess-specs">
-              <div className="bess-spec">
-                <div className="tag">10 ft</div>
-                <div>
-                  <h4>Compact BESS Containers</h4>
-                  <p>Compact, high-performance energy storage enclosures.</p>
+              {specs.map((spec, i) => (
+                <div className="bess-spec" key={i}>
+                  <div className="tag">{spec.tag}</div>
+                  <div>
+                    <h4>{spec.title}</h4>
+                    <p>{spec.copy}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="bess-spec">
-                <div className="tag">20 ft</div>
-                <div>
-                  <h4>Full-Scale BESS Containers</h4>
-                  <p>Full-scale industrial BESS infrastructure solutions.</p>
-                </div>
-              </div>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -129,25 +90,20 @@ export default function BessSolutionsPage() {
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Engineering Focus</div>
-            <h2>Every container is a structural project, not a box</h2>
+            <div className="eyebrow">{focus.eyebrow}</div>
+            <h2>{focus.heading}</h2>
           </Reveal>
           <div className="capability-grid reveal-group">
-            <Reveal className="capability-card" index={0}>
-              <div className="icon"><IconStructural /></div>
-              <h3>Structural Integrity</h3>
-              <p>Steel I-beam chassis construction engineered for heavy structural loads and long service life.</p>
-            </Reveal>
-            <Reveal className="capability-card" index={1}>
-              <div className="icon"><IconDroplet /></div>
-              <h3>Thermal Management</h3>
-              <p>Enclosure design accounts for the thermal demands of battery energy storage in continuous duty.</p>
-            </Reveal>
-            <Reveal className="capability-card" index={2}>
-              <div className="icon"><IconShieldCheck /></div>
-              <h3>Operational Safety</h3>
-              <p>Built and inspected under the same ISO 9001:2015 Quality Management System as every delivery.</p>
-            </Reveal>
+            {focus.items.map((item, i) => {
+              const Icon = FOCUS_ICONS[i] ?? FOCUS_ICONS[FOCUS_ICONS.length - 1];
+              return (
+                <Reveal key={i} className="capability-card" index={i}>
+                  <div className="icon"><Icon /></div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -156,23 +112,21 @@ export default function BessSolutionsPage() {
         <div className="container">
           <Reveal className="section-head">
             <div className="eyebrow">Recent Track Record</div>
-            <h2>Delivered: BESS Containers for Medha Servo Drives</h2>
+            <h2>Delivered: BESS Containers for {trackRecord.client}</h2>
           </Reveal>
           <Reveal className="project-list">
             <div className="project-row">
               <div className="pnum">01</div>
               <div>
-                <div className="client">Medha Servo Drives</div>
-                <h3>BESS Container, Railways &amp; EV</h3>
+                <div className="client">{trackRecord.client}</div>
+                <h3>{trackRecord.title}</h3>
               </div>
-              <p className="desc">
-                Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.
-              </p>
+              <p className="desc">{trackRecord.desc}</p>
               <figure>
                 <div className="figure-media">
-                  <Image src="/quality-images/file_00000000d7bc81f49164140fc69f24c1.png" alt="Steel I-beam chassis frame for a battery energy storage container" fill sizes="(max-width: 900px) 100vw, 25vw" />
+                  <Image src={trackRecord.image.src} alt={trackRecord.image.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
                 </div>
-                <figcaption>I-beam chassis, Unit 2</figcaption>
+                <figcaption>{trackRecord.caption}</figcaption>
               </figure>
             </div>
           </Reveal>
@@ -182,19 +136,16 @@ export default function BessSolutionsPage() {
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="facility-stat" style={{ border: '1px solid var(--line)', maxWidth: 420, textAlign: 'left', padding: 'var(--space-4)' }}>
-            <div className="stat-num">30,000 sft</div>
-            <div className="stat-label">Unit 2 — BESS Container Manufacturing (active expansion)</div>
+            <div className="stat-num">{expansion.num}</div>
+            <div className="stat-label">{expansion.label}</div>
           </Reveal>
-          <p style={{ color: 'var(--ink-soft)', marginTop: 'var(--space-3)' }}>
-            Standard BESS container configurations are on track to join the <Link href="/products">product
-            catalog</Link> — until then, every size is available as a custom fabrication engagement.
-          </p>
+          <p style={{ color: 'var(--ink-soft)', marginTop: 'var(--space-3)' }}>{expansion.note}</p>
         </div>
       </section>
 
-      <FAQSection items={FAQS} eyebrow="Common Questions" title="BESS containers, answered" />
+      <FAQSection items={faqs} eyebrow="Common Questions" title="BESS containers, answered" />
 
-      <ContactCta image="/quality-images/file_000000005b9481fabfbaf36350a99db5 (1).png" />
+      <ContactCta image={ctaImage.src} />
     </>
   );
 }

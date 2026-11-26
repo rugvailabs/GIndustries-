@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
     qualities: [70, 75, 80],
     // Prefer AVIF (smaller) over WebP where the requesting browser supports it.
     formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        // Admin-uploaded media served from Cloudinary.
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
   turbopack: {
     rules: {

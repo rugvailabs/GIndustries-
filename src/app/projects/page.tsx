@@ -7,25 +7,8 @@ import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { IconArrowRight } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
-
-const FAQS = [
-  {
-    q: 'What kind of projects has G Industries delivered?',
-    a: 'Documented deliveries span BESS (Battery Energy Storage System) containers for Medha Servo Drives, heavy industrial power containers for BHEL, and a precision CNC machine body for VEM Technologies — covering energy storage, railways, EV, and heavy machinery sectors.',
-  },
-  {
-    q: 'Has G Industries worked with BHEL?',
-    a: 'Yes. G Industries successfully delivered two heavy industrial-grade specialized power containers for Bharat Heavy Electricals Limited (BHEL), one of India’s largest power-sector public sector enterprises.',
-  },
-  {
-    q: 'Does G Industries manufacture precision CNC machine bodies?',
-    a: 'Yes — G Industries engineered and manufactured a high-precision CNC Machine Body for VEM Technologies, a deliverable that called on the full design-to-finish chain, from structural simulation through final dimensional inspection.',
-  },
-  {
-    q: 'Can G Industries handle large-scale, multi-sector industrial contracts?',
-    a: 'Yes. The Medha Servo Drives engagement alone spanned three sectors — BESS energy storage, railways, and electric vehicles — demonstrating the single-source capability that now supports 25+ organizations across multiple industries.',
-  },
-];
+import { getPageContent } from '@/lib/content';
+import { PROJECTS_DEFAULTS } from '@/content/pages/projects';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Projects & Case Studies',
@@ -36,56 +19,26 @@ export const metadata: Metadata = pageMetadata({
   imageAlt: 'BESS container chassis fabrication on the G Industries shop floor',
 });
 
-const PROJECTS = [
-  {
-    num: '01',
-    client: 'Medha Servo Drives',
-    title: 'BESS Container, Railways & EV',
-    desc: 'Manufactured custom 10-foot and 20-foot BESS Containers for large-scale energy storage deployments.',
-    note: "Spanning three of G Industries' core sectors — BESS energy storage, railways, and electric vehicles — in a single engagement.",
-    src: '/quality-images/file_00000000d7bc81f49164140fc69f24c1.png',
-    alt: 'Welded steel BESS container structural base and chassis in the fabrication shop',
-    cap: 'Container chassis fabrication, Unit 2',
-  },
-  {
-    num: '02',
-    client: 'BHEL',
-    title: 'Power Containers',
-    desc: 'Successfully delivered two heavy industrial-grade specialized containers for Bharat Heavy Electricals Limited.',
-    note: 'BHEL is one of India’s largest power-sector public sector enterprises, engaged in heavy electrical equipment manufacturing.',
-    src: '/quality-images/Bhel power containers.png',
-    alt: 'Heavy industrial-grade power container delivered for BHEL',
-    cap: 'Sheet-metal enclosure fabrication, Unit 1',
-  },
-  {
-    num: '03',
-    client: 'VEM Technologies',
-    title: 'CNC Machine Body',
-    desc: 'Engineered and manufactured a high-precision CNC Machine Body to exacting tolerances.',
-    note: 'A deliverable that called on the full design-to-finish chain, from structural simulation through to final dimensional inspection.',
-    src: '/quality-images/Vem cnc machine body.png',
-    alt: 'Precision-fabricated stainless steel CNC machine body for VEM Technologies',
-    cap: 'Precision-machined component, ex-works',
-  },
-];
+export default async function ProjectsPage() {
+  const content = await getPageContent('projects', PROJECTS_DEFAULTS);
+  const { hero, items, summary, sidebarStats, faqs } = content;
 
-export default function ProjectsPage() {
   return (
     <>
       <PageHero
-        image="/quality-images/file_00000000d7bc81f49164140fc69f24c1.png"
-        imageAlt="BESS container chassis fabrication on the G Industries shop floor, with G Industries signage visible"
+        image={hero.image.src}
+        imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
-        eyebrow="Recent Track Record"
-        title="Proven capabilities. Delivered."
-        subtitle="From energy storage to heavy industrial machinery, G Industries has a growing portfolio of high-stakes, high-precision deliveries."
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        subtitle={hero.subtitle}
       />
 
       <section className="section-pad">
         <div className="container">
           <div className="project-list reveal-group">
-            {PROJECTS.map((p, i) => (
-              <Reveal key={p.num} className="project-row" index={i}>
+            {items.map((p, i) => (
+              <Reveal key={i} className="project-row" index={i}>
                 <div className="pnum">{p.num}</div>
                 <div>
                   <div className="client">{p.client}</div>
@@ -97,7 +50,7 @@ export default function ProjectsPage() {
                 </div>
                 <figure>
                   <div className="figure-media">
-                    <Image src={p.src} alt={p.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
+                    <Image src={p.image.src} alt={p.image.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
                   </div>
                   <figcaption>{p.cap}</figcaption>
                 </figure>
@@ -112,37 +65,26 @@ export default function ProjectsPage() {
           <Reveal>
             <div className="with-sidebar">
               <div>
-                <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem', maxWidth: '62ch' }}>
-                  These three engagements represent G&nbsp;Industries&apos; documented track record to date — but
-                  the same single-source capability (design, simulation, fabrication, and finishing under one roof)
-                  now supports 25+ organizations across railways, EV, electronics, agri-tech, and switchgear
-                  sectors.
-                </p>
+                <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem', maxWidth: '62ch' }}>{summary}</p>
                 <Link href="/clients" className="btn btn-outline-dark" style={{ marginTop: 'var(--space-3)' }}>
                   See all clients <IconArrowRight />
                 </Link>
               </div>
               <div className="sidebar-card">
                 <h4>At a Glance</h4>
-                <div className="sidebar-stat">
-                  <span className="label">Founded</span>
-                  <span className="value">2021</span>
-                </div>
-                <div className="sidebar-stat">
-                  <span className="label">Quality System</span>
-                  <span className="value">ISO 9001:2015</span>
-                </div>
-                <div className="sidebar-stat">
-                  <span className="label">Workforce</span>
-                  <span className="value">50+</span>
-                </div>
+                {sidebarStats.map((s, i) => (
+                  <div className="sidebar-stat" key={i}>
+                    <span className="label">{s.label}</span>
+                    <span className="value">{s.value}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <FAQSection items={FAQS} eyebrow="Common Questions" title="Projects & case studies, answered" />
+      <FAQSection items={faqs} eyebrow="Common Questions" title="Projects & case studies, answered" />
 
       <ContactCta />
     </>

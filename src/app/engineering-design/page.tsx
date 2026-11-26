@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { IconCube, IconWave, IconStructural } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
+import { getPageContent } from '@/lib/content';
+import { ENGINEERING_DESIGN_DEFAULTS } from '@/content/pages/engineering-design';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Engineering & Design',
@@ -17,74 +18,35 @@ export const metadata: Metadata = pageMetadata({
   imageAlt: 'Precision-machined stainless steel bracket engineered at G Industries',
 });
 
-const FAQS = [
-  {
-    q: 'Does G Industries offer 3D CAD modeling and engineering design services?',
-    a: 'Yes. G Industries provides full 3D parametric CAD modeling for complex assemblies, custom enclosures, and structural systems, engineering every component to the exact tolerances it needs to hold in service.',
-  },
-  {
-    q: 'What is Finite Element Analysis (FEA), and why does it matter before fabrication?',
-    a: 'FEA is computer-based stress, thermal, and structural simulation that tests how a design will behave under real operating conditions. G Industries runs FEA on every design before cutting metal, catching weaknesses early and reducing costly rework after fabrication has begun.',
-  },
-  {
-    q: 'Can G Industries validate a design under real-world load and environmental conditions?',
-    a: 'Yes — structural simulation and real-world load-case modelling are standard practice, particularly for severe-duty applications such as BESS enclosures and railway components that must perform reliably under extreme operational and environmental stress.',
-  },
-  {
-    q: 'Is engineering and design handled in-house at G Industries?',
-    a: (
-      <>
-        Yes. Design and simulation are carried out internally, under the same roof as fabrication and finishing —
-        so a validated CAD model moves directly into production without being handed off to a separate vendor.
-        See <Link href="/manufacturing-fabrication">Manufacturing &amp; Fabrication</Link> for what happens after a
-        design is approved.
-      </>
-    ),
-    aText:
-      'Yes. Design and simulation are carried out internally, under the same roof as fabrication and finishing — so a validated CAD model moves directly into production without being handed off to a separate vendor. See Manufacturing & Fabrication for what happens after a design is approved.',
-  },
-];
+const CAPABILITY_ICONS = [IconCube, IconWave, IconStructural];
 
-const GALLERY = [
-  { src: '/quality-images/Product 1.png', alt: 'Precision-machined stainless steel bracket with sleeve, alternate angle' },
-  { src: '/quality-images/IMG_20261021_104353.jpg', alt: 'Precision-machined stainless steel T-bracket with sensor port cutout' },
-  { src: '/quality-images/IMG_20261021_104535.jpg', alt: 'Flanged cone component, top-down view showing bolt pattern' },
-  { src: '/quality-images/IMG_20261021_104554.jpg', alt: 'Flanged cone component with square mounting bracket and bolts' },
-  { src: '/quality-images/IMG_20261021_104750.jpg', alt: 'Formed steel bowl-shaped bracket component, side angle' },
-  { src: '/quality-images/IMG_20261021_104831.jpg', alt: 'Welded stainless steel mesh grille disc component, overhead view' },
-];
+export default async function EngineeringDesignPage() {
+  const content = await getPageContent('engineering-design', ENGINEERING_DESIGN_DEFAULTS);
+  const { hero, design, simulate, capabilities, gallery, faqs, ctaImage } = content;
 
-export default function EngineeringDesignPage() {
   return (
     <>
       <PageHero
-        image="/quality-images/Product 1.png"
-        imageAlt="Precision-machined stainless steel bracket engineered at G Industries"
+        image={hero.image.src}
+        imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Engineering & Design' }]}
-        eyebrow="Our Advantage"
-        title="CAD to finite element analysis, under one roof."
-        subtitle="Every G Industries project begins at the design desk — full 3D modeling and simulation validate performance long before fabrication starts."
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        subtitle={hero.subtitle}
       />
 
       <section className="section-pad">
         <div className="container">
           <Reveal className="split-section">
             <div className="split-copy">
-              <div className="eyebrow">Design</div>
-              <h2>Advanced CAD Modeling</h2>
-              <p>
-                Full 3D parametric design for complex assemblies, custom enclosures, and structural systems —
-                engineered to exact specifications. Every component is modeled to the tolerances it must hold in
-                service, not approximated on the shop floor.
-              </p>
-              <p>
-                This discipline underpins every capability that follows: the BESS container chassis, switchgear
-                enclosures, and precision brackets shown across this site all begin as a fully specified CAD model.
-              </p>
+              <div className="eyebrow">{design.eyebrow}</div>
+              <h2>{design.heading}</h2>
+              <p>{design.para1}</p>
+              <p>{design.para2}</p>
             </div>
             <div className="split-media">
-              <Image src="/quality-images/IMG_20261021_104523.jpg" alt="Fabricated stainless steel cone enclosure with mounting flange, engineered to a precise bolt pattern" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>Enclosure housing — flange and bolt pattern engineered to spec</figcaption>
+              <Image src={design.image.src} alt={design.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption>{design.caption}</figcaption>
             </div>
           </Reveal>
         </div>
@@ -94,21 +56,14 @@ export default function EngineeringDesignPage() {
         <div className="container">
           <Reveal className="split-section reverse">
             <div className="split-copy">
-              <div className="eyebrow">Simulate</div>
-              <h2>Finite Element Analysis &amp; Structural Simulation</h2>
-              <p>
-                Stress, thermal, and structural simulation validates every design before a single piece of metal is
-                cut — reducing risk and rework. Real-world load-case modelling ensures performance under extreme
-                operational and environmental conditions.
-              </p>
-              <p>
-                For severe-duty applications like BESS enclosures and railway components, this step catches design
-                issues that would otherwise surface only after fabrication — when they are far more expensive to fix.
-              </p>
+              <div className="eyebrow">{simulate.eyebrow}</div>
+              <h2>{simulate.heading}</h2>
+              <p>{simulate.para1}</p>
+              <p>{simulate.para2}</p>
             </div>
             <div className="split-media">
-              <Image src="/quality-images/IMG_20261021_104739.jpg" alt="Formed steel bowl-shaped bracket component engineered for load-bearing performance" width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>Formed bracket — geometry shaped for structural load paths</figcaption>
+              <Image src={simulate.image.src} alt={simulate.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption>{simulate.caption}</figcaption>
             </div>
           </Reveal>
         </div>
@@ -117,26 +72,21 @@ export default function EngineeringDesignPage() {
       <section className="section-pad">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">Our Advantage</div>
-            <h2>Design, simulate, then fabricate</h2>
-            <p>One partner carries every design through to a validated, fabrication-ready specification.</p>
+            <div className="eyebrow">{capabilities.eyebrow}</div>
+            <h2>{capabilities.heading}</h2>
+            <p>{capabilities.intro}</p>
           </Reveal>
           <div className="capability-grid reveal-group">
-            <Reveal className="capability-card" index={0}>
-              <div className="icon"><IconCube /></div>
-              <h3>Advanced CAD Modeling</h3>
-              <p>Full 3D parametric design for complex assemblies, custom enclosures, and structural systems.</p>
-            </Reveal>
-            <Reveal className="capability-card" index={1}>
-              <div className="icon"><IconWave /></div>
-              <h3>Finite Element Analysis</h3>
-              <p>Stress, thermal, and structural simulation validates every design before fabrication begins.</p>
-            </Reveal>
-            <Reveal className="capability-card" index={2}>
-              <div className="icon"><IconStructural /></div>
-              <h3>Structural Simulation</h3>
-              <p>Real-world load-case modelling for performance under extreme operational conditions.</p>
-            </Reveal>
+            {capabilities.items.map((item, i) => {
+              const Icon = CAPABILITY_ICONS[i] ?? CAPABILITY_ICONS[CAPABILITY_ICONS.length - 1];
+              return (
+                <Reveal key={i} className="capability-card" index={i}>
+                  <div className="icon"><Icon /></div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -144,20 +94,20 @@ export default function EngineeringDesignPage() {
       <section className="section-pad precision-strip">
         <div className="container">
           <Reveal className="section-head" style={{ marginBottom: 'var(--space-4)' }}>
-            <div className="eyebrow on-dark">Engineering Output</div>
-            <h2>Precision carried from screen to shop floor</h2>
+            <div className="eyebrow on-dark">{gallery.eyebrow}</div>
+            <h2>{gallery.heading}</h2>
           </Reveal>
           <Reveal className="gallery-grid">
-            {GALLERY.map((g) => (
-              <figure key={g.src}><div className="gallery-media"><Image src={g.src} alt={g.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
+            {gallery.images.map((g, i) => (
+              <figure key={i}><div className="gallery-media"><Image src={g.image.src} alt={g.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
             ))}
           </Reveal>
         </div>
       </section>
 
-      <FAQSection items={FAQS} eyebrow="Common Questions" title="Engineering & design, answered" />
+      <FAQSection items={faqs} eyebrow="Common Questions" title="Engineering & design, answered" />
 
-      <ContactCta image="/quality-images/IMG_20261021_104523.jpg" />
+      <ContactCta image={ctaImage.src} />
     </>
   );
 }

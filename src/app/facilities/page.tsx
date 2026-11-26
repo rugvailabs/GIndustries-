@@ -5,25 +5,8 @@ import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { pageMetadata } from '@/lib/seo';
-
-const FAQS = [
-  {
-    q: 'What is the total manufacturing area of the G Industries facility?',
-    a: 'The Hyderabad facility spans 13,000 sft (Unit 1, covered fabrication area) and 30,000 sft (Unit 2, BESS container manufacturing), with a further 40,000 sft available for expansion.',
-  },
-  {
-    q: 'What is each unit of the G Industries facility used for?',
-    a: 'Unit 1 houses heavy structural fabrication and welding, and Unit 2 is purpose-built for BESS (Battery Energy Storage System) container manufacturing.',
-  },
-  {
-    q: 'Is G Industries currently expanding its manufacturing capacity?',
-    a: 'Yes. Unit 2 (BESS Container Manufacturing) is an active expansion project currently being built out alongside the established Unit 1 fabrication shop, with 40,000 sft of additional land available for further growth.',
-  },
-  {
-    q: 'Does the facility have a dedicated quality inspection area?',
-    a: 'Yes — the registered plant layout includes a dedicated QA / Final Inspection area alongside Fabrication & Welding, Stores, Office, and Dispatch sections, all organized around a single-source production workflow.',
-  },
-];
+import { getPageContent } from '@/lib/content';
+import { FACILITIES_DEFAULTS } from '@/content/pages/facilities';
 
 export const metadata = pageMetadata({
   title: 'Infrastructure & Facilities',
@@ -34,57 +17,33 @@ export const metadata = pageMetadata({
   imageAlt: 'Wide view of the G Industries fabrication shop floor aisle with material handling area',
 });
 
-const FACILITY_STATS = [
-  { num: '13,000 sft', label: 'Unit 1 Covered Area' },
-  { num: '30,000 sft', label: 'Unit 2 — BESS Container Mfg.' },
-  { num: '40,000 sft', label: 'Available for Expansion' },
-];
+export default async function FacilitiesPage() {
+  const content = await getPageContent('facilities', FACILITIES_DEFAULTS);
+  const { hero, stats, expansionNote, registered, layoutImages, layoutCaption, utilities, faqs, ctaImage } = content;
 
-const UTILITY_GALLERY = [
-  {
-    src: '/quality-images/file_00000000e1d88208bd9b5a11439c3e7b.png',
-    alt: "Compressed air treatment skid with storage tanks supporting the fabrication shop",
-    cap: 'Compressed Air Treatment Skid',
-  },
-  {
-    src: '/quality-images/Factory image.png',
-    alt: 'Fabrication shop floor aisle with raw material staging',
-    cap: 'Material Handling Aisle, Unit 1',
-  },
-  {
-    src: '/quality-images/Inspection room.png',
-    alt: 'Quality Department entrance, alternate view',
-    cap: 'Quality Department, Unit 1',
-  },
-];
-
-export default function FacilitiesPage() {
   return (
     <>
       <PageHero
-        image="/quality-images/Factory image.png"
-        imageAlt="Wide view of the G Industries fabrication shop floor aisle with material handling area"
-        eyebrow="Facilities"
-        title="Built for scale. Engineered for precision."
-        subtitle="A continuously modernized facility footprint across Hyderabad, purpose-built for heavy fabrication and BESS container manufacturing."
+        image={hero.image.src}
+        imageAlt={hero.image.alt}
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        subtitle={hero.subtitle}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Facilities' }]}
       />
 
       <section className="section-pad">
         <div className="container">
           <Reveal className="facility-stats">
-            {FACILITY_STATS.map((s) => (
-              <div className="facility-stat" key={s.label}>
+            {stats.map((s, i) => (
+              <div className="facility-stat" key={i}>
                 <div className="stat-num">{s.num}</div>
                 <div className="stat-label">{s.label}</div>
               </div>
             ))}
           </Reveal>
           <Reveal>
-            <p style={{ color: 'var(--ink-soft)', maxWidth: '72ch' }}>
-              Unit 2 (BESS Container Manufacturing) is an active expansion project — currently being built out
-              to extend G Industries&apos; single-source capability, alongside the established Unit 1 fabrication shop.
-            </p>
+            <p style={{ color: 'var(--ink-soft)', maxWidth: '72ch' }}>{expansionNote}</p>
           </Reveal>
         </div>
       </section>
@@ -92,34 +51,20 @@ export default function FacilitiesPage() {
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container with-sidebar">
           <Reveal>
-            <div className="eyebrow">Registered Facility</div>
-            <h2>A purpose-built home for precision manufacturing</h2>
-            <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem', marginBottom: 'var(--space-3)' }}>
-              The registered plant sits on Sy. 710, Gandimaisamma Mandal, Dundigal, Hyderabad, Medchal Malkajgiri,
-              Telangana — comprising Shed-2 and Shed-2A, with dedicated Fabrication &amp; Welding, Stores, Office,
-              QA / Final Inspection, and Dispatch areas.
-            </p>
-            <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem' }}>
-              Every area of the facility is organized around the single-source workflow — raw material intake,
-              fabrication and welding, quality inspection, and dispatch — keeping design, fabrication, and
-              finishing under one roof.
-            </p>
+            <div className="eyebrow">{registered.eyebrow}</div>
+            <h2>{registered.heading}</h2>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem', marginBottom: 'var(--space-3)' }}>{registered.para1}</p>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem' }}>{registered.para2}</p>
           </Reveal>
           <Reveal>
             <div className="sidebar-card">
               <h4>At a Glance</h4>
-              <div className="sidebar-stat">
-                <span className="label">Founded</span>
-                <span className="value">2021</span>
-              </div>
-              <div className="sidebar-stat">
-                <span className="label">Workforce</span>
-                <span className="value">50+</span>
-              </div>
-              <div className="sidebar-stat">
-                <span className="label">Quality System</span>
-                <span className="value">ISO 9001:2015</span>
-              </div>
+              {registered.sidebarStats.map((s, i) => (
+                <div className="sidebar-stat" key={i}>
+                  <span className="label">{s.label}</span>
+                  <span className="value">{s.value}</span>
+                </div>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -134,56 +79,22 @@ export default function FacilitiesPage() {
           </Reveal>
           <Reveal className="facility-gallery">
             <figure>
-              <Image
-                src="/quality-images/file_0000000053588208905e9a3ed5bd2593.png"
-                alt="Official G Industries registered plant layout plaque, showing Shed 2, Shed 2A, and a Finished Goods Storage Area sign"
-                width={2400}
-                height={1800}
-                sizes="(max-width: 900px) 100vw, 43vw"
-              />
-              <figcaption className="gallery-cap">
-                Registered plant layout — Shed-2 / Shed-2A, Sy. 710, Gandimaisamma Mandal, Dundigal
-              </figcaption>
+              <Image src={layoutImages[0].image.src} alt={layoutImages[0].image.alt} width={2400} height={1800} sizes="(max-width: 900px) 100vw, 43vw" />
+              <figcaption className="gallery-cap">{layoutCaption}</figcaption>
             </figure>
             <div className="stack">
-              <figure>
-                <Image
-                  src="/quality-images/Inspection room.png"
-                  alt="Quality Department entrance with safety signage at the G Industries facility"
-                  width={1800}
-                  height={2400}
-                  sizes="(max-width: 900px) 50vw, 28vw"
-                />
-              </figure>
-              <figure>
-                <Image
-                  src="/quality-images/file_00000000c78c8208b0ae8e848644d348.png"
-                  alt="Store Room and Managing Director office entrances on the production floor"
-                  width={2400}
-                  height={1800}
-                  sizes="(max-width: 900px) 50vw, 28vw"
-                />
-              </figure>
+              {layoutImages.slice(1, 3).map((g, i) => (
+                <figure key={i}>
+                  <Image src={g.image.src} alt={g.image.alt} width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
+                </figure>
+              ))}
             </div>
             <div className="stack">
-              <figure>
-                <Image
-                  src="/quality-images/file_0000000009f08208b341c7d33a036206.png"
-                  alt="Fire extinguisher safety signage mounted on the facility wall"
-                  width={1800}
-                  height={2400}
-                  sizes="(max-width: 900px) 50vw, 28vw"
-                />
-              </figure>
-              <figure>
-                <Image
-                  src="/quality-images/file_00000000bf3c82088057776799a11bec.png"
-                  alt="Industrial air compressor and dryer unit supporting the facility's pneumatic systems"
-                  width={2400}
-                  height={1800}
-                  sizes="(max-width: 900px) 50vw, 28vw"
-                />
-              </figure>
+              {layoutImages.slice(3, 5).map((g, i) => (
+                <figure key={i}>
+                  <Image src={g.image.src} alt={g.image.alt} width={2400} height={1800} sizes="(max-width: 900px) 50vw, 28vw" />
+                </figure>
+              ))}
             </div>
           </Reveal>
         </div>
@@ -197,11 +108,11 @@ export default function FacilitiesPage() {
             <p>Compressed air, material handling, and laser cutting run alongside the full <Link href="/machinery">machinery and equipment list</Link> on the shop floor.</p>
           </Reveal>
           <div className="gallery-grid reveal-group">
-            {UTILITY_GALLERY.map((item, i) => (
-              <Reveal key={item.src} index={i}>
+            {utilities.map((item, i) => (
+              <Reveal key={i} index={i}>
                 <figure>
                   <div className="gallery-media">
-                    <Image src={item.src} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                    <Image src={item.image.src} alt={item.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
                   </div>
                   <figcaption>{item.cap}</figcaption>
                 </figure>
@@ -211,9 +122,9 @@ export default function FacilitiesPage() {
         </div>
       </section>
 
-      <FAQSection items={FAQS} eyebrow="Common Questions" title="Facilities, answered" />
+      <FAQSection items={faqs} eyebrow="Common Questions" title="Facilities, answered" />
 
-      <ContactCta />
+      <ContactCta image={ctaImage.src} />
     </>
   );
 }

@@ -5,6 +5,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
+import { getPageContent } from '@/lib/content';
+import { HEADER_DEFAULTS } from '@/content/pages/header';
+import { FOOTER_DEFAULTS } from '@/content/pages/footer';
+
+function absoluteUrl(src: string) {
+  return src.startsWith('http') ? src : `${SITE_URL}${src}`;
+}
 
 const kanit = Kanit({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-kanit', display: 'swap' });
 const dmSans = DM_Sans({
@@ -38,12 +45,11 @@ export const metadata: Metadata = {
   twitter,
 };
 
-const ORGANIZATION_JSON_LD = {
+const ORGANIZATION_JSON_LD_BASE = {
   '@context': 'https://schema.org',
   '@type': 'ManufacturingBusiness',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/quality-images/logo.png`,
   image: `${SITE_URL}/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg`,
   description: HOME_DESCRIPTION,
   foundingDate: '2021',
@@ -76,18 +82,28 @@ const ORGANIZATION_JSON_LD = {
   // verified source for either exists in the current site content yet.
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const [headerContent, footerContent] = await Promise.all([
+    getPageContent('global.header', HEADER_DEFAULTS),
+    getPageContent('global.footer', FOOTER_DEFAULTS),
+  ]);
+
+  const organizationJsonLd = {
+    ...ORGANIZATION_JSON_LD_BASE,
+    logo: absoluteUrl(headerContent.logo.src),
+  };
+
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${kanit.variable} ${dmSans.variable} ${inter.variable}`}>
       <body>
         {/* eslint-disable-next-line @next/next/no-danger -- static, server-rendered JSON-LD from our own content */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <Header />
+        <Header content={headerContent} />
         {children}
-        <Footer />
+        <Footer content={footerContent} />
         <WhatsAppFloat />
       </body>
     </html>

@@ -6,6 +6,8 @@ import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import { IconChain, IconShieldCheck, IconLayers, IconCube } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
+import { getPageContent } from '@/lib/content';
+import { ABOUT_DEFAULTS } from '@/content/pages/about';
 
 export const metadata: Metadata = pageMetadata({
   title: 'About Us — ISO 9001 Manufacturer, Hyderabad',
@@ -16,95 +18,44 @@ export const metadata: Metadata = pageMetadata({
   imageAlt: 'The G Industries team on the shop floor at the Hyderabad facility',
 });
 
-const JOURNEY = [
-  { year: '2021', title: 'Founded', copy: 'G Industries founded in Dundigal, Gandi Maisamma, Hyderabad, Telangana.' },
-  { year: '2022', title: 'Capacity Expansion', copy: 'Sheet rolling capability added, with 5mm forming capacity.' },
-  { year: '2023', title: 'Welding Capability Added', copy: 'Laser welding and TIG/MIG/ARC welding capability commissioned across the shop floor.' },
-  { year: '2024', title: 'Major Equipment Investment', copy: 'CNC press brake (Hindustan, 100T), Senfeng sheet & pipe laser cutting, and pipe bending equipment added.' },
-  { year: '2025', title: 'Continued Expansion', copy: 'Additional MIG welding (200A), a 20-ton power press, and a drilling machine commissioned.' },
-  { year: '2026', title: 'Unit 2 Commissioned', copy: 'Deburring machine and a 50-ton power press added; Unit 2 — a 30,000 sft BESS Container Manufacturing facility — under active expansion.' },
-];
+const PILLAR_ICONS = [IconChain, IconShieldCheck, IconCube, IconLayers];
 
-const FAQS = [
-  {
-    q: 'When was G Industries founded and where is it based?',
-    a: 'G Industries was founded in 2021 in Dundigal, Gandi Maisamma, Hyderabad, Telangana. The company operates as a single-source manufacturing partner, bringing design, simulation, fabrication, and finishing together under one roof.',
-  },
-  {
-    q: 'Is G Industries a certified and legally registered manufacturer?',
-    a: 'Yes. G Industries is ISO 9001:2015 certified, GST registered, and registered under the Udyam/MSME scheme as a Micro Enterprise. Full registration numbers and validity dates are listed on our Quality & Certifications page.',
-  },
-  {
-    q: 'How large is the G Industries team?',
-    a: 'G Industries employs a 50+ strong workforce at its Unit 1 facility in Hyderabad, covering heavy fabrication and BESS container manufacturing.',
-  },
-  {
-    q: 'What makes G Industries different from other fabrication companies?',
-    a: 'Most fabrication projects stall when design, simulation, fabrication, and finishing sit with different vendors. G Industries eliminates that fragmentation by owning every stage of the Design → Simulate → Fabricate → Finish process internally, reducing handoffs, delays, and quality gaps.',
-  },
-  {
-    q: 'Which industries and sectors does G Industries manufacture for?',
-    a: 'G Industries manufactures precision components for Railways, Electric Vehicles, Electronics, Agri-Tech, Laboratory Equipment, and Switchgear Systems, with a particular specialization in BESS (Battery Energy Storage System) containers.',
-  },
-];
+export default async function AboutPage() {
+  const content = await getPageContent('about', ABOUT_DEFAULTS);
+  const { hero, foundation, journey, pillars, faqs, ctaImage } = content;
 
-const PILLARS = [
-  { Icon: IconChain, title: 'Single-Source Accountability', copy: 'One partner owns design, simulation, fabrication and finishing — no handoffs, no gaps between vendors.' },
-  { Icon: IconShieldCheck, title: 'Documented Quality System', copy: 'Every delivery is governed by a certified ISO 9001:2015 Quality Management System.' },
-  { Icon: IconCube, title: 'Continuous Reinvestment', copy: 'Machinery additions every year since 2022 keep tolerances tight and lead times short.' },
-  { Icon: IconLayers, title: 'Multi-Sector Trust', copy: 'From railway PSUs to EV innovators, our capability spans the sectors that demand the most.' },
-];
-
-export default function AboutPage() {
   return (
     <>
       <PageHero
-        image="/quality-images/9ab78c05-093b-405e-9850-54976077abdf.jpg"
-        imageAlt="The G Industries team on the shop floor at the Hyderabad facility"
+        image={hero.image.src}
+        imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
-        eyebrow="About Us"
-        title="A single-source manufacturer, built since 2021."
-        subtitle="A single-source manufacturing partner built in Hyderabad to redefine what a fabrication partner can deliver — from concept to completion, under one roof."
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        subtitle={hero.subtitle}
       />
 
       <section className="section-pad">
         <div className="container">
           <Reveal className="split-section">
             <div className="split-media">
-              <Image
-                src="/quality-images/Factory front image.png"
-                alt="G Industries Fabrication Works facility front gate and warehouse, Hyderabad"
-                width={1744}
-                height={992}
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-              <figcaption>G Industries Fabrication Works, Hyderabad facility</figcaption>
+              <Image src={foundation.image.src} alt={foundation.image.alt} width={1744} height={992} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption>{foundation.caption}</figcaption>
             </div>
             <div className="split-copy">
-              <div className="eyebrow">Our Foundation</div>
-              <h2>Built to redefine what a manufacturing partner delivers.</h2>
+              <div className="eyebrow">{foundation.eyebrow}</div>
+              <h2>{foundation.heading}</h2>
+              <p>{foundation.introText}</p>
               <p>
-                Founded in 2021 in Dundigal, Gandi Maisamma, Hyderabad, Telangana, G&nbsp;Industries was built to
-                redefine what a manufacturing partner can deliver — from concept to completion, under one roof.
-              </p>
-              <p>
-                <strong>Our Mission —</strong> To engineer, fabricate, and post-process industrial solutions that
-                challenge industry standards and empower critical infrastructure across sectors, as a registered,
-                ISO-certified manufacturing enterprise.
+                <strong>{foundation.missionLabel}</strong> {foundation.missionText}
               </p>
               <div className="mini-stats">
-                <div className="mini-stat">
-                  <div className="stat-num">2021</div>
-                  <div className="stat-label">Founded</div>
-                </div>
-                <div className="mini-stat">
-                  <div className="stat-num">50+</div>
-                  <div className="stat-label">Workforce</div>
-                </div>
-                <div className="mini-stat">
-                  <div className="stat-num">ISO 9001</div>
-                  <div className="stat-label">Certified</div>
-                </div>
+                {foundation.stats.map((s, i) => (
+                  <div className="mini-stat" key={i}>
+                    <div className="stat-num">{s.num}</div>
+                    <div className="stat-label">{s.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </Reveal>
@@ -119,8 +70,8 @@ export default function AboutPage() {
             <p>Six years of continuous investment in people and machinery.</p>
           </Reveal>
           <Reveal className="timeline">
-            {JOURNEY.map((item) => (
-              <div className="timeline-item" key={item.year}>
+            {journey.map((item, i) => (
+              <div className="timeline-item" key={i}>
                 <div className="tl-year">{item.year}</div>
                 <h3>{item.title}</h3>
                 <p>{item.copy}</p>
@@ -137,27 +88,25 @@ export default function AboutPage() {
             <h2>Built on precision, proven by delivery.</h2>
           </Reveal>
           <div className="pillar-grid reveal-group">
-            {PILLARS.map(({ Icon, title, copy }, i) => (
-              <Reveal key={title} className="pillar" index={i}>
-                <div className="icon">
-                  <Icon />
-                </div>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </Reveal>
-            ))}
+            {pillars.map((item, i) => {
+              const Icon = PILLAR_ICONS[i] ?? PILLAR_ICONS[PILLAR_ICONS.length - 1];
+              return (
+                <Reveal key={i} className="pillar" index={i}>
+                  <div className="icon">
+                    <Icon />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <FAQSection
-        items={FAQS}
-        eyebrow="Common Questions"
-        title="About G Industries"
-        surface
-      />
+      <FAQSection items={faqs} eyebrow="Common Questions" title="About G Industries" surface />
 
-      <ContactCta image="/quality-images/Factory image.png" />
+      <ContactCta image={ctaImage.src} />
     </>
   );
 }
