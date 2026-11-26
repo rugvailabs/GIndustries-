@@ -9,6 +9,12 @@ const faqFields: FieldSchema[] = [
 
 export type ProductsContent = {
   hero: { image: { src: string; alt: string }; eyebrow: string; title: string; subtitle: string };
+  catalog: {
+    eyebrow: string;
+    heading: string;
+    intro: string;
+    items: { image: { src: string; alt: string }; name: string; tag: string; description: string }[];
+  };
   comingSoon: { heading: string; copy: string };
   upcoming: { title: string; copy: string; href: string; linkLabel: string }[];
   faqs: { q: string; a: string }[];
@@ -24,6 +30,37 @@ export const PRODUCTS_DEFAULTS: ProductsContent = {
     eyebrow: 'Shop',
     title: 'Our product catalog is taking shape.',
     subtitle: 'A dedicated lineup of ready-to-order products is in development. In the meantime, every item below is already available as a custom fabrication engagement.',
+  },
+  catalog: {
+    eyebrow: 'Our Products',
+    heading: 'Standard products, ready to enquire.',
+    intro: 'A growing lineup of standard BESS containers and precision-fabricated products — engineered and built in-house, ready for your project.',
+    items: [
+      {
+        image: { src: '/quality-images/10 feet Medha container.png', alt: '10-ft compact BESS container, ready for field deployment' },
+        name: '10-ft Compact BESS Container',
+        tag: 'BESS Container',
+        description: 'Compact, high-performance battery energy storage enclosure engineered for thermal management and structural integrity.',
+      },
+      {
+        image: { src: '/quality-images/Medha bess container 20feet.png', alt: '20-ft full-scale BESS container, ready for field deployment' },
+        name: '20-ft Full-Scale BESS Container',
+        tag: 'BESS Container',
+        description: 'Full-scale industrial BESS infrastructure, built to the same quality system as our client deployments.',
+      },
+      {
+        image: { src: '/quality-images/Bhel power containers.png', alt: 'Heavy industrial-grade power container' },
+        name: 'Industrial Power Container',
+        tag: 'Power Container',
+        description: 'Heavy industrial-grade specialized container built for demanding power infrastructure applications.',
+      },
+      {
+        image: { src: '/quality-images/Vem cnc machine body.png', alt: 'Precision CNC-machined component body' },
+        name: 'Precision Machined Component',
+        tag: 'Machined Component',
+        description: 'Brackets, housings, and formed assemblies turned and fabricated to exact tolerances for demanding applications.',
+      },
+    ],
   },
   comingSoon: {
     heading: 'A standard product catalog, built for ordering online',
@@ -45,8 +82,14 @@ export const PRODUCTS_DEFAULTS: ProductsContent = {
   ctaSubcopy: 'Every product in development is already available as a custom fabrication engagement — share your requirements and the team will follow up directly.',
 };
 
+const productImgSchema = z.object({ src: z.string().min(1), alt: z.string() });
+
 export const PRODUCTS_SCHEMA = z.object({
   hero: z.object({ image: z.object({ src: z.string().min(1), alt: z.string() }), eyebrow: z.string(), title: z.string(), subtitle: z.string() }),
+  catalog: z.object({
+    eyebrow: z.string(), heading: z.string(), intro: z.string(),
+    items: z.array(z.object({ image: productImgSchema, name: z.string(), tag: z.string(), description: z.string() })),
+  }),
   comingSoon: z.object({ heading: z.string(), copy: z.string() }),
   upcoming: z.array(z.object({ title: z.string(), copy: z.string(), href: z.string(), linkLabel: z.string() })),
   faqs: z.array(faqSchema),
@@ -62,6 +105,17 @@ export const PRODUCTS_FIELDS: FieldSchema[] = [
     { type: 'text', key: 'eyebrow', label: 'Eyebrow' },
     { type: 'text', key: 'title', label: 'Title' },
     { type: 'textarea', key: 'subtitle', label: 'Subtitle' },
+  ] },
+  { type: 'object', key: 'catalog', label: 'Our Products section', fields: [
+    { type: 'text', key: 'eyebrow', label: 'Eyebrow' },
+    { type: 'text', key: 'heading', label: 'Heading' },
+    { type: 'textarea', key: 'intro', label: 'Intro' },
+    { type: 'list', key: 'items', label: 'Products', addLabel: 'Add product', itemFields: [
+      { type: 'image', key: 'image', label: 'Image' },
+      { type: 'text', key: 'name', label: 'Product name' },
+      { type: 'text', key: 'tag', label: 'Category tag' },
+      { type: 'textarea', key: 'description', label: 'Description' },
+    ] },
   ] },
   { type: 'object', key: 'comingSoon', label: 'Coming Soon section', fields: [
     { type: 'text', key: 'heading', label: 'Heading' },

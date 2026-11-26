@@ -4,6 +4,7 @@ import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
 import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 import { IconClock, IconStructural, IconCube, IconLayers } from '@/components/icons';
 import { pageMetadata, SITE_NAME, SITE_URL } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
@@ -22,7 +23,7 @@ const UPCOMING_ICONS = [IconStructural, IconCube, IconLayers];
 
 export default async function ProductsPage() {
   const content = await getPageContent('products', PRODUCTS_DEFAULTS);
-  const { hero, comingSoon, upcoming, faqs, ctaHeadingLine1, ctaHeadingLine2, ctaHeadingEm, ctaSubcopy } = content;
+  const { hero, catalog, comingSoon, upcoming, faqs, ctaHeadingLine1, ctaHeadingLine2, ctaHeadingEm, ctaSubcopy } = content;
 
   const serviceJsonLd = {
     '@context': 'https://schema.org',
@@ -58,6 +59,38 @@ export default async function ProductsPage() {
         title={<EditableText slug="products" path="hero.title">{hero.title}</EditableText>}
         subtitle={<EditableText slug="products" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
       />
+
+      <section className="section-pad">
+        <div className="container">
+          <Reveal className="section-head">
+            <div className="eyebrow"><EditableText slug="products" path="catalog.eyebrow">{catalog.eyebrow}</EditableText></div>
+            <h2><EditableText slug="products" path="catalog.heading">{catalog.heading}</EditableText></h2>
+            <p><EditableText slug="products" path="catalog.intro" multiline>{catalog.intro}</EditableText></p>
+          </Reveal>
+          <div className="product-grid reveal-group">
+            {catalog.items.map((item, i) => (
+              <Reveal className="product-card" index={i} key={i}>
+                <figure>
+                  <EditableImage
+                    slug="products"
+                    path={`catalog.items.${i}.image`}
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 33vw"
+                  />
+                </figure>
+                <div className="pc-body">
+                  <div className="pc-tag"><EditableText slug="products" path={`catalog.items.${i}.tag`}>{item.tag}</EditableText></div>
+                  <h3><EditableText slug="products" path={`catalog.items.${i}.name`}>{item.name}</EditableText></h3>
+                  <p><EditableText slug="products" path={`catalog.items.${i}.description`} multiline>{item.description}</EditableText></p>
+                  <Link href="/contact#contact" className="pc-enquire">Enquire <span aria-hidden>→</span></Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section-pad">
         <div className="container">

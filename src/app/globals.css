@@ -382,6 +382,19 @@ section { position: relative; }
 @media (max-width: 900px) { .machine-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .machine-grid { grid-template-columns: 1fr; } }
 
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-4); }
+.product-card { border: 1px solid var(--line); background: var(--white); display: flex; flex-direction: column; }
+.product-card figure { aspect-ratio: 4/3; overflow: hidden; background: var(--surface-2); position: relative; }
+.product-card figure img { object-fit: cover; transition: transform 480ms var(--ease); }
+.product-card:hover figure img { transform: scale(1.05); }
+.product-card .pc-body { padding: var(--space-3); display: flex; flex-direction: column; flex: 1; }
+.product-card .pc-tag { font-family: var(--font-ui); font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-dim); margin-bottom: 0.3rem; }
+.product-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+.product-card p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: var(--space-3); flex: 1; }
+.product-card .pc-enquire { font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600; color: var(--navy-950); align-self: flex-start; }
+.product-card .pc-enquire span { display: inline-block; transition: transform 160ms var(--ease); }
+.product-card .pc-enquire:hover span { transform: translateX(3px); }
+
 .spec-table-wrap { overflow-x: auto; border: 1px solid var(--line); }
 .spec-table { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.88rem; min-width: 640px; }
 .spec-table th { text-align: left; background: var(--navy-950); color: var(--white); padding: 0.9rem 1.1rem; font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; }
