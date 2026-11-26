@@ -12,6 +12,10 @@ export default async function AdminDashboard() {
       <h1>Dashboard</h1>
       <p className="lede">Signed in as {session?.user?.email}.</p>
 
+      <Link href="/" className="admin-btn admin-btn-primary" style={{ marginBottom: 'var(--space-4)', display: 'inline-flex' }}>
+        View &amp; Edit Live Site
+      </Link>
+
       <div className="admin-card">
         <h2 style={{ marginBottom: '0.8rem' }}>Site-wide</h2>
         {globalEntries.length === 0 ? (

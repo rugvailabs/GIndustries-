@@ -23,6 +23,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <Link href="/admin">Dashboard</Link>
           <Link href="/admin/media">Media Library</Link>
           <Link href="/admin/users">Admin Users</Link>
+          <Link href="/" className="admin-nav-view-site">View &amp; Edit Site</Link>
         </nav>
         <div className="admin-sidebar-footer">
           <span>{session.user.email}</span>
