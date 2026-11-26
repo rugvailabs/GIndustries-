@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 
-type AccordionEntry = { q: string; a: ReactNode };
+type AccordionEntry = { q: ReactNode; a: ReactNode };
 
 export default function Accordion({ items }: { items: AccordionEntry[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -12,7 +12,7 @@ export default function Accordion({ items }: { items: AccordionEntry[] }) {
       {items.map((item, i) => {
         const open = openIndex === i;
         return (
-          <div className={`accordion-item${open ? ' is-open' : ''}`} key={item.q}>
+          <div className={`accordion-item${open ? ' is-open' : ''}`} key={i}>
             <button
               type="button"
               className="accordion-trigger"

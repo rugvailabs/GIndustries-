@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactForm from '@/components/ContactForm';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
 import { IconPin, IconMail, IconPhone, IconArrowRight } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
@@ -31,10 +32,12 @@ export default async function ContactPage() {
       <PageHero
         image={hero.image.src}
         imageAlt={hero.image.alt}
+        editSlug="contact"
+        imagePath="hero.image"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact Us' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug="contact" path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug="contact" path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug="contact" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
       />
 
       <section className="section-pad">
@@ -42,8 +45,8 @@ export default async function ContactPage() {
           <div>
             <Reveal style={{ marginBottom: '2rem' }}>
               <div className="eyebrow">Send a Message</div>
-              <h2 style={{ fontSize: 'clamp(1.6rem, 2.4vw, 2rem)', marginBottom: '0.75rem' }}>{formHeading}</h2>
-              <p style={{ color: 'var(--ink-soft)', marginBottom: '1.5rem' }}>{formIntro}</p>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 2.4vw, 2rem)', marginBottom: '0.75rem' }}><EditableText slug="contact" path="formHeading">{formHeading}</EditableText></h2>
+              <p style={{ color: 'var(--ink-soft)', marginBottom: '1.5rem' }}><EditableText slug="contact" path="formIntro" multiline>{formIntro}</EditableText></p>
               <ContactForm />
             </Reveal>
 
@@ -60,9 +63,9 @@ export default async function ContactPage() {
                 <div className="icon" style={{ color: 'var(--gold-dim)' }}><IconPin /></div>
                 <h4 style={{ color: 'var(--navy-950)' }}>Location</h4>
                 <p style={{ color: 'var(--ink-soft)' }}>
-                  {addressLine1}
+                  <EditableText slug="contact" path="addressLine1">{addressLine1}</EditableText>
                   <br />
-                  {addressLine2}
+                  <EditableText slug="contact" path="addressLine2">{addressLine2}</EditableText>
                 </p>
                 <a
                   href={mapsUrl}
@@ -77,13 +80,13 @@ export default async function ContactPage() {
               <div className="contact-item" style={{ color: 'inherit' }}>
                 <div className="icon" style={{ color: 'var(--gold-dim)' }}><IconMail /></div>
                 <h4 style={{ color: 'var(--navy-950)' }}>Email</h4>
-                <a href={`mailto:${email}`} style={{ color: 'var(--ink-soft)' }}>{email}</a>
-                <a href={`mailto:${email2}`} style={{ color: 'var(--ink-soft)' }}>{email2}</a>
+                <a href={`mailto:${email}`} style={{ color: 'var(--ink-soft)' }}><EditableText slug="contact" path="email">{email}</EditableText></a>
+                <a href={`mailto:${email2}`} style={{ color: 'var(--ink-soft)' }}><EditableText slug="contact" path="email2">{email2}</EditableText></a>
               </div>
               <div className="contact-item" style={{ color: 'inherit' }}>
                 <div className="icon" style={{ color: 'var(--gold-dim)' }}><IconPhone /></div>
                 <h4 style={{ color: 'var(--navy-950)' }}>Phone</h4>
-                <a href={telHref} style={{ color: 'var(--ink-soft)' }}>{phone}</a>
+                <a href={telHref} style={{ color: 'var(--ink-soft)' }}><EditableText slug="contact" path="phone">{phone}</EditableText></a>
               </div>
             </Reveal>
           </div>
@@ -92,23 +95,33 @@ export default async function ContactPage() {
             <h4>Quick Facts</h4>
             {sidebar.map((s, i) => (
               <div className="sidebar-stat" key={i}>
-                <span className="label">{s.label}</span>
-                <span className="value">{s.value}</span>
+                <span className="label"><EditableText slug="contact" path={`sidebar.${i}.label`}>{s.label}</EditableText></span>
+                <span className="value"><EditableText slug="contact" path={`sidebar.${i}.value`}>{s.value}</EditableText></span>
               </div>
             ))}
-            <p style={{ fontSize: '0.85rem', color: 'var(--ink-soft)', marginTop: '1rem' }}>{sidebarNote}</p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--ink-soft)', marginTop: '1rem' }}><EditableText slug="contact" path="sidebarNote" multiline>{sidebarNote}</EditableText></p>
           </Reveal>
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Before You Reach Out" title="What to expect" surface />
+      <FAQSection
+        items={faqs.map((f, i) => ({
+          q: <EditableText slug="contact" path={`faqs.${i}.q`}>{f.q}</EditableText>,
+          qText: f.q,
+          a: <EditableText slug="contact" path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+          aText: f.a,
+        }))}
+        eyebrow="Before You Reach Out"
+        title="What to expect"
+        surface
+      />
 
       <section className="section-pad">
         <div className="container">
           <Reveal className="section-head">
             <div className="eyebrow">Certified Partner</div>
-            <h2>{certifiedHeading}</h2>
-            <p>{certifiedCopy}</p>
+            <h2><EditableText slug="contact" path="certifiedHeading">{certifiedHeading}</EditableText></h2>
+            <p><EditableText slug="contact" path="certifiedCopy" multiline>{certifiedCopy}</EditableText></p>
           </Reveal>
           <Link href="/quality-certifications" className="btn btn-outline-dark">
             View Certifications <IconArrowRight />

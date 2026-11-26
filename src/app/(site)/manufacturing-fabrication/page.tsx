@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 import { IconSpark, IconDroplet, IconMagnifierCheck } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
 import { MANUFACTURING_FABRICATION_DEFAULTS } from '@/content/pages/manufacturing-fabrication';
+
+const SLUG = 'manufacturing-fabrication';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Manufacturing & Fabrication',
@@ -24,23 +27,32 @@ export default async function ManufacturingFabricationPage() {
   const content = await getPageContent('manufacturing-fabrication', MANUFACTURING_FABRICATION_DEFAULTS);
   const { hero, process, split, shopGallery, quote, quoteCite, faqs, ctaImage } = content;
 
+  const faqItems = faqs.map((f, i) => ({
+    q: <EditableText slug={SLUG} path={`faqs.${i}.q`}>{f.q}</EditableText>,
+    qText: f.q,
+    a: <EditableText slug={SLUG} path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+    aText: f.a,
+  }));
+
   return (
     <>
       <PageHero
         image={hero.image.src}
         imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Manufacturing & Fabrication' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug={SLUG} path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug={SLUG} path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug={SLUG} path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
+        editSlug={SLUG}
+        imagePath="hero.image"
       />
 
       <section className="section-pad">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{process.eyebrow}</div>
-            <h2>{process.heading}</h2>
-            <p>{process.intro}</p>
+            <div className="eyebrow"><EditableText slug={SLUG} path="process.eyebrow">{process.eyebrow}</EditableText></div>
+            <h2><EditableText slug={SLUG} path="process.heading">{process.heading}</EditableText></h2>
+            <p><EditableText slug={SLUG} path="process.intro" multiline>{process.intro}</EditableText></p>
           </Reveal>
 
           <div className="capability-grid reveal-group">
@@ -49,8 +61,8 @@ export default async function ManufacturingFabricationPage() {
               return (
                 <Reveal key={i} className="capability-card" index={i}>
                   <div className="icon"><Icon /></div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <h3><EditableText slug={SLUG} path={`process.items.${i}.title`}>{item.title}</EditableText></h3>
+                  <p><EditableText slug={SLUG} path={`process.items.${i}.copy`} multiline>{item.copy}</EditableText></p>
                 </Reveal>
               );
             })}
@@ -62,14 +74,14 @@ export default async function ManufacturingFabricationPage() {
         <div className="container">
           <Reveal className="split-section">
             <div className="split-media">
-              <Image src={split.image.src} alt={split.image.alt} width={2400} height={1800} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>{split.caption}</figcaption>
+              <EditableImage slug={SLUG} path="split.image" src={split.image.src} alt={split.image.alt} width={2400} height={1800} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption><EditableText slug={SLUG} path="split.caption">{split.caption}</EditableText></figcaption>
             </div>
             <div className="split-copy">
-              <div className="eyebrow">{split.eyebrow}</div>
-              <h2>{split.heading}</h2>
-              <p>{split.para1}</p>
-              <p>{split.para2}</p>
+              <div className="eyebrow"><EditableText slug={SLUG} path="split.eyebrow">{split.eyebrow}</EditableText></div>
+              <h2><EditableText slug={SLUG} path="split.heading">{split.heading}</EditableText></h2>
+              <p><EditableText slug={SLUG} path="split.para1" multiline>{split.para1}</EditableText></p>
+              <p><EditableText slug={SLUG} path="split.para2" multiline>{split.para2}</EditableText></p>
             </div>
           </Reveal>
         </div>
@@ -83,7 +95,7 @@ export default async function ManufacturingFabricationPage() {
           </Reveal>
           <Reveal className="gallery-grid gallery-pair">
             {shopGallery.map((g, i) => (
-              <figure key={i}><div className="gallery-media"><Image src={g.image.src} alt={g.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
+              <figure key={i}><div className="gallery-media"><EditableImage slug={SLUG} path={`shopGallery.${i}.image`} src={g.image.src} alt={g.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
             ))}
           </Reveal>
         </div>
@@ -93,16 +105,16 @@ export default async function ManufacturingFabricationPage() {
         <div className="container">
           <Reveal>
             <blockquote className="quality-quote">
-              &ldquo;{quote}&rdquo;
-              <cite>{quoteCite}</cite>
+              &ldquo;<EditableText slug={SLUG} path="quote" multiline>{quote}</EditableText>&rdquo;
+              <cite><EditableText slug={SLUG} path="quoteCite">{quoteCite}</EditableText></cite>
             </blockquote>
           </Reveal>
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Manufacturing & fabrication, answered" />
+      <FAQSection items={faqItems} eyebrow="Common Questions" title="Manufacturing & fabrication, answered" />
 
-      <ContactCta image={ctaImage.src} />
+      <ContactCta image={ctaImage.src} editSlug={SLUG} imagePath="ctaImage" />
     </>
   );
 }

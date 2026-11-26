@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 import { IconArrowRight } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
@@ -29,9 +30,11 @@ export default async function ProjectsPage() {
         image={hero.image.src}
         imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug="projects" path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug="projects" path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug="projects" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
+        editSlug="projects"
+        imagePath="hero.image"
       />
 
       <section className="section-pad">
@@ -39,20 +42,20 @@ export default async function ProjectsPage() {
           <div className="project-list reveal-group">
             {items.map((p, i) => (
               <Reveal key={i} className="project-row" index={i}>
-                <div className="pnum">{p.num}</div>
+                <div className="pnum"><EditableText slug="projects" path={`items.${i}.num`}>{p.num}</EditableText></div>
                 <div>
-                  <div className="client">{p.client}</div>
-                  <h3>{p.title}</h3>
+                  <div className="client"><EditableText slug="projects" path={`items.${i}.client`}>{p.client}</EditableText></div>
+                  <h3><EditableText slug="projects" path={`items.${i}.title`}>{p.title}</EditableText></h3>
                 </div>
                 <div>
-                  <p className="desc">{p.desc}</p>
-                  <p className="desc" style={{ marginTop: '0.6rem' }}>{p.note}</p>
+                  <p className="desc"><EditableText slug="projects" path={`items.${i}.desc`} multiline>{p.desc}</EditableText></p>
+                  <p className="desc" style={{ marginTop: '0.6rem' }}><EditableText slug="projects" path={`items.${i}.note`} multiline>{p.note}</EditableText></p>
                 </div>
                 <figure>
                   <div className="figure-media">
-                    <Image src={p.image.src} alt={p.image.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
+                    <EditableImage slug="projects" path={`items.${i}.image`} src={p.image.src} alt={p.image.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
                   </div>
-                  <figcaption>{p.cap}</figcaption>
+                  <figcaption><EditableText slug="projects" path={`items.${i}.cap`}>{p.cap}</EditableText></figcaption>
                 </figure>
               </Reveal>
             ))}
@@ -65,7 +68,9 @@ export default async function ProjectsPage() {
           <Reveal>
             <div className="with-sidebar">
               <div>
-                <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem', maxWidth: '62ch' }}>{summary}</p>
+                <p style={{ color: 'var(--ink-soft)', fontSize: '1.04rem', maxWidth: '62ch' }}>
+                  <EditableText slug="projects" path="summary" multiline>{summary}</EditableText>
+                </p>
                 <Link href="/clients" className="btn btn-outline-dark" style={{ marginTop: 'var(--space-3)' }}>
                   See all clients <IconArrowRight />
                 </Link>
@@ -74,8 +79,8 @@ export default async function ProjectsPage() {
                 <h4>At a Glance</h4>
                 {sidebarStats.map((s, i) => (
                   <div className="sidebar-stat" key={i}>
-                    <span className="label">{s.label}</span>
-                    <span className="value">{s.value}</span>
+                    <span className="label"><EditableText slug="projects" path={`sidebarStats.${i}.label`}>{s.label}</EditableText></span>
+                    <span className="value"><EditableText slug="projects" path={`sidebarStats.${i}.value`}>{s.value}</EditableText></span>
                   </div>
                 ))}
               </div>
@@ -84,7 +89,16 @@ export default async function ProjectsPage() {
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Projects & case studies, answered" />
+      <FAQSection
+        items={faqs.map((f, i) => ({
+          q: <EditableText slug="projects" path={`faqs.${i}.q`}>{f.q}</EditableText>,
+          qText: f.q,
+          a: <EditableText slug="projects" path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+          aText: f.a,
+        }))}
+        eyebrow="Common Questions"
+        title="Projects & case studies, answered"
+      />
 
       <ContactCta />
     </>

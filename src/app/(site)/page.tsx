@@ -1,6 +1,7 @@
-import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 import Counter from '@/components/Counter';
+import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 import {
   IconCube,
   IconWave,
@@ -46,22 +47,22 @@ export default async function HomePage() {
       {/* ============ HERO ============ */}
       <section className="hero" id="top">
         <div className="hero-media">
-          <Image src={hero.image.src} alt={hero.image.alt} fill sizes="100vw" priority quality={80} />
+          <EditableImage slug="home" path="hero.image" src={hero.image.src} alt={hero.image.alt} fill sizes="100vw" priority quality={80} />
         </div>
         <div className="hero-content container">
-          <div className="hero-tag">{hero.tag}</div>
+          <div className="hero-tag"><EditableText slug="home" path="hero.tag">{hero.tag}</EditableText></div>
           <h1>
-            {hero.titleLine1}
+            <EditableText slug="home" path="hero.titleLine1">{hero.titleLine1}</EditableText>
             <br />
-            <em>{hero.titleEm}</em>
+            <em><EditableText slug="home" path="hero.titleEm">{hero.titleEm}</EditableText></em>
           </h1>
-          <p className="hero-sub">{hero.subtitle}</p>
+          <p className="hero-sub"><EditableText slug="home" path="hero.subtitle" multiline>{hero.subtitle}</EditableText></p>
           <div className="hero-actions">
             <a href={hero.primaryCtaHref} className="btn btn-gold">
-              {hero.primaryCtaLabel} <IconArrowRight />
+              <EditableText slug="home" path="hero.primaryCtaLabel">{hero.primaryCtaLabel}</EditableText> <IconArrowRight />
             </a>
             <a href={hero.secondaryCtaHref} className="btn btn-outline-light">
-              {hero.secondaryCtaLabel}
+              <EditableText slug="home" path="hero.secondaryCtaLabel">{hero.secondaryCtaLabel}</EditableText>
             </a>
           </div>
           <div className="stat-strip">
@@ -78,9 +79,9 @@ export default async function HomePage() {
               <div className="stat-label">Workforce</div>
             </div>
             <div className="stat-loc">
-              {stats.locationLine1}
+              <EditableText slug="home" path="stats.locationLine1">{stats.locationLine1}</EditableText>
               <br />
-              {stats.locationLine2}
+              <EditableText slug="home" path="stats.locationLine2">{stats.locationLine2}</EditableText>
             </div>
           </div>
         </div>
@@ -94,33 +95,36 @@ export default async function HomePage() {
       <section className="section-pad" id="about">
         <div className="container about-grid">
           <Reveal className="about-copy">
-            <div className="eyebrow">{about.eyebrow}</div>
-            <h2>{about.heading}</h2>
+            <div className="eyebrow"><EditableText slug="home" path="about.eyebrow">{about.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="about.heading">{about.heading}</EditableText></h2>
             <p>
-              <strong>{about.foundationLabel}</strong> {about.foundationText}
+              <strong><EditableText slug="home" path="about.foundationLabel">{about.foundationLabel}</EditableText></strong>{' '}
+              <EditableText slug="home" path="about.foundationText" multiline>{about.foundationText}</EditableText>
             </p>
             <p>
-              <strong>{about.missionLabel}</strong> {about.missionText}
+              <strong><EditableText slug="home" path="about.missionLabel">{about.missionLabel}</EditableText></strong>{' '}
+              <EditableText slug="home" path="about.missionText" multiline>{about.missionText}</EditableText>
             </p>
             <div className="mini-stats">
               <div className="mini-stat">
-                <div className="stat-num">{stats.founded}</div>
+                <div className="stat-num"><EditableText slug="home" path="stats.founded" numeric>{stats.founded}</EditableText></div>
                 <div className="stat-label">Founded</div>
               </div>
               <div className="mini-stat">
-                <div className="stat-num">{stats.expansionLandSqm.toLocaleString('en-IN')} sqm</div>
+                <div className="stat-num"><EditableText slug="home" path="stats.expansionLandSqm" numeric>{stats.expansionLandSqm}</EditableText> sqm</div>
                 <div className="stat-label">Expansion Land</div>
               </div>
               <div className="mini-stat">
-                <div className="stat-num">{stats.workforce}{stats.workforceSuffix}</div>
+                <div className="stat-num"><EditableText slug="home" path="stats.workforce" numeric>{stats.workforce}</EditableText><EditableText slug="home" path="stats.workforceSuffix">{stats.workforceSuffix}</EditableText></div>
                 <div className="stat-label">Workforce</div>
               </div>
             </div>
           </Reveal>
           <Reveal className="about-media">
-            <Image src={about.image.src} alt={about.image.alt} fill sizes="(max-width: 900px) 100vw, 50vw" />
+            <EditableImage slug="home" path="about.image" src={about.image.src} alt={about.image.alt} fill sizes="(max-width: 900px) 100vw, 50vw" />
             <div className="about-media-tag">
-              <strong>{about.mediaTagLabel}</strong> {about.mediaTagText}
+              <strong><EditableText slug="home" path="about.mediaTagLabel">{about.mediaTagLabel}</EditableText></strong>{' '}
+              <EditableText slug="home" path="about.mediaTagText">{about.mediaTagText}</EditableText>
             </div>
           </Reveal>
         </div>
@@ -130,9 +134,9 @@ export default async function HomePage() {
       <section className="section-pad" id="capabilities" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{capabilities.eyebrow}</div>
-            <h2>{capabilities.heading}</h2>
-            <p>{capabilities.intro}</p>
+            <div className="eyebrow"><EditableText slug="home" path="capabilities.eyebrow">{capabilities.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="capabilities.heading">{capabilities.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="capabilities.intro" multiline>{capabilities.intro}</EditableText></p>
           </Reveal>
 
           <Reveal className="process-strip">
@@ -166,8 +170,8 @@ export default async function HomePage() {
                   <div className="icon">
                     <Icon />
                   </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <h3><EditableText slug="home" path={`capabilities.items.${i}.title`}>{item.title}</EditableText></h3>
+                  <p><EditableText slug="home" path={`capabilities.items.${i}.copy`} multiline>{item.copy}</EditableText></p>
                 </Reveal>
               );
             })}
@@ -180,15 +184,15 @@ export default async function HomePage() {
         <div className="container">
           <Reveal className="kicker-row">
             <div className="section-head" style={{ marginBottom: 'var(--space-4)' }}>
-              <div className="eyebrow on-dark">{precision.eyebrow}</div>
-              <h2>{precision.heading}</h2>
+              <div className="eyebrow on-dark"><EditableText slug="home" path="precision.eyebrow">{precision.eyebrow}</EditableText></div>
+              <h2><EditableText slug="home" path="precision.heading">{precision.heading}</EditableText></h2>
             </div>
           </Reveal>
           <Reveal className="precision-scroll">
             {precision.items.map((item, i) => (
               <div className="precision-item" key={i}>
-                <Image src={item.image.src} alt={item.image.alt} fill sizes="(max-width: 600px) 220px, 25vw" />
-                <span>{item.label}</span>
+                <EditableImage slug="home" path={`precision.items.${i}.image`} src={item.image.src} alt={item.image.alt} fill sizes="(max-width: 600px) 220px, 25vw" />
+                <span><EditableText slug="home" path={`precision.items.${i}.label`}>{item.label}</EditableText></span>
               </div>
             ))}
           </Reveal>
@@ -199,9 +203,9 @@ export default async function HomePage() {
       <section className="section-pad" id="industries">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{industries.eyebrow}</div>
-            <h2>{industries.heading}</h2>
-            <p>{industries.intro}</p>
+            <div className="eyebrow"><EditableText slug="home" path="industries.eyebrow">{industries.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="industries.heading">{industries.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="industries.intro" multiline>{industries.intro}</EditableText></p>
           </Reveal>
           <div className="industry-grid reveal-group">
             {industries.items.map((item, i) => {
@@ -211,8 +215,8 @@ export default async function HomePage() {
                   <div className="icon">
                     <Icon />
                   </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <h3><EditableText slug="home" path={`industries.items.${i}.title`}>{item.title}</EditableText></h3>
+                  <p><EditableText slug="home" path={`industries.items.${i}.copy`} multiline>{item.copy}</EditableText></p>
                 </Reveal>
               );
             })}
@@ -225,37 +229,41 @@ export default async function HomePage() {
         <div className="container bess-grid">
           <Reveal className="home-bess-media">
             <figure>
-              <Image
+              <EditableImage
+                slug="home"
+                path="bess.image1"
                 src={bess.image1.src}
                 alt={bess.image1.alt}
                 width={1182}
                 height={1330}
                 sizes="(max-width: 760px) 50vw, 25vw"
               />
-              <figcaption>{bess.caption1}</figcaption>
+              <figcaption><EditableText slug="home" path="bess.caption1">{bess.caption1}</EditableText></figcaption>
             </figure>
             <figure>
-              <Image
+              <EditableImage
+                slug="home"
+                path="bess.image2"
                 src={bess.image2.src}
                 alt={bess.image2.alt}
                 width={1447}
                 height={1087}
                 sizes="(max-width: 760px) 50vw, 25vw"
               />
-              <figcaption>{bess.caption2}</figcaption>
+              <figcaption><EditableText slug="home" path="bess.caption2">{bess.caption2}</EditableText></figcaption>
             </figure>
           </Reveal>
           <Reveal className="bess-copy">
-            <div className="eyebrow">{bess.eyebrow}</div>
-            <h2>{bess.heading}</h2>
-            <p>{bess.copy}</p>
+            <div className="eyebrow"><EditableText slug="home" path="bess.eyebrow">{bess.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="bess.heading">{bess.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="bess.copy" multiline>{bess.copy}</EditableText></p>
             <div className="bess-specs">
               {bess.specs.map((spec, i) => (
                 <div className="bess-spec" key={i}>
-                  <div className="tag">{spec.tag}</div>
+                  <div className="tag"><EditableText slug="home" path={`bess.specs.${i}.tag`}>{spec.tag}</EditableText></div>
                   <div>
-                    <h4>{spec.title}</h4>
-                    <p>{spec.copy}</p>
+                    <h4><EditableText slug="home" path={`bess.specs.${i}.title`}>{spec.title}</EditableText></h4>
+                    <p><EditableText slug="home" path={`bess.specs.${i}.copy`} multiline>{spec.copy}</EditableText></p>
                   </div>
                 </div>
               ))}
@@ -268,16 +276,16 @@ export default async function HomePage() {
       <section className="section-pad" id="facilities" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{facilities.eyebrow}</div>
-            <h2>{facilities.heading}</h2>
-            <p>{facilities.intro}</p>
+            <div className="eyebrow"><EditableText slug="home" path="facilities.eyebrow">{facilities.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="facilities.heading">{facilities.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="facilities.intro" multiline>{facilities.intro}</EditableText></p>
           </Reveal>
 
           <Reveal className="facility-stats">
             {facilities.stats.map((stat, i) => (
               <div className="facility-stat" key={i}>
-                <div className="stat-num">{stat.num}</div>
-                <div className="stat-label">{stat.label}</div>
+                <div className="stat-num"><EditableText slug="home" path={`facilities.stats.${i}.num`}>{stat.num}</EditableText></div>
+                <div className="stat-label"><EditableText slug="home" path={`facilities.stats.${i}.label`}>{stat.label}</EditableText></div>
               </div>
             ))}
           </Reveal>
@@ -285,7 +293,9 @@ export default async function HomePage() {
           <Reveal className="home-facility-gallery">
             {facilities.galleryImages.map((g, i) => (
               <figure key={i}>
-                <Image
+                <EditableImage
+                  slug="home"
+                  path={`facilities.galleryImages.${i}.image`}
                   src={g.image.src}
                   alt={g.image.alt}
                   fill
@@ -302,20 +312,20 @@ export default async function HomePage() {
       <section className="section-pad">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{machinery.eyebrow}</div>
-            <h2>{machinery.heading}</h2>
-            <p>{machinery.intro}</p>
+            <div className="eyebrow"><EditableText slug="home" path="machinery.eyebrow">{machinery.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="machinery.heading">{machinery.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="machinery.intro" multiline>{machinery.intro}</EditableText></p>
           </Reveal>
 
           <div className="machine-grid reveal-group">
             {machinery.machines.map((m, i) => (
               <Reveal key={i} className="machine-card" index={i}>
                 <figure>
-                  <Image src={m.image.src} alt={m.image.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
+                  <EditableImage slug="home" path={`machinery.machines.${i}.image`} src={m.image.src} alt={m.image.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
                 </figure>
                 <div className="mc-body">
-                  <h3>{m.title}</h3>
-                  <div className="mc-meta">{m.meta}</div>
+                  <h3><EditableText slug="home" path={`machinery.machines.${i}.title`}>{m.title}</EditableText></h3>
+                  <div className="mc-meta"><EditableText slug="home" path={`machinery.machines.${i}.meta`}>{m.meta}</EditableText></div>
                 </div>
               </Reveal>
             ))}
@@ -333,9 +343,9 @@ export default async function HomePage() {
               <tbody>
                 {machinery.specRows.map((row, i) => (
                   <tr key={i}>
-                    <td>{row.equipment}</td>
-                    <td>{row.spec}</td>
-                    <td className="yr">{row.year}</td>
+                    <td><EditableText slug="home" path={`machinery.specRows.${i}.equipment`}>{row.equipment}</EditableText></td>
+                    <td><EditableText slug="home" path={`machinery.specRows.${i}.spec`}>{row.spec}</EditableText></td>
+                    <td className="yr"><EditableText slug="home" path={`machinery.specRows.${i}.year`}>{row.year}</EditableText></td>
                   </tr>
                 ))}
               </tbody>
@@ -348,8 +358,8 @@ export default async function HomePage() {
       <section className="section-pad why-strip">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow on-dark">{why.eyebrow}</div>
-            <h2 style={{ color: 'var(--white)' }}>{why.heading}</h2>
+            <div className="eyebrow on-dark"><EditableText slug="home" path="why.eyebrow">{why.eyebrow}</EditableText></div>
+            <h2 style={{ color: 'var(--white)' }}><EditableText slug="home" path="why.heading">{why.heading}</EditableText></h2>
           </Reveal>
           <div className="why-grid reveal-group">
             {why.items.map((item, i) => {
@@ -359,8 +369,8 @@ export default async function HomePage() {
                   <div className="icon">
                     <Icon />
                   </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <h3><EditableText slug="home" path={`why.items.${i}.title`}>{item.title}</EditableText></h3>
+                  <p><EditableText slug="home" path={`why.items.${i}.copy`} multiline>{item.copy}</EditableText></p>
                 </Reveal>
               );
             })}
@@ -372,24 +382,24 @@ export default async function HomePage() {
       <section className="section-pad" id="projects">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{projects.eyebrow}</div>
-            <h2>{projects.heading}</h2>
-            <p>{projects.intro}</p>
+            <div className="eyebrow"><EditableText slug="home" path="projects.eyebrow">{projects.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="projects.heading">{projects.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="projects.intro" multiline>{projects.intro}</EditableText></p>
           </Reveal>
           <div className="project-list reveal-group">
             {projects.items.map((p, i) => (
               <Reveal key={i} className="project-row" index={i}>
-                <div className="pnum">{p.num}</div>
+                <div className="pnum"><EditableText slug="home" path={`projects.items.${i}.num`}>{p.num}</EditableText></div>
                 <div>
-                  <div className="client">{p.client}</div>
-                  <h3>{p.title}</h3>
+                  <div className="client"><EditableText slug="home" path={`projects.items.${i}.client`}>{p.client}</EditableText></div>
+                  <h3><EditableText slug="home" path={`projects.items.${i}.title`}>{p.title}</EditableText></h3>
                 </div>
-                <p className="desc">{p.desc}</p>
+                <p className="desc"><EditableText slug="home" path={`projects.items.${i}.desc`} multiline>{p.desc}</EditableText></p>
                 <figure>
                   <div className="figure-media">
-                    <Image src={p.image.src} alt={p.image.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
+                    <EditableImage slug="home" path={`projects.items.${i}.image`} src={p.image.src} alt={p.image.alt} fill sizes="(max-width: 900px) 100vw, 25vw" />
                   </div>
-                  <figcaption>{p.cap}</figcaption>
+                  <figcaption><EditableText slug="home" path={`projects.items.${i}.cap`}>{p.cap}</EditableText></figcaption>
                 </figure>
               </Reveal>
             ))}
@@ -401,9 +411,9 @@ export default async function HomePage() {
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{certifications.eyebrow}</div>
-            <h2>{certifications.heading}</h2>
-            <p>{certifications.intro}</p>
+            <div className="eyebrow"><EditableText slug="home" path="certifications.eyebrow">{certifications.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="certifications.heading">{certifications.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="certifications.intro" multiline>{certifications.intro}</EditableText></p>
           </Reveal>
           <div className="cert-grid reveal-group">
             <Reveal className="cert-card" index={0}>
@@ -433,8 +443,8 @@ export default async function HomePage() {
           </div>
           <Reveal>
             <blockquote className="quality-quote">
-              &ldquo;{certifications.quote}&rdquo;
-              <cite>{certifications.quoteCite}</cite>
+              &ldquo;<EditableText slug="home" path="certifications.quote" multiline>{certifications.quote}</EditableText>&rdquo;
+              <cite><EditableText slug="home" path="certifications.quoteCite">{certifications.quoteCite}</EditableText></cite>
             </blockquote>
           </Reveal>
         </div>
@@ -444,20 +454,20 @@ export default async function HomePage() {
       <section className="section-pad clients" id="clients">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{clients.eyebrow}</div>
-            <h2>{clients.heading}</h2>
-            <p>{clients.intro}</p>
+            <div className="eyebrow"><EditableText slug="home" path="clients.eyebrow">{clients.eyebrow}</EditableText></div>
+            <h2><EditableText slug="home" path="clients.heading">{clients.heading}</EditableText></h2>
+            <p><EditableText slug="home" path="clients.intro" multiline>{clients.intro}</EditableText></p>
           </Reveal>
           <Reveal className="client-wall">
             {clients.featured.map((c, i) => (
-              <span className="client-pill featured" key={`f${i}`}>{c.name}</span>
+              <span className="client-pill featured" key={`f${i}`}><EditableText slug="home" path={`clients.featured.${i}.name`}>{c.name}</EditableText></span>
             ))}
             {clients.other.map((c, i) => (
-              <span className="client-pill" key={`o${i}`}>{c.name}</span>
+              <span className="client-pill" key={`o${i}`}><EditableText slug="home" path={`clients.other.${i}.name`}>{c.name}</EditableText></span>
             ))}
           </Reveal>
           <Reveal className="client-note">
-            <p style={{ margin: 0 }}>{clients.note}</p>
+            <p style={{ margin: 0 }}><EditableText slug="home" path="clients.note">{clients.note}</EditableText></p>
           </Reveal>
         </div>
       </section>
@@ -465,22 +475,22 @@ export default async function HomePage() {
       {/* ============ CONTACT CTA ============ */}
       <section className="section-pad contact-cta" id="contact">
         <div className="bg">
-          <Image src={contactCta.backgroundImage.src} alt={contactCta.backgroundImage.alt} fill sizes="100vw" quality={70} />
+          <EditableImage slug="home" path="contactCta.backgroundImage" src={contactCta.backgroundImage.src} alt={contactCta.backgroundImage.alt} fill sizes="100vw" quality={70} />
         </div>
         <div className="container contact-inner">
           <Reveal className="eyebrow on-dark">Get In Touch</Reveal>
           <Reveal>
-            <h2>{contactCta.heading}</h2>
+            <h2><EditableText slug="home" path="contactCta.heading">{contactCta.heading}</EditableText></h2>
           </Reveal>
           <Reveal>
-            <p>{contactCta.subcopy}</p>
+            <p><EditableText slug="home" path="contactCta.subcopy" multiline>{contactCta.subcopy}</EditableText></p>
           </Reveal>
           <Reveal className="contact-actions">
             <a href={`mailto:${contactCta.email}`} className="btn btn-gold">
               Email Us <IconArrowRight />
             </a>
             <a href={`tel:${contactCta.phone.replace(/\s+/g, '')}`} className="btn btn-outline-light">
-              Call {contactCta.phone}
+              Call <EditableText slug="home" path="contactCta.phone">{contactCta.phone}</EditableText>
             </a>
           </Reveal>
           <Reveal className="contact-grid">
@@ -490,9 +500,9 @@ export default async function HomePage() {
               </div>
               <h4>Location</h4>
               <p>
-                {contactCta.addressLine1}
+                <EditableText slug="home" path="contactCta.addressLine1">{contactCta.addressLine1}</EditableText>
                 <br />
-                {contactCta.addressLine2}
+                <EditableText slug="home" path="contactCta.addressLine2">{contactCta.addressLine2}</EditableText>
               </p>
             </div>
             <div className="contact-item">
@@ -500,8 +510,8 @@ export default async function HomePage() {
                 <IconMail />
               </div>
               <h4>Email</h4>
-              <a href={`mailto:${contactCta.email}`}>{contactCta.email}</a>
-              <a href={`mailto:${contactCta.email2}`}>{contactCta.email2}</a>
+              <a href={`mailto:${contactCta.email}`}><EditableText slug="home" path="contactCta.email">{contactCta.email}</EditableText></a>
+              <a href={`mailto:${contactCta.email2}`}><EditableText slug="home" path="contactCta.email2">{contactCta.email2}</EditableText></a>
             </div>
             <div className="contact-item">
               <div className="icon">

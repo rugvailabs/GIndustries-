@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
 import { IconRail, IconBolt, IconChip, IconLeaf, IconFlask, IconShieldBolt, IconArrowRight } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
@@ -29,10 +30,12 @@ export default async function IndustriesPage() {
       <PageHero
         image={hero.image.src}
         imageAlt={hero.image.alt}
+        editSlug="industries"
+        imagePath="hero.image"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Industries We Serve' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug="industries" path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug="industries" path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug="industries" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
       />
 
       <section className="section-pad">
@@ -51,9 +54,17 @@ export default async function IndustriesPage() {
                     <Icon />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>{item.title}</h3>
-                    <p style={{ marginBottom: item.note ? '0.6rem' : 0 }}>{item.copy}</p>
-                    {item.note && <span className="cert-no">{item.note}</span>}
+                    <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+                      <EditableText slug="industries" path={`items.${i}.title`}>{item.title}</EditableText>
+                    </h3>
+                    <p style={{ marginBottom: item.note ? '0.6rem' : 0 }}>
+                      <EditableText slug="industries" path={`items.${i}.copy`} multiline>{item.copy}</EditableText>
+                    </p>
+                    {item.note && (
+                      <span className="cert-no">
+                        <EditableText slug="industries" path={`items.${i}.note`}>{item.note}</EditableText>
+                      </span>
+                    )}
                   </div>
                 </Reveal>
               );
@@ -65,9 +76,9 @@ export default async function IndustriesPage() {
       <section className="section-pad why-strip">
         <div className="container" style={{ textAlign: 'center' }}>
           <Reveal className="section-head center">
-            <div className="eyebrow on-dark">{trusted.eyebrow}</div>
-            <h2 style={{ color: 'var(--white)' }}>{trusted.heading}</h2>
-            <p style={{ color: 'rgba(255,255,255,0.65)' }}>{trusted.copy}</p>
+            <div className="eyebrow on-dark"><EditableText slug="industries" path="trusted.eyebrow">{trusted.eyebrow}</EditableText></div>
+            <h2 style={{ color: 'var(--white)' }}><EditableText slug="industries" path="trusted.heading">{trusted.heading}</EditableText></h2>
+            <p style={{ color: 'rgba(255,255,255,0.65)' }}><EditableText slug="industries" path="trusted.copy" multiline>{trusted.copy}</EditableText></p>
           </Reveal>
           <Link href="/clients" className="btn btn-gold">
             See Our Clients <IconArrowRight />
@@ -75,9 +86,18 @@ export default async function IndustriesPage() {
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Industries we serve, answered" />
+      <FAQSection
+        items={faqs.map((f, i) => ({
+          q: <EditableText slug="industries" path={`faqs.${i}.q`}>{f.q}</EditableText>,
+          qText: f.q,
+          a: <EditableText slug="industries" path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+          aText: f.a,
+        }))}
+        eyebrow="Common Questions"
+        title="Industries we serve, answered"
+      />
 
-      <ContactCta image={ctaImage.src} />
+      <ContactCta image={ctaImage.src} editSlug="industries" imagePath="ctaImage" />
     </>
   );
 }

@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
 import { IconClock, IconStructural, IconCube, IconLayers } from '@/components/icons';
 import { pageMetadata, SITE_NAME, SITE_URL } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
@@ -51,9 +52,11 @@ export default async function ProductsPage() {
         image={hero.image.src}
         imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Shop' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        editSlug="products"
+        imagePath="hero.image"
+        eyebrow={<EditableText slug="products" path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug="products" path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug="products" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
       />
 
       <section className="section-pad">
@@ -62,9 +65,9 @@ export default async function ProductsPage() {
             <div className="eyebrow" style={{ justifyContent: 'center' }}>Coming Soon</div>
             <h2 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-2)' }}>
               <span style={{ width: 32, height: 32, color: 'var(--gold-dim)', display: 'inline-flex' }}><IconClock /></span>
-              {comingSoon.heading}
+              <EditableText slug="products" path="comingSoon.heading">{comingSoon.heading}</EditableText>
             </h2>
-            <p>{comingSoon.copy}</p>
+            <p><EditableText slug="products" path="comingSoon.copy" multiline>{comingSoon.copy}</EditableText></p>
           </Reveal>
         </div>
       </section>
@@ -82,10 +85,10 @@ export default async function ProductsPage() {
               return (
                 <Reveal className="capability-card" index={i} key={i}>
                   <div className="icon"><Icon /></div>
-                  <h3>{item.title}</h3>
-                  <p style={{ marginBottom: 'var(--space-3)' }}>{item.copy}</p>
+                  <h3><EditableText slug="products" path={`upcoming.${i}.title`}>{item.title}</EditableText></h3>
+                  <p style={{ marginBottom: 'var(--space-3)' }}><EditableText slug="products" path={`upcoming.${i}.copy`} multiline>{item.copy}</EditableText></p>
                   <Link href={item.href} style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy-950)' }}>
-                    {item.linkLabel} →
+                    <EditableText slug="products" path={`upcoming.${i}.linkLabel`}>{item.linkLabel}</EditableText> →
                   </Link>
                 </Reveal>
               );
@@ -94,17 +97,27 @@ export default async function ProductsPage() {
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Products, answered" />
+      <FAQSection
+        items={faqs.map((f, i) => ({
+          q: <EditableText slug="products" path={`faqs.${i}.q`}>{f.q}</EditableText>,
+          qText: f.q,
+          a: <EditableText slug="products" path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+          aText: f.a,
+        }))}
+        eyebrow="Common Questions"
+        title="Products, answered"
+      />
 
       <ContactCta
         heading={
           <>
-            {ctaHeadingLine1}
+            <EditableText slug="products" path="ctaHeadingLine1">{ctaHeadingLine1}</EditableText>
             <br />
-            {ctaHeadingLine2} <em>{ctaHeadingEm}</em>
+            <EditableText slug="products" path="ctaHeadingLine2">{ctaHeadingLine2}</EditableText>{' '}
+            <em><EditableText slug="products" path="ctaHeadingEm">{ctaHeadingEm}</EditableText></em>
           </>
         }
-        subcopy={ctaSubcopy}
+        subcopy={<EditableText slug="products" path="ctaSubcopy" multiline>{ctaSubcopy}</EditableText>}
       />
     </>
   );

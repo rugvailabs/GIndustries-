@@ -4,25 +4,9 @@ import { useState } from 'react';
 import type { FieldSchema } from '@/content/fields';
 import { emptyListItem } from '@/content/fields';
 import type { MediaItem } from '@/lib/media';
+import { getAt, setAt, type PathKey } from '@/lib/objectPath';
 
 type JsonRecord = Record<string, unknown>;
-type PathKey = string | number;
-
-function getAt(obj: unknown, path: PathKey[]): unknown {
-  return path.reduce<unknown>((acc, k) => {
-    if (acc == null) return undefined;
-    return (acc as JsonRecord | unknown[])[k as never];
-  }, obj);
-}
-
-function setAt(obj: unknown, path: PathKey[], val: unknown): unknown {
-  if (path.length === 0) return val;
-  const [head, ...rest] = path;
-  const isArr = Array.isArray(obj);
-  const clone: JsonRecord | unknown[] = isArr ? [...(obj as unknown[])] : { ...((obj as JsonRecord) ?? {}) };
-  (clone as JsonRecord)[head as string] = setAt((clone as JsonRecord)[head as string], rest, val);
-  return clone;
-}
 
 function moveItem(arr: unknown[], from: number, to: number): unknown[] {
   const copy = [...arr];

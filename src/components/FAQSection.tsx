@@ -3,8 +3,10 @@ import Reveal from '@/components/Reveal';
 import Accordion from '@/components/Accordion';
 
 export type FAQItem = {
-  q: string;
+  q: ReactNode;
   a: ReactNode;
+  /** Plain-text question for FAQPage JSON-LD — required only when `q` isn't a plain string (e.g. wrapped in EditableText). */
+  qText?: string;
   /** Plain-text answer for FAQPage JSON-LD — required only when `a` isn't a plain string (e.g. contains a link). */
   aText?: string;
 };
@@ -35,7 +37,7 @@ export default function FAQSection({
     '@type': 'FAQPage',
     mainEntity: items.map((item) => ({
       '@type': 'Question',
-      name: item.q,
+      name: item.qText ?? (typeof item.q === 'string' ? item.q : ''),
       acceptedAnswer: {
         '@type': 'Answer',
         text: item.aText ?? (typeof item.a === 'string' ? item.a : ''),

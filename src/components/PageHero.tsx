@@ -1,19 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_URL } from '@/lib/seo';
+import EditableImage from '@/components/edit/EditableImage';
 
 type Crumb = { label: string; href?: string };
 
 type PageHeroProps = {
   image: string;
   imageAlt: string;
-  eyebrow: string;
+  eyebrow: React.ReactNode;
   title: React.ReactNode;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   crumbs: Crumb[];
+  /** When set along with imagePath, the hero image becomes click-to-edit for logged-in admins. */
+  editSlug?: string;
+  imagePath?: string;
 };
 
-export default function PageHero({ image, imageAlt, eyebrow, title, subtitle, crumbs }: PageHeroProps) {
+export default function PageHero({ image, imageAlt, eyebrow, title, subtitle, crumbs, editSlug, imagePath }: PageHeroProps) {
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -28,7 +32,11 @@ export default function PageHero({ image, imageAlt, eyebrow, title, subtitle, cr
   return (
     <section className="page-hero">
       <div className="page-hero-media">
-        <Image src={image} alt={imageAlt} fill sizes="100vw" priority quality={80} />
+        {editSlug && imagePath ? (
+          <EditableImage slug={editSlug} path={imagePath} src={image} alt={imageAlt} fill sizes="100vw" priority quality={80} />
+        ) : (
+          <Image src={image} alt={imageAlt} fill sizes="100vw" priority quality={80} />
+        )}
       </div>
       <div className="page-hero-content container">
         <div className="breadcrumb">

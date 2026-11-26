@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
 import { IconUsers, IconRail, IconShieldCheck, IconArrowRight } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
@@ -28,10 +29,12 @@ export default async function ClientsPage() {
       <PageHero
         image={hero.image.src}
         imageAlt={hero.image.alt}
+        editSlug="clients"
+        imagePath="hero.image"
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Clients' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug="clients" path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug="clients" path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug="clients" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
       />
 
       <section className="section-pad">
@@ -42,8 +45,8 @@ export default async function ClientsPage() {
               return (
                 <Reveal className="pillar" index={i} key={i}>
                   <div className="icon"><Icon /></div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <h3><EditableText slug="clients" path={`stats.${i}.title`}>{item.title}</EditableText></h3>
+                  <p><EditableText slug="clients" path={`stats.${i}.copy`} multiline>{item.copy}</EditableText></p>
                 </Reveal>
               );
             })}
@@ -59,22 +62,26 @@ export default async function ClientsPage() {
           </Reveal>
           <Reveal className="client-wall">
             {featured.map((c, i) => (
-              <span className="client-pill featured" key={`f${i}`}>{c.name}</span>
+              <span className="client-pill featured" key={`f${i}`}>
+                <EditableText slug="clients" path={`featured.${i}.name`}>{c.name}</EditableText>
+              </span>
             ))}
             {other.map((c, i) => (
-              <span className="client-pill" key={`o${i}`}>{c.name}</span>
+              <span className="client-pill" key={`o${i}`}>
+                <EditableText slug="clients" path={`other.${i}.name`}>{c.name}</EditableText>
+              </span>
             ))}
           </Reveal>
-          <p className="client-note">{note}</p>
+          <p className="client-note"><EditableText slug="clients" path="note">{note}</EditableText></p>
         </div>
       </section>
 
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{why.eyebrow}</div>
-            <h2>{why.heading}</h2>
-            <p>{why.copy}</p>
+            <div className="eyebrow"><EditableText slug="clients" path="why.eyebrow">{why.eyebrow}</EditableText></div>
+            <h2><EditableText slug="clients" path="why.heading">{why.heading}</EditableText></h2>
+            <p><EditableText slug="clients" path="why.copy" multiline>{why.copy}</EditableText></p>
           </Reveal>
           <Link href="/projects" className="btn btn-outline-dark">
             See Project Case Studies <IconArrowRight />
@@ -82,10 +89,21 @@ export default async function ClientsPage() {
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Clients & partnerships, answered" />
+      <FAQSection
+        items={faqs.map((f, i) => ({
+          q: <EditableText slug="clients" path={`faqs.${i}.q`}>{f.q}</EditableText>,
+          qText: f.q,
+          a: <EditableText slug="clients" path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+          aText: f.a,
+        }))}
+        eyebrow="Common Questions"
+        title="Clients & partnerships, answered"
+      />
 
       <ContactCta
         image={ctaImage.src}
+        editSlug="clients"
+        imagePath="ctaImage"
         heading={
           <>
             Become our next

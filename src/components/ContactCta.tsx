@@ -1,11 +1,15 @@
 import Image from 'next/image';
 import Reveal from '@/components/Reveal';
+import EditableImage from '@/components/edit/EditableImage';
 import { IconArrowRight, IconPin, IconMail, IconPhone } from '@/components/icons';
 
 type ContactCtaProps = {
   image?: string;
   heading?: React.ReactNode;
-  subcopy?: string;
+  subcopy?: React.ReactNode;
+  /** When set along with imagePath, the background image becomes click-to-edit for logged-in admins. */
+  editSlug?: string;
+  imagePath?: string;
 };
 
 export default function ContactCta({
@@ -18,11 +22,17 @@ export default function ContactCta({
     </>
   ),
   subcopy = 'Ready to elevate your next project? Partner with a manufacturer built to meet the most demanding engineering challenges — end to end.',
+  editSlug,
+  imagePath,
 }: ContactCtaProps) {
   return (
     <section className="section-pad contact-cta" id="contact">
       <div className="bg">
-        <Image src={image} alt="" fill sizes="100vw" quality={70} />
+        {editSlug && imagePath ? (
+          <EditableImage slug={editSlug} path={imagePath} src={image} alt="" fill sizes="100vw" quality={70} />
+        ) : (
+          <Image src={image} alt="" fill sizes="100vw" quality={70} />
+        )}
       </div>
       <div className="container contact-inner">
         <Reveal className="eyebrow on-dark">Get In Touch</Reveal>

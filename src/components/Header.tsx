@@ -1,10 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import type { HeaderContent } from '@/content/pages/header';
+import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 
 function ChevronIcon() {
   return (
@@ -58,11 +59,11 @@ export default function Header({ content }: { content: HeaderContent }) {
     <header ref={headerRef} className={`site-header${scrolled ? ' is-scrolled' : ''}${mobileOpen ? ' nav-open' : ''}`}>
       <div className="container">
         <Link href="/" className="brand">
-          <Image src={content.logo.src} alt={content.logo.alt} width={450} height={300} priority />
+          <EditableImage slug="global.header" path="logo" src={content.logo.src} alt={content.logo.alt} width={450} height={300} priority />
         </Link>
 
         <nav className={`nav-links${mobileOpen ? ' is-open' : ''}`} id="navLinks">
-          {content.navItems.map((item) => {
+          {content.navItems.map((item, i) => {
             if (item.children.length === 0) {
               return (
                 <Link
@@ -71,7 +72,7 @@ export default function Header({ content }: { content: HeaderContent }) {
                   className={isLeafActive(item.href) ? 'is-active' : ''}
                   aria-current={isLeafActive(item.href) ? 'page' : undefined}
                 >
-                  {item.label}
+                  <EditableText slug="global.header" path={`navItems.${i}.label`}>{item.label}</EditableText>
                 </Link>
               );
             }
@@ -93,10 +94,10 @@ export default function Header({ content }: { content: HeaderContent }) {
                     setOpenDropdown(open ? null : item.label);
                   }}
                 >
-                  {item.label} <ChevronIcon />
+                  <EditableText slug="global.header" path={`navItems.${i}.label`}>{item.label}</EditableText> <ChevronIcon />
                 </button>
                 <div className="nav-dropdown-panel">
-                  {item.children.map((child) => (
+                  {item.children.map((child, j) => (
                     <Link
                       key={child.href}
                       href={child.href}
@@ -109,7 +110,7 @@ export default function Header({ content }: { content: HeaderContent }) {
                         e.currentTarget.blur();
                       }}
                     >
-                      {child.label}
+                      <EditableText slug="global.header" path={`navItems.${i}.children.${j}.label`}>{child.label}</EditableText>
                     </Link>
                   ))}
                 </div>
@@ -120,7 +121,7 @@ export default function Header({ content }: { content: HeaderContent }) {
 
         <div className="nav-cta">
           <Link href={content.ctaHref} className="btn btn-outline-light desktop-only">
-            {content.ctaLabel}
+            <EditableText slug="global.header" path="ctaLabel">{content.ctaLabel}</EditableText>
           </Link>
           <button
             className={`nav-toggle${mobileOpen ? ' is-open' : ''}`}

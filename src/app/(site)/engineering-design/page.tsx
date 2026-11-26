@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 import { IconCube, IconWave, IconStructural } from '@/components/icons';
 import { pageMetadata } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
@@ -18,11 +19,19 @@ export const metadata: Metadata = pageMetadata({
   imageAlt: 'Precision-machined stainless steel bracket engineered at G Industries',
 });
 
+const SLUG = 'engineering-design';
 const CAPABILITY_ICONS = [IconCube, IconWave, IconStructural];
 
 export default async function EngineeringDesignPage() {
-  const content = await getPageContent('engineering-design', ENGINEERING_DESIGN_DEFAULTS);
+  const content = await getPageContent(SLUG, ENGINEERING_DESIGN_DEFAULTS);
   const { hero, design, simulate, capabilities, gallery, faqs, ctaImage } = content;
+
+  const faqItems = faqs.map((f, i) => ({
+    q: <EditableText slug={SLUG} path={`faqs.${i}.q`}>{f.q}</EditableText>,
+    qText: f.q,
+    a: <EditableText slug={SLUG} path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+    aText: f.a,
+  }));
 
   return (
     <>
@@ -30,23 +39,25 @@ export default async function EngineeringDesignPage() {
         image={hero.image.src}
         imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Engineering & Design' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug={SLUG} path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug={SLUG} path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug={SLUG} path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
+        editSlug={SLUG}
+        imagePath="hero.image"
       />
 
       <section className="section-pad">
         <div className="container">
           <Reveal className="split-section">
             <div className="split-copy">
-              <div className="eyebrow">{design.eyebrow}</div>
-              <h2>{design.heading}</h2>
-              <p>{design.para1}</p>
-              <p>{design.para2}</p>
+              <div className="eyebrow"><EditableText slug={SLUG} path="design.eyebrow">{design.eyebrow}</EditableText></div>
+              <h2><EditableText slug={SLUG} path="design.heading">{design.heading}</EditableText></h2>
+              <p><EditableText slug={SLUG} path="design.para1" multiline>{design.para1}</EditableText></p>
+              <p><EditableText slug={SLUG} path="design.para2" multiline>{design.para2}</EditableText></p>
             </div>
             <div className="split-media">
-              <Image src={design.image.src} alt={design.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>{design.caption}</figcaption>
+              <EditableImage slug={SLUG} path="design.image" src={design.image.src} alt={design.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption><EditableText slug={SLUG} path="design.caption">{design.caption}</EditableText></figcaption>
             </div>
           </Reveal>
         </div>
@@ -56,14 +67,14 @@ export default async function EngineeringDesignPage() {
         <div className="container">
           <Reveal className="split-section reverse">
             <div className="split-copy">
-              <div className="eyebrow">{simulate.eyebrow}</div>
-              <h2>{simulate.heading}</h2>
-              <p>{simulate.para1}</p>
-              <p>{simulate.para2}</p>
+              <div className="eyebrow"><EditableText slug={SLUG} path="simulate.eyebrow">{simulate.eyebrow}</EditableText></div>
+              <h2><EditableText slug={SLUG} path="simulate.heading">{simulate.heading}</EditableText></h2>
+              <p><EditableText slug={SLUG} path="simulate.para1" multiline>{simulate.para1}</EditableText></p>
+              <p><EditableText slug={SLUG} path="simulate.para2" multiline>{simulate.para2}</EditableText></p>
             </div>
             <div className="split-media">
-              <Image src={simulate.image.src} alt={simulate.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
-              <figcaption>{simulate.caption}</figcaption>
+              <EditableImage slug={SLUG} path="simulate.image" src={simulate.image.src} alt={simulate.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 100vw, 50vw" />
+              <figcaption><EditableText slug={SLUG} path="simulate.caption">{simulate.caption}</EditableText></figcaption>
             </div>
           </Reveal>
         </div>
@@ -72,9 +83,9 @@ export default async function EngineeringDesignPage() {
       <section className="section-pad">
         <div className="container">
           <Reveal className="section-head">
-            <div className="eyebrow">{capabilities.eyebrow}</div>
-            <h2>{capabilities.heading}</h2>
-            <p>{capabilities.intro}</p>
+            <div className="eyebrow"><EditableText slug={SLUG} path="capabilities.eyebrow">{capabilities.eyebrow}</EditableText></div>
+            <h2><EditableText slug={SLUG} path="capabilities.heading">{capabilities.heading}</EditableText></h2>
+            <p><EditableText slug={SLUG} path="capabilities.intro" multiline>{capabilities.intro}</EditableText></p>
           </Reveal>
           <div className="capability-grid reveal-group">
             {capabilities.items.map((item, i) => {
@@ -82,8 +93,8 @@ export default async function EngineeringDesignPage() {
               return (
                 <Reveal key={i} className="capability-card" index={i}>
                   <div className="icon"><Icon /></div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <h3><EditableText slug={SLUG} path={`capabilities.items.${i}.title`}>{item.title}</EditableText></h3>
+                  <p><EditableText slug={SLUG} path={`capabilities.items.${i}.copy`} multiline>{item.copy}</EditableText></p>
                 </Reveal>
               );
             })}
@@ -94,20 +105,24 @@ export default async function EngineeringDesignPage() {
       <section className="section-pad precision-strip">
         <div className="container">
           <Reveal className="section-head" style={{ marginBottom: 'var(--space-4)' }}>
-            <div className="eyebrow on-dark">{gallery.eyebrow}</div>
-            <h2>{gallery.heading}</h2>
+            <div className="eyebrow on-dark"><EditableText slug={SLUG} path="gallery.eyebrow">{gallery.eyebrow}</EditableText></div>
+            <h2><EditableText slug={SLUG} path="gallery.heading">{gallery.heading}</EditableText></h2>
           </Reveal>
           <Reveal className="gallery-grid">
             {gallery.images.map((g, i) => (
-              <figure key={i}><div className="gallery-media"><Image src={g.image.src} alt={g.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" /></div></figure>
+              <figure key={i}>
+                <div className="gallery-media">
+                  <EditableImage slug={SLUG} path={`gallery.images.${i}.image`} src={g.image.src} alt={g.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                </div>
+              </figure>
             ))}
           </Reveal>
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Engineering & design, answered" />
+      <FAQSection items={faqItems} eyebrow="Common Questions" title="Engineering & design, answered" />
 
-      <ContactCta image={ctaImage.src} />
+      <ContactCta image={ctaImage.src} editSlug={SLUG} imagePath="ctaImage" />
     </>
   );
 }

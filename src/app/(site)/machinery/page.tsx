@@ -1,9 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 import { pageMetadata } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
 import { MACHINERY_DEFAULTS } from '@/content/pages/machinery';
@@ -27,9 +28,11 @@ export default async function MachineryPage() {
         image={hero.image.src}
         imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Capabilities' }, { label: 'Machinery & Equipment' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug="machinery" path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug="machinery" path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug="machinery" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
+        editSlug="machinery"
+        imagePath="hero.image"
       />
 
       <section className="section-pad">
@@ -38,7 +41,7 @@ export default async function MachineryPage() {
             <div className="eyebrow">On the Shop Floor</div>
             <h2>A continuously modernized machine shop</h2>
             <p>
-              {intro} — powering the <Link href="/manufacturing-fabrication">structural fabrication</Link> and{' '}
+              <EditableText slug="machinery" path="intro" multiline>{intro}</EditableText> — powering the <Link href="/manufacturing-fabrication">structural fabrication</Link> and{' '}
               <Link href="/engineering-design">engineering &amp; design</Link> work carried out at the{' '}
               <Link href="/facilities">Hyderabad facility</Link>.
             </p>
@@ -48,11 +51,11 @@ export default async function MachineryPage() {
             {machines.map((m, i) => (
               <Reveal key={i} className="machine-card" index={i}>
                 <figure>
-                  <Image src={m.image.src} alt={m.image.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
+                  <EditableImage slug="machinery" path={`machines.${i}.image`} src={m.image.src} alt={m.image.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw" />
                 </figure>
                 <div className="mc-body">
-                  <h3>{m.title}</h3>
-                  <div className="mc-meta">{m.meta}</div>
+                  <h3><EditableText slug="machinery" path={`machines.${i}.title`}>{m.title}</EditableText></h3>
+                  <div className="mc-meta"><EditableText slug="machinery" path={`machines.${i}.meta`}>{m.meta}</EditableText></div>
                 </div>
               </Reveal>
             ))}
@@ -75,9 +78,9 @@ export default async function MachineryPage() {
               <tbody>
                 {specRows.map((row, i) => (
                   <tr key={i}>
-                    <td>{row.equipment}</td>
-                    <td>{row.spec}</td>
-                    <td className="yr">{row.year}</td>
+                    <td><EditableText slug="machinery" path={`specRows.${i}.equipment`}>{row.equipment}</EditableText></td>
+                    <td><EditableText slug="machinery" path={`specRows.${i}.spec`}>{row.spec}</EditableText></td>
+                    <td className="yr"><EditableText slug="machinery" path={`specRows.${i}.year`}>{row.year}</EditableText></td>
                   </tr>
                 ))}
               </tbody>
@@ -86,9 +89,19 @@ export default async function MachineryPage() {
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Machinery & equipment, answered" surface />
+      <FAQSection
+        items={faqs.map((f, i) => ({
+          q: <EditableText slug="machinery" path={`faqs.${i}.q`}>{f.q}</EditableText>,
+          qText: f.q,
+          a: <EditableText slug="machinery" path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+          aText: f.a,
+        }))}
+        eyebrow="Common Questions"
+        title="Machinery & equipment, answered"
+        surface
+      />
 
-      <ContactCta image={ctaImage.src} />
+      <ContactCta image={ctaImage.src} editSlug="machinery" imagePath="ctaImage" />
     </>
   );
 }

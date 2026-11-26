@@ -1,8 +1,9 @@
-import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import ContactCta from '@/components/ContactCta';
 import FAQSection from '@/components/FAQSection';
+import EditableText from '@/components/edit/EditableText';
+import EditableImage from '@/components/edit/EditableImage';
 import {
   IconShieldCheck,
   IconGst,
@@ -31,26 +32,35 @@ export default async function QualityCertificationsPage() {
   const content = await getPageContent('quality-certifications', QUALITY_CERTIFICATIONS_DEFAULTS);
   const { hero, quotePart1, quotePart2, quoteCite, certs, pillars, galleryImages, faqs, ctaImage } = content;
 
+  const faqItems = faqs.map((f, i) => ({
+    q: <EditableText slug="quality-certifications" path={`faqs.${i}.q`}>{f.q}</EditableText>,
+    qText: f.q,
+    a: <EditableText slug="quality-certifications" path={`faqs.${i}.a`} multiline>{f.a}</EditableText>,
+    aText: f.a,
+  }));
+
   return (
     <>
       <PageHero
         image={hero.image.src}
         imageAlt={hero.image.alt}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Quality & Certifications' }]}
-        eyebrow={hero.eyebrow}
-        title={hero.title}
-        subtitle={hero.subtitle}
+        eyebrow={<EditableText slug="quality-certifications" path="hero.eyebrow">{hero.eyebrow}</EditableText>}
+        title={<EditableText slug="quality-certifications" path="hero.title">{hero.title}</EditableText>}
+        subtitle={<EditableText slug="quality-certifications" path="hero.subtitle" multiline>{hero.subtitle}</EditableText>}
+        editSlug="quality-certifications"
+        imagePath="hero.image"
       />
 
       <section className="section-pad">
         <div className="container">
           <Reveal>
             <blockquote className="quality-quote">
-              &ldquo;{quotePart1}&rdquo;
+              &ldquo;<EditableText slug="quality-certifications" path="quotePart1" multiline>{quotePart1}</EditableText>&rdquo;
               <br />
               <br />
-              &ldquo;{quotePart2}&rdquo;
-              <cite>{quoteCite}</cite>
+              &ldquo;<EditableText slug="quality-certifications" path="quotePart2" multiline>{quotePart2}</EditableText>&rdquo;
+              <cite><EditableText slug="quality-certifications" path="quoteCite">{quoteCite}</EditableText></cite>
             </blockquote>
           </Reveal>
         </div>
@@ -68,9 +78,9 @@ export default async function QualityCertificationsPage() {
               return (
                 <Reveal className="cert-card" index={i} key={i}>
                   <div className="icon"><Icon /></div>
-                  <h3>{c.title}</h3>
-                  <p>{c.copy}</p>
-                  <span className="cert-no">{c.certNo}</span>
+                  <h3><EditableText slug="quality-certifications" path={`certs.${i}.title`}>{c.title}</EditableText></h3>
+                  <p><EditableText slug="quality-certifications" path={`certs.${i}.copy`} multiline>{c.copy}</EditableText></p>
+                  <span className="cert-no"><EditableText slug="quality-certifications" path={`certs.${i}.certNo`}>{c.certNo}</EditableText></span>
                 </Reveal>
               );
             })}
@@ -90,8 +100,8 @@ export default async function QualityCertificationsPage() {
               return (
                 <Reveal className="pillar" index={i} key={i}>
                   <div className="icon"><Icon /></div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
+                  <h3><EditableText slug="quality-certifications" path={`pillars.${i}.title`}>{item.title}</EditableText></h3>
+                  <p><EditableText slug="quality-certifications" path={`pillars.${i}.copy`} multiline>{item.copy}</EditableText></p>
                 </Reveal>
               );
             })}
@@ -109,18 +119,18 @@ export default async function QualityCertificationsPage() {
             {galleryImages.map((g, i) => (
               <figure key={i}>
                 <div className="gallery-media">
-                  <Image src={g.image.src} alt={g.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                  <EditableImage slug="quality-certifications" path={`galleryImages.${i}.image`} src={g.image.src} alt={g.image.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
                 </div>
-                <figcaption>{g.cap}</figcaption>
+                <figcaption><EditableText slug="quality-certifications" path={`galleryImages.${i}.cap`}>{g.cap}</EditableText></figcaption>
               </figure>
             ))}
           </Reveal>
         </div>
       </section>
 
-      <FAQSection items={faqs} eyebrow="Common Questions" title="Certifications, answered" />
+      <FAQSection items={faqItems} eyebrow="Common Questions" title="Certifications, answered" />
 
-      <ContactCta image={ctaImage.src} />
+      <ContactCta image={ctaImage.src} editSlug="quality-certifications" imagePath="ctaImage" />
     </>
   );
 }
