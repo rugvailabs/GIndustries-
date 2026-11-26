@@ -83,18 +83,30 @@ function ImageField({
   );
 }
 
+function InlineSaveButton({ onSave, saving }: { onSave: () => void; saving: boolean }) {
+  return (
+    <button type="button" className="admin-btn admin-btn-sm admin-btn-primary" onClick={onSave} disabled={saving}>
+      {saving ? 'Saving…' : 'Save'}
+    </button>
+  );
+}
+
 function FieldRenderer({
   fields,
   value,
   path,
   onChange,
   mediaOptions,
+  onSave,
+  saving,
 }: {
   fields: FieldSchema[];
   value: unknown;
   path: PathKey[];
   onChange: (path: PathKey[], value: unknown) => void;
   mediaOptions: MediaItem[];
+  onSave: () => void;
+  saving: boolean;
 }) {
   return (
     <>
@@ -149,8 +161,11 @@ function FieldRenderer({
         if (f.type === 'object') {
           return (
             <fieldset key={f.key} className="admin-list-item">
-              <legend><strong>{f.label}</strong></legend>
-              <FieldRenderer fields={f.fields} value={v ?? {}} path={fieldPath} onChange={onChange} mediaOptions={mediaOptions} />
+              <legend className="admin-section-legend">
+                <strong>{f.label}</strong>
+                <InlineSaveButton onSave={onSave} saving={saving} />
+              </legend>
+              <FieldRenderer fields={f.fields} value={v ?? {}} path={fieldPath} onChange={onChange} mediaOptions={mediaOptions} onSave={onSave} saving={saving} />
             </fieldset>
           );
         }
@@ -164,12 +179,13 @@ function FieldRenderer({
                 <div className="admin-list-item-head">
                   <strong>#{i + 1}</strong>
                   <div className="admin-list-actions">
+                    <InlineSaveButton onSave={onSave} saving={saving} />
                     <button type="button" className="admin-btn admin-btn-sm" disabled={i === 0} onClick={() => onChange(fieldPath, moveItem(items, i, i - 1))}>↑</button>
                     <button type="button" className="admin-btn admin-btn-sm" disabled={i === items.length - 1} onClick={() => onChange(fieldPath, moveItem(items, i, i + 1))}>↓</button>
                     <button type="button" className="admin-btn admin-btn-sm admin-btn-danger" onClick={() => onChange(fieldPath, items.filter((_, idx) => idx !== i))}>Remove</button>
                   </div>
                 </div>
-                <FieldRenderer fields={f.itemFields} value={item} path={[...fieldPath, i]} onChange={onChange} mediaOptions={mediaOptions} />
+                <FieldRenderer fields={f.itemFields} value={item} path={[...fieldPath, i]} onChange={onChange} mediaOptions={mediaOptions} onSave={onSave} saving={saving} />
               </div>
             ))}
             <button type="button" className="admin-btn" onClick={() => onChange(fieldPath, [...items, emptyListItem(f.itemFields)])}>
@@ -203,8 +219,7 @@ export default function ContentForm({
     setSuccess(false);
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function save() {
     setSaving(true);
     setError(null);
     setSuccess(false);
@@ -227,14 +242,19 @@ export default function ContentForm({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        save();
+      }}
+    >
       {error && <div className="admin-error">{error}</div>}
       {success && (
-        <div className="admin-card" style={{ background: '#EAF7ED', borderColor: '#BFE6C8' }}>
+        <div className="admin-card admin-save-toast" style={{ background: '#EAF7ED', borderColor: '#BFE6C8' }}>
           Saved — live on the site now.
         </div>
       )}
-      <FieldRenderer fields={fields} value={value} path={[]} onChange={onChange} mediaOptions={mediaOptions} />
+      <FieldRenderer fields={fields} value={value} path={[]} onChange={onChange} mediaOptions={mediaOptions} onSave={save} saving={saving} />
       <button type="submit" className="admin-btn admin-btn-primary" disabled={saving}>
         {saving ? 'Saving…' : 'Save changes'}
       </button>

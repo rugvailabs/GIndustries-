@@ -792,7 +792,9 @@ section { position: relative; }
 .admin-list-item { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: var(--space-3); margin-bottom: var(--space-2); background: var(--surface); }
 .admin-list-item-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
 .admin-list-item-head strong { font-size: 0.86rem; color: var(--ink-soft); }
-.admin-list-actions { display: flex; gap: 0.4rem; }
+.admin-list-actions { display: flex; align-items: center; gap: 0.4rem; }
+.admin-section-legend { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; padding-right: 0.1rem; }
+.admin-save-toast { position: sticky; top: var(--space-3); z-index: 50; }
 
 .admin-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-ui); font-weight: 600; font-size: 0.86rem; padding: 0.55rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--white); color: var(--navy-950); cursor: pointer; transition: background 160ms var(--ease); }
 .admin-btn:hover { background: var(--surface-2); }

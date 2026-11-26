@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import type { MediaItem } from '@/lib/media';
 
 export type ImageValue = { src: string; alt: string };
@@ -61,7 +62,7 @@ export default function ImagePickerModal({
     }
   }
 
-  return (
+  return createPortal(
     <div className="edit-modal-backdrop" onClick={onClose}>
       <div className="edit-modal-panel" onClick={(e) => e.stopPropagation()}>
         <h3>Change image</h3>
@@ -103,6 +104,7 @@ export default function ImagePickerModal({
           <button type="button" className="admin-btn" onClick={onClose}>Cancel</button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
