@@ -1,13 +1,9 @@
 import type { Metadata } from 'next';
 import { Kanit, DM_Sans, Inter } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppFloat from '@/components/WhatsAppFloat';
 import { pageMetadata, SITE_URL, SITE_NAME } from '@/lib/seo';
 import { getPageContent } from '@/lib/content';
 import { HEADER_DEFAULTS } from '@/content/pages/header';
-import { FOOTER_DEFAULTS } from '@/content/pages/footer';
 
 function absoluteUrl(src: string) {
   return src.startsWith('http') ? src : `${SITE_URL}${src}`;
@@ -83,10 +79,7 @@ const ORGANIZATION_JSON_LD_BASE = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const [headerContent, footerContent] = await Promise.all([
-    getPageContent('global.header', HEADER_DEFAULTS),
-    getPageContent('global.footer', FOOTER_DEFAULTS),
-  ]);
+  const headerContent = await getPageContent('global.header', HEADER_DEFAULTS);
 
   const organizationJsonLd = {
     ...ORGANIZATION_JSON_LD_BASE,
@@ -101,10 +94,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
-        <Header content={headerContent} />
         {children}
-        <Footer content={footerContent} />
-        <WhatsAppFloat />
       </body>
     </html>
   );
