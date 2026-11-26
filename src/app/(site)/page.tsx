@@ -280,18 +280,20 @@ export default async function HomePage() {
             ))}
           </Reveal>
 
-          <Reveal className="facility-gallery">
+          <Reveal className="home-facility-gallery">
+            <figure className="featured-figure">
+              <Image
+                src={facilities.galleryImages[0].image.src}
+                alt={facilities.galleryImages[0].image.alt}
+                width={1800}
+                height={1200}
+                sizes="(max-width: 900px) 100vw, 55vw"
+              />
+            </figure>
             <div className="stack">
-              {facilities.galleryImages.slice(0, 2).map((g, i) => (
+              {facilities.galleryImages.slice(1, 4).map((g, i) => (
                 <figure key={i}>
-                  <Image src={g.image.src} alt={g.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
-                </figure>
-              ))}
-            </div>
-            <div className="stack">
-              {facilities.galleryImages.slice(2, 4).map((g, i) => (
-                <figure key={i}>
-                  <Image src={g.image.src} alt={g.image.alt} width={1800} height={2400} sizes="(max-width: 900px) 50vw, 28vw" />
+                  <Image src={g.image.src} alt={g.image.alt} width={1200} height={800} sizes="(max-width: 900px) 33vw, 24vw" />
                 </figure>
               ))}
             </div>
